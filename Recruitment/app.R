@@ -4,7 +4,7 @@ library(shiny)
 #source("recForcast.R")
 
 
-rec.forcast <- function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ 
+rec.forcast<-function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ 
 
 
 ## Getting the number of open sites per month
