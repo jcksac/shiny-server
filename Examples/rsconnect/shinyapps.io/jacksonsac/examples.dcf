@@ -1,0 +1,10 @@
+name: examples
+title:
+username:
+account: jacksonsac
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 403626
+bundleId: 1545311
+url: https://jacksonsac.shinyapps.io/examples/
+when: 1534798932.6096

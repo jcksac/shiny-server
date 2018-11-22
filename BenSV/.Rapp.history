@@ -1,0 +1,290 @@
+install.packages("rsconnect")
+library(rsconnect)
+rsconnect::setAccountInfo(name='jacksonsac', token='FB57003B98D40B524CC622592F2A3300', secret='UtnpWtLPCwnfqfxU6c4a2gCItwavuBUYmloUcHyB')
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/Jeremy')
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV')
+library(shiny)
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	## Loading CSS#
+	#includeCSS("bootstrap.css"),#
+#
+	br(),#
+  # App title ----#
+  h1("Social Values - Clusters and Patterns"),#
+#
+	h4("This website will let you see your data and the patterns they create!"),#
+#
+   				selectInput(inputId = "dataset",#
+	                  label = "Choose a dataset:",#
+	                  choices = c("SJdata","Other datasets...")),#
+	tabsetPanel(type = "tabs",       #
+#
+		#### Panel 1#
+		tabPanel("Data",#
+		br(),#
+		h4("This section provides a summary of the data you have collected!"),#
+		br(),#
+			fluidRow(#
+				column(4,offset=1,#
+				selectInput("dataType", "Choose your data Type:",#
+                  choices = c("demographics","outcome"))#
+                  )#
+			),#
+      	br(),#
+      	fluidRow(#
+				column(4,offset=1,#
+					tableOutput(outputId="demTable")#
+					)#
+				)#
+    		),#
+    			#### Panel 2#
+    	tabPanel("Correlations (1)",#
+		br(),#
+		h4("Here we have a chance to look at an overview of all the correlations between the deomgraphic and outcome data you have collected!"),#
+		br(),#
+			fluidRow(#
+				column(10,offset=1,#
+					plotOutput(outputId="corPlotAll")#
+					)#
+			)#
+    		),#
+    		#### Panel 2#
+			tabPanel("Correlations (2)",#
+		br(),#
+		h4("Here you can have a closer look at the connections between each demographice and outcome data, one variable at a time!"),#
+		br(),#
+			fluidRow(#
+				column(10,offset=1,#
+					plotOutput(outputId="corPlotInd")#
+				)#
+			),#
+			br(),#
+			fluidRow(#
+				column(4,offset=1,#
+					selectInput("demCov","Demographic Covariate",choices=namDem)#
+				),#
+				column(4,offset=1,#
+					selectInput("outCov","Outcome Covariate",choices=namOut)#
+				)#
+			)#
+			),#
+    		#### Panel 3#
+			tabPanel("Cluster Analysis",#
+			br(),#
+			h4("Heirachical Cluster analysis is a way of grouping together your outcome data into naturally occuring clusters.  In the heat graph below, we order the subjects included in your data and the outcome to show you the groups that are formed"),#
+			br(),#
+#
+			fluidRow(#
+				column(10,offset=1,#
+					plotOutput(outputId="heatPlot",height="600px")#
+				)#
+			),#
+			br(),#
+			## Action Button#
+			actionButton(inputId="go", label="THE BUTTON!")#
+			),#
+    		#### Panel 4#
+			tabPanel("Cluster Comparisions",#
+		br(),#
+		h4("Now we have found our clusters, it's time to find out what makes are groups different from one another!"),#
+		br(),#
+			fluidRow(#
+				column(10,offset=1,#
+					plotOutput(outputId="corPlotClust")#
+				)#
+			),#
+			br(),#
+			fluidRow(#
+				column(4,offset=1,#
+					selectInput("demClustCov","Demographic Covariate",choices=namDem)#
+				)#
+			)#
+			)#
+	)#
+)
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	## Loading CSS#
+	#includeCSS("bootstrap.css"),#
+#
+	br(),#
+  # App title ----#
+  h1("Social Values - Clusters and Patterns"),#
+#
+	h4("This website will let you see your data and the patterns they create!"),#
+#
+   				selectInput(inputId = "dataset",#
+	                  label = "Choose a dataset:",#
+	                  choices = c("SJdata","Other datasets...")),#
+	tabsetPanel(type = "tabs",       #
+#
+		#### Panel 1#
+		tabPanel("Data",#
+		br(),#
+		h4("This section provides a summary of the data you have collected!"),#
+		br(),#
+			fluidRow(#
+				column(4,offset=1,#
+				selectInput("dataType", "Choose your data Type:",#
+                  choices = c("demographics","outcome"))#
+                  )#
+			),#
+      	br(),#
+      	fluidRow(#
+				column(4,offset=1,#
+					tableOutput(outputId="demTable")#
+					)#
+				)#
+    		),#
+    			#### Panel 2#
+    	tabPanel("Correlations (1)",#
+		br(),#
+		h4("Here we have a chance to look at an overview of all the correlations between the deomgraphic and outcome data you have collected!"),#
+		br(),#
+			fluidRow(#
+				column(10,offset=1,#
+					plotOutput(outputId="corPlotAll")#
+					)#
+			)#
+    		),#
+    		#### Panel 2#
+			tabPanel("Correlations (2)",#
+		br(),#
+		h4("Here you can have a closer look at the connections between each demographice and outcome data, one variable at a time!"),#
+		br(),#
+			fluidRow(#
+				column(10,offset=1,#
+					plotOutput(outputId="corPlotInd")#
+				)#
+			),#
+			br(),#
+			fluidRow(#
+				column(4,offset=1,#
+					selectInput("demCov","Demographic Covariate",choices=c("Gender","Age","Duration","Cohort","Cust. Face."))#
+				),#
+				column(4,offset=1,#
+					selectInput("outCov","Outcome Covariate",choices=c("A","B","C","D","E","F","G"))#
+				)#
+			)#
+			),#
+    		#### Panel 3#
+			tabPanel("Cluster Analysis",#
+			br(),#
+			h4("Heirachical Cluster analysis is a way of grouping together your outcome data into naturally occuring clusters.  In the heat graph below, we order the subjects included in your data and the outcome to show you the groups that are formed"),#
+			br(),#
+#
+			fluidRow(#
+				column(10,offset=1,#
+					plotOutput(outputId="heatPlot",height="600px")#
+				)#
+			),#
+			br(),#
+			## Action Button#
+			actionButton(inputId="go", label="THE BUTTON!")#
+			),#
+    		#### Panel 4#
+			tabPanel("Cluster Comparisions",#
+		br(),#
+		h4("Now we have found our clusters, it's time to find out what makes are groups different from one another!"),#
+		br(),#
+			fluidRow(#
+				column(10,offset=1,#
+					plotOutput(outputId="corPlotClust")#
+				)#
+			),#
+			br(),#
+			fluidRow(#
+				column(4,offset=1,#
+					selectInput("demClustCov","Demographic Covariate",choices=c("Gender","Age","Duration","Cohort","Cust. Face."))#
+				)#
+			)#
+			)#
+	)#
+)
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV')
+q()
+install.packages("rsconnect")#
+library(rsconnect)#
+#
+rsconnect::setAccountInfo(name='jacksonsac', token='FB57003B98D40B524CC622592F2A3300', secret='UtnpWtLPCwnfqfxU6c4a2gCItwavuBUYmloUcHyB')
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV')
+setwd("/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV")
+data <- read.csv("data/CJdata.csv")
+demo  <- data[,2:6]#
+outcome <- data[,7:13]#
+namDem <- c("Gender","Age","Duration","Cohort","Cust. Face.")#
+namOut <- c("A","B","C","D","E","F","G")
+source("benFunc.R")
+corPlot("Gender","A")
+corPlot("Gender","A",namDem,namOut)
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV')
+corPlot
+source("benFunc.R")
+corPlot
+corPlot("Gender","A",namDem,namOut,demo,outcome)
+demo
+outcome
+corPlot("Gender","A",namDem,namOut,demo,outcome)
+corPlot
+x.id <- which(namDem==x)
+x <- "Gender"
+y <- "A"
+x.id <- which(namDem==x)
+y.id <- which(namOut==y)
+#x.id <- x
+#y.id <- y
+par(bty="l",mar=c(5,5,1,1))
+boxplot(outcome[,y.id]~demo[,x.id],col=c("hotpink","royalblue"),ylab=names(outcome)[y.id],xlab=names(demo)[x.id],cex.axis=1,cex.lab=1.3)
+source("benFunc.R")
+corPlot("Gender","A",namDem,namOut,demo,outcome)
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV')
+Y
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV')
+corlot
+corPlot
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV')
+corClust
+source("benFunc.R")
+corClust
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV')
+corClust
+corClust <- function(x,ct,namDem,demo){#
+	x.id <- which(namDem==x)#
+	X <- demo[,x.id]#
+	if(class(X)!="numeric"){#
+		barplot(table(X,ct),main=x,xlab="Groups")#
+		}#
+#
+	if(class(X)=="numeric"){#
+		boxplot(X,ct,main=x)#
+		}#
+}
+ct <- heatMapRJ(outcome,ident=F,plot=F,ret=T)
+corClust("Gender",ct,namDem,demo)
+x.id <- which(namDem==x)
+X <- demo[,x.id]
+X
+if(class(X)!="numeric"){
+barplot(table(X,ct),main=x,xlab="Groups")
+}
+if(class(X)!="numeric"){#
+		barplot(table(X,ct),main=x,xlab="Groups")#
+		}#
+#
+	if(class(X)=="numeric"){#
+		boxplot(X,ct,main=x)#
+		}
+corClust("Gender",ct,namDem,demo)
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV')
+corClust("Gender",ct,namDem,demo)
+dev.off()
+corClust("Gender",ct,namDem,demo)
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/BenSV')
+q()
+?eventReactive()
+library(rshiny)
+library(shiny)
+?eventReactive()

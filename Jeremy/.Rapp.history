@@ -1,0 +1,4554 @@
+strat
+y
+which(is.na(y))
+na.id <- which(is.na(y))
+y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata
+### sorting out which anlaysis o perform
+## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- alloc[-na.id]#
+		s <- alloc[-na.id]#
+	}
+y
+table(y)
+fam
+unique(y)
+if(fam=="binomial")  y <- as.character(y)
+y
+mod <- glm(y~a*s,family=fam)
+y
+as.numeric(as.character(y))
+as.numeric(as.factor(as.character(y)))
+as.numeric(as.factor(as.character(y)))-1
+if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1
+mod <- glm(y~a*s,family=fam)
+mod
+summary(y)
+table(y,a)
+table(y,s)
+y <- outcome[,which(names(outcome)==un.cov[i])]
+a <- outcome$Allocation
+s <- outcome$strata
+a
+s
+table(y,s)
+table(y,a)
+mod <- glm(y~a*s,family=fam)
+y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- alloc[-na.id]#
+		s <- alloc[-na.id]#
+	}#
+	if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		table(y)#
+#
+	mod <- glm(y~a*s,family=fam)
+mod
+y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+	if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		table(y)#
+#
+	mod <- glm(y~a*s,family=fam)
+mod
+fam=="binomial"&length(unique(y))>3
+!(fam=="binomial"&length(unique(y))>3)
+if(!(fam=="binomial"&length(unique(y))>3))
+if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1
+### fitting model#
+	mod <- glm(y~a*s,family=fam)#
+	### saving results#
+	p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	P <- c(P,p)
+p
+y
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+	if(!(fam=="binomial"&length(unique(y))>3)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+		P <- c(P,p)#
+	}#
+}
+I
+i
+y <- outcome[,which(names(outcome)==un.cov[i])]
+y
+a <- outcome$Allocation
+s <- outcome$strata
+lc <- length(which(covar==un.cov[i]))
+fam <- "gaussian"
+if(class(y)%in%(c("character","factor"))) fam <- "binomial"
+fam
+na.id <- which(is.na(y))
+if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}
+y
+a
+s
+!(fam=="binomial"&length(unique(y))>3))
+(fam=="binomial"&length(unique(y))>3))
+(fam=="binomial"&length(unique(y))>3)
+(fam=="binomial"&length(unique(y))23)
+(fam=="binomial"&length(unique(y))>2)
+!(fam=="binomial"&length(unique(y))>2)
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+		P <- c(P,p)#
+	}#
+}
+P
+nrow(sec.endpoint.strat)
+length(un.cov)
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+		P <- c(P,p)#
+	}#
+}
+p
+P
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+#
+	P <- c(P,p)#
+#
+}
+P
+cbind(sec.endpoint.strat,P)
+sec.endpoint.strat
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,7])
+dum.srot
+dum.sort
+sec.endpoint.strat[,c(1,2,7,3,4,5,6)]
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,7])
+sec.endpoint <- FlexTable(sec.endpoint,header.cell.props=hcp, header.text.props=htp, body.par.props =bpp, header.par.props=hpp)
+sec.endpoint <- FlexTable(sec.endpoint.strat,header.cell.props=hcp, header.text.props=htp, body.par.props =bpp, header.par.props=hpp)
+sec.endpoint.strat <- FlexTable(sec.endpoint.strat,header.cell.props=hcp, header.text.props=htp, body.par.props =bpp, header.par.props=hpp)
+sec.endpoint.strat
+#############
+### Merging tables#
+sec.endpoint.strat1 <- cbind(sec.endpoint.strat1,"Strat" = "<26")#
+sec.endpoint.strat2 <- cbind(sec.endpoint.strat2,"Strat" = "≥26")#
+sec.endpoint.strat <- rbind(sec.endpoint.strat1,sec.endpoint.strat2)#
+#
+### ordering#
+sec.endpoint.strat <- sec.endpoint.strat[order(sec.endpoint.strat[,1]),]#
+#
+## removing 'Total'#
+sec.endpoint.strat <- sec.endpoint.strat[-which(sec.endpoint.strat[,1]=="Total"),]#
+#### Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+#
+	P <- c(P,p)#
+#
+}#
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)
+############
+#### Stratified summaries#
+id.1 <- which(outcome$strata=="<26")#
+strat11 <- outcome[id.1,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.1]#
+#
+sec.end.strat.11 <-  summaryTable(strat11,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="<26")#
+#
+strat12 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.12 <-  summaryTable(strat12,by2,missing=F,row=F,test=T)#
+sec.end.2#
+#
+sec.endpoint.strat1 <- rbind(sec.end.strat.11,sec.end.strat.12)#
+############
+###### Stratified summaries#
+id.2 <- which(outcome$strata=="≥26")#
+strat21 <- outcome[id.2,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.2]#
+#
+sec.end.strat.21 <-  summaryTable(strat21,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="≥26")#
+#
+strat22 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.22 <-  summaryTable(strat22,by2,missing=F,row=F,test=T)#
+#
+sec.endpoint.strat2 <- rbind(sec.end.strat.21,sec.end.strat.22)#
+#############
+#############
+### Merging tables#
+sec.endpoint.strat1 <- cbind(sec.endpoint.strat1,"Strat" = "<26")#
+sec.endpoint.strat2 <- cbind(sec.endpoint.strat2,"Strat" = "≥26")#
+sec.endpoint.strat <- rbind(sec.endpoint.strat1,sec.endpoint.strat2)#
+#
+### ordering#
+sec.endpoint.strat <- sec.endpoint.strat[order(sec.endpoint.strat[,1]),]#
+#
+## removing 'Total'#
+sec.endpoint.strat <- sec.endpoint.strat[-which(sec.endpoint.strat[,1]=="Total"),]#
+#### Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+#
+	P <- c(P,p)#
+#
+}#
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)#
+#
+### re-ordering levels#
+sec.endpoint.strat <- sec.endpoint.strat[,c(1,2,7,3,4,5,6)]#
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,7])
+sec.endpoint.strat
+sec.endpoint.strat <- FlexTable(sec.endpoint.strat,header.cell.props=hcp, header.text.props=htp, body.par.props =bpp, header.par.props=hpp)
+sec.endpoint.strat
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,3])
+############
+#### Stratified summaries#
+id.1 <- which(outcome$strata=="<26")#
+strat11 <- outcome[id.1,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.1]#
+#
+sec.end.strat.11 <-  summaryTable(strat11,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="<26")#
+#
+strat12 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.12 <-  summaryTable(strat12,by2,missing=F,row=F,test=T)#
+sec.end.2#
+#
+sec.endpoint.strat1 <- rbind(sec.end.strat.11,sec.end.strat.12)#
+############
+###### Stratified summaries#
+id.2 <- which(outcome$strata=="≥26")#
+strat21 <- outcome[id.2,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.2]#
+#
+sec.end.strat.21 <-  summaryTable(strat21,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="≥26")#
+#
+strat22 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.22 <-  summaryTable(strat22,by2,missing=F,row=F,test=T)#
+#
+sec.endpoint.strat2 <- rbind(sec.end.strat.21,sec.end.strat.22)#
+#############
+#############
+### Merging tables#
+sec.endpoint.strat1 <- cbind(sec.endpoint.strat1,"Strat" = "<26")#
+sec.endpoint.strat2 <- cbind(sec.endpoint.strat2,"Strat" = "≥26")#
+sec.endpoint.strat <- rbind(sec.endpoint.strat1,sec.endpoint.strat2)#
+#
+### ordering#
+sec.endpoint.strat <- sec.endpoint.strat[order(sec.endpoint.strat[,1]),]#
+#
+## removing 'Total'#
+sec.endpoint.strat <- sec.endpoint.strat[-which(sec.endpoint.strat[,1]=="Total"),]#
+#### Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+#
+	P <- c(P,p)#
+#
+}#
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)#
+#
+### re-ordering levels#
+sec.endpoint.strat <- sec.endpoint.strat[,c(1,2,7,3,4,5,6)]#
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,3])#
+sec.endpoint.strat
+i<-1
+Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+i<-1
+y <- outcome[,which(names(outcome)==un.cov[i])]
+a <- outcome$Allocation
+s <- outcome$strata
+y
+i
+lc <- length(which(covar==un.cov[i]))
+p <- rep(NA,lc)
+P
+p
+### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}
+lc
+### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)
+p
+#### Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+i<-1#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+	P <- c(P,p)#
+#
+}
+P
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)
+sec.endpoint.strat
+############
+#### Stratified summaries#
+id.1 <- which(outcome$strata=="<26")#
+strat11 <- outcome[id.1,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.1]#
+#
+sec.end.strat.11 <-  summaryTable(strat11,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="<26")#
+#
+strat12 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.12 <-  summaryTable(strat12,by2,missing=F,row=F,test=T)#
+sec.end.2#
+#
+sec.endpoint.strat1 <- rbind(sec.end.strat.11,sec.end.strat.12)#
+############
+###### Stratified summaries#
+id.2 <- which(outcome$strata=="≥26")#
+strat21 <- outcome[id.2,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.2]#
+#
+sec.end.strat.21 <-  summaryTable(strat21,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="≥26")#
+#
+strat22 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.22 <-  summaryTable(strat22,by2,missing=F,row=F,test=T)#
+#
+sec.endpoint.strat2 <- rbind(sec.end.strat.21,sec.end.strat.22)#
+#############
+#############
+### Merging tables#
+sec.endpoint.strat1 <- cbind(sec.endpoint.strat1,"Strat" = "<26")#
+sec.endpoint.strat2 <- cbind(sec.endpoint.strat2,"Strat" = "≥26")#
+sec.endpoint.strat <- rbind(sec.endpoint.strat1,sec.endpoint.strat2)#
+#
+### ordering#
+sec.endpoint.strat <- sec.endpoint.strat[order(sec.endpoint.strat[,1]),]#
+#
+## removing 'Total'#
+sec.endpoint.strat <- sec.endpoint.strat[-which(sec.endpoint.strat[,1]=="Total"),]#
+#### Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+i<-1#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+	P <- c(P,p)#
+#
+}#
+P#
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)#
+sec.endpoint.strat
+sec.endpoint.strat <- sec.endpoint.strat[,c(1,2,7,3,4,5,6)]
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,3])
+dum.sort
+sec.endpoint.strat
+sec.endpoint.strat[,c(1,2,7,3,4,5,6)]
+############
+#### Stratified summaries#
+id.1 <- which(outcome$strata=="<26")#
+strat11 <- outcome[id.1,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.1]#
+#
+sec.end.strat.11 <-  summaryTable(strat11,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="<26")#
+#
+strat12 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.12 <-  summaryTable(strat12,by2,missing=F,row=F,test=T)#
+sec.end.2#
+#
+sec.endpoint.strat1 <- rbind(sec.end.strat.11,sec.end.strat.12)#
+############
+###### Stratified summaries#
+id.2 <- which(outcome$strata=="≥26")#
+strat21 <- outcome[id.2,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.2]#
+#
+sec.end.strat.21 <-  summaryTable(strat21,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="≥26")#
+#
+strat22 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.22 <-  summaryTable(strat22,by2,missing=F,row=F,test=T)#
+#
+sec.endpoint.strat2 <- rbind(sec.end.strat.21,sec.end.strat.22)#
+#############
+#############
+### Merging tables#
+sec.endpoint.strat1 <- cbind(sec.endpoint.strat1,"Strat" = "<26")#
+sec.endpoint.strat2 <- cbind(sec.endpoint.strat2,"Strat" = "≥26")#
+sec.endpoint.strat <- rbind(sec.endpoint.strat1,sec.endpoint.strat2)#
+#
+### ordering#
+sec.endpoint.strat <- sec.endpoint.strat[order(sec.endpoint.strat[,1]),]#
+#
+## removing 'Total'#
+sec.endpoint.strat <- sec.endpoint.strat[-which(sec.endpoint.strat[,1]=="Total"),]#
+#### Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+i<-1#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+	P <- c(P,p)#
+#
+}#
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)#
+#
+### re-ordering levels#
+sec.endpoint.strat
+sec.endpoint.strat[,c(1,2,7,3,4,5,6)]
+sec.endpoint.strat
+sec.endpoint.strat[,6]
+sec.endpoint.strat
+sec.endpoint.strat[,c(1,2,7,3,4,5,6,8)]
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,3])
+dum.sort
+############
+#### Stratified summaries#
+id.1 <- which(outcome$strata=="<26")#
+strat11 <- outcome[id.1,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.1]#
+#
+sec.end.strat.11 <-  summaryTable(strat11,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="<26")#
+#
+strat12 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.12 <-  summaryTable(strat12,by2,missing=F,row=F,test=T)#
+sec.end.2#
+#
+sec.endpoint.strat1 <- rbind(sec.end.strat.11,sec.end.strat.12)#
+############
+###### Stratified summaries#
+id.2 <- which(outcome$strata=="≥26")#
+strat21 <- outcome[id.2,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.2]#
+#
+sec.end.strat.21 <-  summaryTable(strat21,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="≥26")#
+#
+strat22 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.22 <-  summaryTable(strat22,by2,missing=F,row=F,test=T)#
+#
+sec.endpoint.strat2 <- rbind(sec.end.strat.21,sec.end.strat.22)#
+#############
+#############
+### Merging tables#
+sec.endpoint.strat1 <- cbind(sec.endpoint.strat1,"Strat" = "<26")#
+sec.endpoint.strat2 <- cbind(sec.endpoint.strat2,"Strat" = "≥26")#
+sec.endpoint.strat <- rbind(sec.endpoint.strat1,sec.endpoint.strat2)#
+#
+### ordering#
+sec.endpoint.strat <- sec.endpoint.strat[order(sec.endpoint.strat[,1]),]#
+#
+## removing 'Total'#
+sec.endpoint.strat <- sec.endpoint.strat[-which(sec.endpoint.strat[,1]=="Total"),]#
+#### Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+i<-1#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+	P <- c(P,p)#
+#
+}#
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)#
+#
+### re-ordering levels#
+sec.endpoint.strat <- sec.endpoint.strat[,c(1,2,7,3,4,5,6,8)]#
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,3])#
+dum.sort
+sort <- dum.sort
+sec.endpoint.strat <- FlexTable(sec.endpoint.strat,header.cell.props=hcp, header.text.props=htp, body.par.props =bpp, header.par.props=hpp)
+sec.endpoint.stra
+sec.endpoint.strat
+sort
+unique(sort)
+un <- unique(sort)
+sort==un
+un <- unique(sort)
+un
+i<-1
+sort==un[i]
+id <- sort==un[i]
+FT <- sec.endpoint.strat
+is
+id
+col <- 1
+min(id)
+id <- sort==un[i]
+id <- which(sort==un[i])
+min(id)
+ID
+id
+col <- 1
+FT <- sec.endpoint.strat
+sort
+mergeRow <- function(FT,sort,col){#
+	un <- unique(sort)#
+	for(i in un){#
+		id <- which(sort==un[i])#
+		if(length(id)>1)	{#
+			FT spanFlexTableRows(FT,col,min(id),max(id))#
+		}#
+	}#
+	FT#
+}
+id <- which(sort==un[i])
+FT <- sec.endpoint.strat
+col <- 1
+un <- unique(sort)#
+	for(i in un){#
+		id <- which(sort==un[i])#
+		if(length(id)>1)	{#
+			FT  <- spanFlexTableRows(FT,col,min(id),max(id))#
+		}#
+	}#
+	FT
+un
+un <- unique(sort)#
+	for(i in un){#
+		id <- which(sort==i)#
+		if(length(id)>1)	{#
+			FT  <- spanFlexTableRows(FT,col,min(id),max(id))#
+		}#
+	}#
+	FT
+##################################
+### Stratified secondary endpoints#
+############
+#### Stratified summaries#
+id.1 <- which(outcome$strata=="<26")#
+strat11 <- outcome[id.1,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.1]#
+#
+sec.end.strat.11 <-  summaryTable(strat11,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="<26")#
+#
+strat12 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.12 <-  summaryTable(strat12,by2,missing=F,row=F,test=T)#
+sec.end.2#
+#
+sec.endpoint.strat1 <- rbind(sec.end.strat.11,sec.end.strat.12)#
+############
+###### Stratified summaries#
+id.2 <- which(outcome$strata=="≥26")#
+strat21 <- outcome[id.2,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.2]#
+#
+sec.end.strat.21 <-  summaryTable(strat21,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="≥26")#
+#
+strat22 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.22 <-  summaryTable(strat22,by2,missing=F,row=F,test=T)#
+#
+sec.endpoint.strat2 <- rbind(sec.end.strat.21,sec.end.strat.22)#
+#############
+#############
+### Merging tables#
+sec.endpoint.strat1 <- cbind(sec.endpoint.strat1,"Strat" = "<26")#
+sec.endpoint.strat2 <- cbind(sec.endpoint.strat2,"Strat" = "≥26")#
+sec.endpoint.strat <- rbind(sec.endpoint.strat1,sec.endpoint.strat2)#
+#
+### ordering#
+sec.endpoint.strat <- sec.endpoint.strat[order(sec.endpoint.strat[,1]),]#
+#
+## removing 'Total'#
+sec.endpoint.strat <- sec.endpoint.strat[-which(sec.endpoint.strat[,1]=="Total"),]#
+#### Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+i<-1#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+	P <- c(P,p)#
+#
+}#
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)#
+#
+### re-ordering levels#
+sec.endpoint.strat <- sec.endpoint.strat[,c(1,2,7,3,4,5,6,8)]#
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,3])#
+sort <- dum.sort#
+#
+sec.endpoint.strat <- FlexTable(sec.endpoint.strat,header.cell.props=hcp, header.text.props=htp, body.par.props =bpp, header.par.props=hpp)#
+#
+FT <- mergeRow(sec.endpoint.strat,dum.sort,1)#
+FT <- mergeRow(sec.endpoint.strat,dum.sort,3)#
+#
+FT
+mergeRow <- function(FT,sort,col){#
+	un <- unique(sort)#
+	for(i in un){#
+		id <- which(sort==i)#
+		if(length(id)>1)	{#
+			FT  <- spanFlexTableRows(FT,col,min(id),max(id))#
+		}#
+	}#
+	FT#
+}
+##################################
+### Stratified secondary endpoints#
+############
+#### Stratified summaries#
+id.1 <- which(outcome$strata=="<26")#
+strat11 <- outcome[id.1,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.1]#
+#
+sec.end.strat.11 <-  summaryTable(strat11,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="<26")#
+#
+strat12 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.12 <-  summaryTable(strat12,by2,missing=F,row=F,test=T)#
+sec.end.2#
+#
+sec.endpoint.strat1 <- rbind(sec.end.strat.11,sec.end.strat.12)#
+############
+###### Stratified summaries#
+id.2 <- which(outcome$strata=="≥26")#
+strat21 <- outcome[id.2,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.2]#
+#
+sec.end.strat.21 <-  summaryTable(strat21,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="≥26")#
+#
+strat22 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.22 <-  summaryTable(strat22,by2,missing=F,row=F,test=T)#
+#
+sec.endpoint.strat2 <- rbind(sec.end.strat.21,sec.end.strat.22)#
+#############
+#############
+### Merging tables#
+sec.endpoint.strat1 <- cbind(sec.endpoint.strat1,"Strat" = "<26")#
+sec.endpoint.strat2 <- cbind(sec.endpoint.strat2,"Strat" = "≥26")#
+sec.endpoint.strat <- rbind(sec.endpoint.strat1,sec.endpoint.strat2)#
+#
+### ordering#
+sec.endpoint.strat <- sec.endpoint.strat[order(sec.endpoint.strat[,1]),]#
+#
+## removing 'Total'#
+sec.endpoint.strat <- sec.endpoint.strat[-which(sec.endpoint.strat[,1]=="Total"),]#
+#### Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+i<-1#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+	P <- c(P,p)#
+#
+}#
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)#
+#
+### re-ordering levels#
+sec.endpoint.strat <- sec.endpoint.strat[,c(1,2,7,3,4,5,6,8)]#
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,3])#
+sort <- dum.sort#
+#
+sec.endpoint.strat <- FlexTable(sec.endpoint.strat,header.cell.props=hcp, header.text.props=htp, body.par.props =bpp, header.par.props=hpp)#
+#
+FT <- mergeRow(sec.endpoint.strat,dum.sort,1)#
+FT <- mergeRow(sec.endpoint.strat,dum.sort,3)#
+#
+FT
+############
+#### Stratified summaries#
+id.1 <- which(outcome$strata=="<26")#
+strat11 <- outcome[id.1,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.1]#
+#
+sec.end.strat.11 <-  summaryTable(strat11,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="<26")#
+#
+strat12 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.12 <-  summaryTable(strat12,by2,missing=F,row=F,test=T)#
+sec.end.2#
+#
+sec.endpoint.strat1 <- rbind(sec.end.strat.11,sec.end.strat.12)#
+############
+###### Stratified summaries#
+id.2 <- which(outcome$strata=="≥26")#
+strat21 <- outcome[id.2,which(names(outcome)%in%c("modeDev","BirthStatus","birthWeight","ac.diff","pu.diff","sbp.diff","dpb.diff","dv.diff","mca.diff","edfDiff","preEclamp","cortSteroid","magnesium"))]#
+by1 <- outcome$Allocation[id.2]#
+#
+sec.end.strat.21 <-  summaryTable(strat21,by1,missing=F,row=F,test=T)#
+#
+alive.id <- which(outcome$BirthStatus=="Alive"&outcome$strata=="≥26")#
+#
+strat22 <- outcome[alive.id,which(names(outcome)%in%c("modeDev","randGes","deathPriorDis","icu.admin","oxy28d","oxy36w","necEnt","retPrm","surfUse","ventDep","GradeHeam","ventDays"))]#
+by2 <- outcome$Allocation[alive.id]#
+#
+sec.end.strat.22 <-  summaryTable(strat22,by2,missing=F,row=F,test=T)#
+#
+sec.endpoint.strat2 <- rbind(sec.end.strat.21,sec.end.strat.22)#
+#############
+#############
+### Merging tables#
+sec.endpoint.strat1 <- cbind(sec.endpoint.strat1,"Strat" = "<26")#
+sec.endpoint.strat2 <- cbind(sec.endpoint.strat2,"Strat" = "≥26")#
+sec.endpoint.strat <- rbind(sec.endpoint.strat1,sec.endpoint.strat2)#
+#
+### ordering#
+sec.endpoint.strat <- sec.endpoint.strat[order(sec.endpoint.strat[,1]),]#
+#
+## removing 'Total'#
+sec.endpoint.strat <- sec.endpoint.strat[-which(sec.endpoint.strat[,1]=="Total"),]#
+#### Adding in interaction P-values#
+covar <- sec.endpoint.strat[,1]#
+un.cov <- unique(covar)#
+P <- NULL#
+#
+alloc <- outcome$Allocation#
+strat <- outcome$strata#
+for(i in 1:length(un.cov)){#
+	y <- outcome[,which(names(outcome)==un.cov[i])]#
+	a <- outcome$Allocation#
+	s <- outcome$strata#
+	lc <- length(which(covar==un.cov[i]))#
+	p <- rep(NA,lc)#
+	### sorting out which anlaysis o perform #
+	fam <- "gaussian"#
+	if(class(y)%in%(c("character","factor"))) fam <- "binomial"#
+#
+	## sorting missing values#
+	na.id <- which(is.na(y))#
+	if(length(na.id)>0){#
+		y <- y[-na.id]#
+		a <- a[-na.id]#
+		s <- s[-na.id]#
+	}#
+#
+	if(!(fam=="binomial"&length(unique(y))>2)){#
+		### putting y in 0/1 format#
+		if(fam=="binomial")  y <- 	as.numeric(as.factor(as.character(y)))-1#
+		### fitting model#
+		mod <- glm(y~a*s,family=fam)#
+		### saving results#
+		p[lc] <- round(summary(mod)$coefficients[4,4],3)#
+	}#
+	P <- c(P,p)#
+#
+}#
+sec.endpoint.strat <- cbind(sec.endpoint.strat,P)#
+#
+### re-ordering levels#
+sec.endpoint.strat <- sec.endpoint.strat[,c(1,2,7,3,4,5,6,8)]#
+dum.sort <- paste(sec.endpoint.strat[,1],sec.endpoint.strat[,3])#
+sort <- dum.sort#
+sec.endpoint.strat[,1]
+sec.endpoint.strat[,1]
+unique(sec.endpoint.strat[,1])
+,c("Abdominal Circumfrance (Diff.)","Birth Status","Birth Weight","Cortico Steroid Use","Death Prior to Discharge","Diastolic Blood Pressure (Diff.)","Ductus Venous (A wave)","EDF (Difference)","Grade of Heamatology","ICU Administration (Days)","Use of Magnesium","Middle Cerebal Artery (Diff)","Mode of Delivery","Necrotising Entercolitis","Oxygen Dependency (28 days)","Oxygen Dependency (36 weeks)","Pre Eclampsia","Pulse (Difference)","Randomisation to Gestation","Retinopathy of Prematurity","Systolic Blood Pressure (Diff)","Sufactant Use","Ventilator use (days)","Ventilator Dependency")
+,c("Abdominal Circumfrance (Diff.)","Birth Status","Birth Weight","Cortico Steroid Use","Death Prior to Discharge","Diastolic Blood Pressure (Diff.)","Ductus Venous (A wave)","EDF (Difference)","Grade of Heamatology","ICU Administration (Days)","Use of Magnesium","Middle Cerebal Artery (Diff)","Mode of Delivery","Necrotising Entercolitis")
+c("Abdominal Circumfrance (Diff.)","Birth Status","Birth Weight","Cortico Steroid Use","Death Prior to Discharge","Diastolic Blood Pressure (Diff.)","Ductus Venous (A wave)","EDF (Difference)","Grade of Heamatology","ICU Administration (Days)","Use of Magnesium","Middle Cerebal Artery (Diff)","Mode of Delivery","Necrotising Entercolitis")
+c("Abdominal Circumfrance (Diff.)","Birth Status","Birth Weight","Cortico Steroid Use","Death Prior to Discharge","Diastolic Blood Pressure (Diff.)","Ductus Venous (A wave)","EDF (Difference)","Grade of Heamatology","ICU Administration (Days)","Use of Magnesium","Middle Cerebal Artery (Diff)","Mode of Delivery","Necrotising Entercolitis","Oxygen Dependency (28 days)","Oxygen Dependency (36 weeks)","Pre Eclampsia","Pulse (Difference)","Randomisation to Gestation","Retinopathy of Prematurity","Systolic Blood Pressure (Diff)","Sufactant Use","Ventilator use (days)","Ventilator Dependency")
+replaceVector(sec.endpoint.strat[,1],unique(sec.endpoint.strat[,1]),c("Abdominal Circumfrance (Diff.)","Birth Status","Birth Weight","Cortico Steroid Use","Death Prior to Discharge","Diastolic Blood Pressure (Diff.)","Ductus Venous (A wave)","EDF (Difference)","Grade of Heamatology","ICU Administration (Days)","Use of Magnesium","Middle Cerebal Artery (Diff)","Mode of Delivery","Necrotising Entercolitis","Oxygen Dependency (28 days)","Oxygen Dependency (36 weeks)","Pre Eclampsia","Pulse (Difference)","Randomisation to Gestation","Retinopathy of Prematurity","Systolic Blood Pressure (Diff)","Sufactant Use","Ventilator use (days)","Ventilator Dependency")
+)
+replaceVector(sec.endpoint.strat[,1],unique(sec.endpoint.strat[,1]),c("Abdominal Circumfrance (Diff.)","Birth Status","Birth Weight","Cortico Steroid Use","Death Prior to Discharge","Diastolic Blood Pressure (Diff.)","Ductus Venous (A wave)","EDF (Difference)","Grade of Heamatology","ICU Administration (Days)","Use of Magnesium","Middle Cerebal Artery (Diff)","Mode of Delivery","Necrotising Entercolitis","Oxygen Dependency (28 days)","Oxygen Dependency (36 weeks)","Pre Eclampsia","Pulse (Difference)","Randomisation to Gestation","Retinopathy of Prematurity","Systolic Blood Pressure (Diff)","Sufactant Use","Ventilator use (days)","Ventilator Dependency"))
+sec.endpoint.strat[,1] <- replaceVector(sec.endpoint.strat[,1],unique(sec.endpoint.strat[,1]),c("Abdominal Circumfrance (Diff.)","Birth Status","Birth Weight","Cortico Steroid Use","Death Prior to Discharge","Diastolic Blood Pressure (Diff.)","Ductus Venous (A wave)","EDF (Difference)","Grade of Heamatology","ICU Administration (Days)","Use of Magnesium","Middle Cerebal Artery (Diff)","Mode of Delivery","Necrotising Entercolitis","Oxygen Dependency (28 days)","Oxygen Dependency (36 weeks)","Pre Eclampsia","Pulse (Difference)","Randomisation to Gestation","Retinopathy of Prematurity","Systolic Blood Pressure (Diff)","Sufactant Use","Ventilator use (days)","Ventilator Dependency"))
+sec.endpoint.strat <- FlexTable(sec.endpoint.strat,header.cell.props=hcp, header.text.props=htp, body.par.props =bpp, header.par.props=hpp)
+FT <- mergeRow(sec.endpoint.strat,dum.sort,1)
+FT <- mergeRow(sec.endpoint.strat,dum.sort,3)
+FT
+#########################################
+setwd(data.dir)#
+#
+## loading functions#
+library(lme4)#
+## Importing Dataset#
+#
+## Importing Dataset#
+data <- read.csv("STRIDERUKTrial_DATA_2017-04-28_v2_Final.csv")#
+load("outcome.R")#
+load("longitudinal.R")
+outcome[1:3,]
+#########################################
+setwd(data.dir)#
+#
+## loading functions#
+library(lme4)#
+## Importing Dataset#
+#
+## Importing Dataset#
+data <- read.csv("STRIDERUKTrial_DATA_2017-04-28_v2_Final.csv")#
+load("outcome.R")#
+load("longitudinal.R")
+outcome[1:3,]
+data.dir
+code.dir <- "/Volumes/CRC-LCTU/Statistical Documents/Trials/STRIDER/Closed/Final Analysis/Data, code & output/Code & Templates"#
+#
+log.dir <- "/Volumes/CRC-LCTU/Statistical Documents/Trials/STRIDER/Closed/Final Analysis/Data, code & output/Log files"#
+#
+data.dir <- "/Volumes/CRC-LCTU/Statistical Documents/Trials/STRIDER/Closed/Final Analysis/Data, code & output/Data"#
+################################################
+##### loading required librarys/functions ######
+################################################
+#
+### loading packages needed for all analyses#
+library(xlsx)#
+library(XLConnectJars)#
+library(ReporteRs)#
+library(labeling)#
+source("/Volumes/CRC-LCTU/Statistical Documents/3. Stats Tools/R functions/statsTools.R")
+### Table Properties for report#
+bpp <- parProperties(text.align="center")#
+bcp <- cellProperties(background.color="white")#
+btp <- textProperties(font.weight = "normal",font.family="Calibri")#
+hpp <- parProperties(text.align="center")#
+hcp <- cellProperties(background.color="lightblue")#
+htp <- textProperties(font.weight = "bold",font.family="Calibri")#
+### Setting up document into which output is placed
+outcome[1:5,]
+## Short description: STRIDER Primary Outcome#
+##
+# Author - Richard Jackson#
+# #
+# Description - Production of Tables and figures for Baseline demographics#
+##
+# Input - 	STRIDERUKTria_DATA_2016-04-14.csv#
+#		-	STRIDERUK_Unblinding_2016-04-14_toRichardOnly#
+##
+# Deliverable	- Table on Efficacy#
+##
+# Risk Level - Low#
+# Statistical Review - Self checking by trial statistician#
+##
+# Date - 10th May 2016#
+# Version - 1#
+# Updates since previous version - NA#
+###
+#########################################
+setwd(data.dir)#
+#
+## loading functions#
+library(lme4)#
+## Importing Dataset#
+#
+## Importing Dataset#
+data <- read.csv("STRIDERUKTrial_DATA_2017-04-28_v2_Final.csv")#
+load("outcome.R")#
+load("longitudinal.R")
+outcome[1:3,]
+data.dir
+setwd(data.dir)
+q()
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  # App title ----#
+  titlePanel("Set Parameters"),#
+#
+  # Sidebar layout with a input and output definitions ----#
+  sidebarLayout(#
+	sidebarPanel(#
+     	# Input: Selector for choosing nAgents#
+ 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+ 		# Input: Selector for choosing maxTV#
+ 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10),#
+ 		# Input: Selector for choosing alpha parameter#
+ 		#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+ 		# Input: Selector for choosing pow#
+ 		sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+ 		actionButton(inputId="go", label="Run Simulations"),#
+ 		# Input: Selector for choosing nTrans#
+ 		sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    ),#
+#
+    # Main panel for displaying outputs ----#
+    mainPanel(#
+#
+      # Output: Verbatim text for any info required#
+      verbatimTextOutput("summary"),#
+#
+      # Output: Plot with the rsults of the simulation#
+      plotOutput("sims")#
+#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  # App title ----#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims")#
+#
+  # Sidebar layout with a input and output definitions ----#
+#
+	fluidRow(#
+    column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations"),#
+    ),#
+    column(4,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+ui <- fluidPage(#
+#
+  # App title ----#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims")#
+#
+  # Sidebar layout with a input and output definitions ----#
+#
+	fluidRow(#
+    column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations"),#
+    ),#
+    column(4,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)
+fluidRow(
+column(4,
+)
+ui <- fluidPage(#
+#
+  # App title ----#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims")#
+#
+  # Sidebar layout with a input and output definitions ----#
+	fluidRow(#
+	column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations"),#
+    ),#
+    column(4,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  # App title ----#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims")#
+#
+  # Sidebar layout with a input and output definitions ----#
+	fluidRow(column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations"),#
+    ),#
+    column(4,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  # App title ----#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims")#
+#
+  # Sidebar layout with a input and output definitions#
+	fluidRow(#
+	column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations"),#
+    ),#
+    column(4,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  # App title#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations"),#
+    ),#
+    column(4,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)
+?fluidRow
+fluidRow(#
+	column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations"),#
+    ),#
+    column(4,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )
+fluidRow(#
+	column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    )#
+   )
+fluidRow(#
+	column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    )#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations"),#
+    ))
+fluidRow(#
+	column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations"),#
+    ))
+fluidRow(#
+	column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    )#
+    column(4,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )
+fluidRow(#
+	column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(4,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  # App title#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(4,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(4,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(4,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  # App title#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  # App title#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "jsac.css",#
+  # App title#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+  # App title#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+  # App title#
+  titlePanel("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+  # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "jsac.css",#
+  # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "www/jsac.css",#
+  # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "www/jsac",#
+  # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "www/jsac.css",#
+  # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+?fluidPage
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "jsac.css",#
+  # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,offset=1,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("rsconnect")#
+library(rsconnect)#
+#
+rsconnect::setAccountInfo(name='jacksonsac', token='FB57003B98D40B524CC622592F2A3300', secret='UtnpWtLPCwnfqfxU6c4a2gCItwavuBUYmloUcHyB')#
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy')
+rsconnect::setAccountInfo(name='jacksonsac', token='FB57003B98D40B524CC622592F2A3300', secret='UtnpWtLPCwnfqfxU6c4a2gCItwavuBUYmloUcHyB')
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy')
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "jsac.css",#
+  # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=2,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+  # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=2,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+#
+  tags$head(#
+    tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css")#
+  ),#
+  # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=2,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+?includeCSS
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+  includeCSS("bootstrap.css"),#
+#
+   # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=2,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+  includeCSS("bootstrap.css"),#
+#
+   # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims",style="background-color:pink;"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=2,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+#
+   # App title#
+  h1("Set Parameters"),#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=2,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+#
+   # App title#
+  h1("Set Parameters"),#
+#
+	h3("Some Example Text"),#
+#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=2,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+#
+  tags$head(#
+    tags$style(HTML("#
+      @import url('//fonts.googleapis.com/css?family=Lobster|Cabin:400,700');#
+      h1 {#
+        font-family: 'Lobster', cursive;#
+        font-weight: 500;#
+        line-height: 1.1;#
+        color: #48ca3b;#
+      }#
+#
+    "))#
+  ),#
+   # App title#
+  h1("Set Parameters"),#
+#
+	h4("Some Example Text"),#
+#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=2,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+#
+	includeCSS("bootstrap.css"),#
+  tags$head(#
+    tags$style(HTML("#
+      @import url('//fonts.googleapis.com/css?family=Lobster|Cabin:400,700');#
+      h1 {#
+        font-family: 'Lobster', cursive;#
+        font-weight: 500;#
+        line-height: 1.1;#
+        color: #48ca3b;#
+      }#
+#
+    "))#
+  ),#
+   # App title#
+  h1("Set Parameters"),#
+#
+	h4("Some Example Text"),#
+#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=2,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+#
+includeCSS("bootstrap.css"),#
+#
+   # App title#
+  h1("Set Parameters"),#
+#
+	h4("Some Example Text"),#
+#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=2,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+#
+includeCSS("bootstrap.css"),#
+#
+   # App title#
+  h1("Set Parameters"),#
+#
+	h4("Some Example Text"),#
+#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+    column(3,offset=1,#
+ 			# Input: Selector for choosing nTrans#
+ 			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+#
+includeCSS("bootstrap.css"),#
+#
+   # App title#
+  h1("Set Parameters"),#
+#
+	h4("Some Example Text"),#
+#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+		column(10,offset=1,#
+			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+		)#
+	),#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    ),#
+ )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+#install.packages("BH")#
+library(shiny)#
+### set workgin directory#
+#setwd("/Users/richardjackson/Dropbox/Documents/R Shiny/Jeremy")#
+#
+### getting SV functions#
+#source("jezFunc.R")#
+### Getting data#
+#
+jez <- function(nAgent,nTrans,maxTV,alpha,pow,trace=5){#
+#
+	### Creating 1000 agents#
+	agent <- c(1:nAgent)#
+	gdp <- rep(0,nAgent)#
+	i<-1#
+	if(trace){#
+		res <- matrix(NA,nAgent,nTrans)#
+	}#
+	col.count <- 1#
+	col.id <- seq(0,nTrans,by=trace)#
+	res <- matrix(NA,nAgent,length(col.id))#
+	res[,1] <- 0#
+	for(i in 1:nTrans){#
+		###### Simulation#
+		sim.ag <- sample(agent,2)#
+		### weighting	#
+		rat <- (gdp[sim.ag[2]]+5)/(gdp[sim.ag[1]]+5)#
+		rat <- (rat^pow);rat#
+		### Simulating transaction value	#
+		beta <- alpha/rat#
+		sim.tv <- maxTV*rbeta(1,alpha,beta)#
+		## Standard Approach#
+		gdp[sim.ag[1]] <- gdp[sim.ag[1]] + maxTV-sim.tv#
+		gdp[sim.ag[2]] <- gdp[sim.ag[2]] + sim.tv#
+		if(i%in%col.id) {#
+			col.count <- col.count+1	#
+			res[,col.count] <- gdp#
+			}#
+	}#
+	ret <- gdp#
+	if(trace) ret <- res#
+	ret#
+}#
+mobPlot <- function(gdp){#
+	for(m in 1:4){#
+		id <- seq(500,50000,by=500)#
+		ord <- NULL#
+		for(k in 1:length(id)){#
+			ord <- cbind(ord,cut(rank(gdp[,id[k]]),c(0,50,100,150,200,250),labels=c(1,2,3,4,5)))#
+		}#
+		nUnchanged <- NULL#
+		for(i in 2:ncol(ord)){#
+			nUnchanged  <- c(nUnchanged,length(which(ord[,i]==ord[,(i-1)])))#
+		}#
+		if(m==1) plot(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+		if(m!=1) lines(250-nUnchanged,typ="o",lwd=3,pch=15,ylim=c(0,250),col=m)#
+	}#
+#
+}#
+## nAgent #
+## nTrans#
+## maxTV#
+## alpha#
+## pow,trace=F#
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(theme = "bootstrap.css",#
+#
+includeCSS("bootstrap.css"),#
+#
+   # App title#
+  h1("Set Parameters"),#
+#
+	h4("Some Example Text"),#
+#
+  # Output: Plot with the rsults of the simulation#
+  plotOutput("sims"),#
+#
+  # Sidebar layout with a input and output definitions#
+#
+	fluidRow(#
+		column(10,offset=1,#
+			sliderInput(inputId="nTrans", "Number of Transactions", 100, 10000, 10,step=10)#
+		)#
+	),#
+#
+	fluidRow(#
+	column(3,offset=1,#
+	    # Input: Selector for choosing nAgents#
+	 		sliderInput(inputId="nAgent","Number of Agents",10,500,100),#
+	 		# Input: Selector for choosing maxTV#
+	 		sliderInput(inputId="maxTV", "Transaction Value", 1, 100, 10)#
+    ),#
+    column(3,#
+	     # Input: Selector for choosing alpha parameter#
+	 	#sliderInput(inputId="alpha", "Alpha", 1, 50, 5),#
+	 	# Input: Selector for choosing pow#
+	 	sliderInput(inputId="pow", "Power", 1, 10, 1, step=0.25),#
+		## Action Button#
+		actionButton(inputId="go", label="Run Simulations")#
+    )#
+ )#
+)#
+#############
+server <- function(input, output) {#
+#
+  # Return the requested dataset ----#
+	data <- eventReactive(input$go,{ #
+		jez((input$nAgent),10000,(input$maxTV),5,(log(input$pow)),trace=10)#
+		})#
+  # #
+  output$sims <- renderPlot({	#
+  	xmax <- mean(data()[,ncol(data())])*2#
+	plot(ecdf(data()[,(input$nTrans/10)]),lwd=5,col="royalblue",yaxt="n",ylab="Position", xlab="value",bty="l",main="",font.lab=2,cex.lab=1.4,xlog="T",xlim=c(0,xmax))#
+	})#
+}#
+shinyApp(ui, server)
+?sliderInput
+install.packages("rsconnect")
+library(rsconnect)
+rsconnect::setAccountInfo(name='jacksonsac', token='FB57003B98D40B524CC622592F2A3300', secret='UtnpWtLPCwnfqfxU6c4a2gCItwavuBUYmloUcHyB')
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/Jeremy')
+install.packages("shiny")
+rsconnect::deployApp('/Users/richardjackson/Dropbox/Jackson SAC/Projects/R Shiny/Jeremy')
