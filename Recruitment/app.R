@@ -6,13 +6,10 @@ library(shiny)
 
 rec.forcast<-function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ 
 
-
 ## Getting the number of open sites per month
-open.site<-seq(1,N.site,by=open.rate) 
+open.site<-seq(1,N.site,by=open.rate)
 if(max(open.site)!=N.site) open.site <- c(open.site,N.site)
-
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site))) 
- 
+open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))
 ### Basic average rate per site approach
 month.rate<-open.site*rpm
  
@@ -20,16 +17,16 @@ month.rate<-open.site*rpm
 penalty <- diff(c(0,month.rate))*penal
 month.rate <- month.rate-penalty
 
-cum.rec<-round(cumsum(month.rate)) 
+cum.rec<-round(cumsum(month.rate))
 month.rate <- diff(c(0,cum.rec))
 
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec) 
+rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)
 
-if(plot) plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...) 
+if(plot) plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)
 
-return(rec) 
+return(rec)
 
-} 
+}
 
 
 
