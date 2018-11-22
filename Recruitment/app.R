@@ -1,8 +1,7 @@
 
 #install.packages("shiny")
 library(shiny)
-
-
+source("Dropbox/Jackson SAC/Projects/Rshiny/Recruitment/recForcast.R")
 
 
 
@@ -14,100 +13,37 @@ library(shiny)
 # Define UI for dataset viewer app ----
 ui <- fluidPage(
 
-	## Loading CSS
-	#includeCSS("bootstrap.css"),
+  titlePanel("Recruitment Estiamtes"),
 
-	br(),
-  	
-  	# App title ----
-  	h1("Design of Trials with a Time-to-Event Endpoint"),
+  sidebarLayout(
 
-	### Setting up panel structures
-	tabsetPanel(type = "tabs",       
+    sidebarPanel(
+      sliderInput("nSite", "Number of Sites:",  
+                  min = 1, max = 150, value = 5),
 
+      sliderInput("rpm", "Average Monthly Recruitment",  
+                  min = 0.1, max = 10, value = 1),
 
+      sliderInput("openRate", "Rate of Opening sites (per month):",  
+                  min = 1, max = 5, value = 2),
 
-		#### Panel 1 - Events
-		tabPanel("Number of Events",
-			
-			br(),
-			
-			fluidRow(
-					
-				column(5,offset=1,
-					selectInput("alpha","Alpha Level",c(0.01,0.05,0.1))
-					),
-				column(5,offset=1,
-					selectInput("tails","Tails",c("One-sided","Two-sided"))
-				)
-			),
-			
-			fluidRow(
-					
-				column(5,offset=1,
-					selectInput("power","Power",c(0.8,0.85,0.9))
-					),
-				column(5,offset=1,
-					sliderInput("hr","Hazard Ratio",0.5,2,0.75,0.01)
-				)
-			),
-			
-			br(),
-			
-			fluidRow(
-				plotOutput(outputId="sdPlot1")
-			)
-		),
+      sliderInput("maxTime", "Length of Recruitment (months):",  
+                  min = 1, max = 120, value = 12),
+          
+          
+		## Add a stop button for development	        
+      actionButton("close",label="stop")
+                  
+                  
+    ),
 
-
-		#### Panel 1 - Survival Function		
-		tabPanel("Survival Function",
-			
-			br(),
-			
-			fluidRow(
-				column(5,offset=1,
-					selectInput("survFunc","Survival Function",c("Exponential","Weibull","Log Logistic","Log Normal"))
-					)
-			),
-			
-			fluidRow(
-					
-				column(5,offset=1,
-					sliderInput("scale","Scale",0.5,2,0.75,0.01)
-					),
-				column(5,offset=1,
-					sliderInput("shape","Shape",0.5,2,0.75,0.01)
-				)
-			),
-			
-			br(),
-			
-			fluidRow(
-				plotOutput(outputId="sdPlot2")
-			)
-		),
-	
-		#### Panel 1 - Recruitment	
-		tabPanel("Recruitment",
-			fluidRow(),
-			fluidRow(
-				plotOutput(outputId="sdPlot3")
-			)
-		),
-		
-		#### Panel 1 - Design	
-		tabPanel("Design",
-			fluidRow(),
-			fluidRow(
-				plotOutput(outputId="sdPlot4")
-			)
-		)
-	)
+    mainPanel(
+      plotOutput("recPlot")
+    )
+    
+    
+  )
 )
-	
-	
-	
 	
 	
 	
@@ -115,7 +51,22 @@ ui <- fluidPage(
 ############
 server <- function(input, output) {
 
-	output$sdPlot1 <- renderPlot((hist(rnorm(100))))
+	rec <- eventReactive(input$go,{ 
+		rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)
+		})
+	
+	
+	## Plot
+	output$recPlot <- renderPlot({	
+		rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)
+		abline(h=seq(0,1000,50),v=seq(0,120,6),lty=2,col="lightgray",lwd=3)
+		})
+
+
+	### Stopping App
+   observe({
+      if (input$close > 0) stopApp()                             # stop shiny
+    })
 
 }
 

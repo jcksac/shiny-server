@@ -1,0 +1,641 @@
+tc.sim <- titesim(PI,prior,target,n,x0,obswin=6,rate=6,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)
+tc.sim
+prior <- c(0.1, 0.015, 0.20, 0.30, 0.40, 0.50)
+target <- 0.2
+tc.sim <- titesim(PI,prior,target,n,x0,obswin=6,rate=6,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)
+tc.sim
+tite
+titecrm
+?titecrm
+titecrm(prior,target)
+titecrm(prior,target,level=c(1),y=0)
+titecrm(prior,target,tox=0,level=1)
+titecrm(prior,target,tox=0,level=1,weights=0)
+titecrm(prior,target,tox=0,level=1,weights=0.1)
+plot(titecrm(prior,target,tox=0,level=1,weights=0.1))
+plot(titecrm(prior,target,tox=0,level=1,weights=c(0.4))
+plot(titecrm(prior,target,tox=0,level=1,weights=c(0.4)))
+plot(titecrm(prior,target,tox=c(0,1),level=c(1,1),weights=c(0.4)))
+plot(titecrm(prior,target,tox=c(0,1),level=c(1,1),weights=c(0.4,0.4)))
+plot(titecrm(prior,target,tox=c(0,1),level=c(1,1),followup=c(0.4,0.4)))
+prior <- c(0.05, 0.10, 0.20, 0.35, 0.50, 0.70)#
+target <- 0.2#
+level <- c(3, 3, 3, 4, 4, 3, 2, 2, 2, 3)#
+y <- c(0, 0, 1, 0, 1, 0, 0, 0, 0, 0)#
+u <- c(178, 181, 168, 181, 24, 181, 179, 102, 42, 3)#
+tau <- 180#
+foo <- titecrm(prior, target, y, level, followup=u, obswin=tau)
+plot(Foo)
+plot(foo)
+foo$mtd
+foo
+## Packages#
+install.packages("dfcrm")#
+library(dfcrm)#
+prior <- c(0.1, 0.015, 0.20, 0.30, 0.40, 0.50)#
+target <- 0.2#
+level <- c(3, 4, 4, 3, 3, 4, 3, 2, 2, 2,2,3)#
+y <- c(0, 0, 1, 0, 0, 1, 1, 0, 0, 0,1,0)#
+prior <- c(0.05,0.1,0.2,0.3,0.5,0.7)#
+target <- 0.2#
+n<-18#
+x0 <- 1#
+PI <- c(0.05,0.1,0.2,0.4,0.5,0.7)#
+obswin=4#
+rate=8#
+## The following code simulates #
+tc.sim <- titesim(PI,prior,target,n,x0,,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)tc.sim
+prior <- c(0.05,0.1,0.2,0.3,0.5,0.7)#
+target <- 0.2#
+n<-18#
+x0 <- 1#
+PI <- c(0.05,0.1,0.2,0.4,0.5,0.7)#
+obswin=4#
+rate=6#
+## The following code simulates #
+tc.sim <- titesim(PI,prior,target,n,x0,,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)tc.sim
+tc.sim <- titesim(PI,prior,target,n,x0,obswin,rate,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)tc.sim
+tc.sim <- titesim(PI,prior,target,n,x0,obswin=obswin,rate=rate,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)tc.sim
+tc.sim <- titesim(PI,prior,target,n,x0,obswin=obswin,rate=rate,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)
+tc.sim
+2/0.2
+2/0.2 + 3*4
+2/0.25 + 3*4
+2/0.3 + 3*4
+2/0.2 + 3*4
+summary(tx.sim)
+summary(tc.sim)
+tc.sum$MTD
+tc.sim$MTD
+tc.sim$level
+sum(tc.sim$level)
+sum(tc.sim$tox)
+?skeleton
+??skeleton
+getn(0.4,0.2,6)
+getn(0.4,0.2,6,2,correction=T)
+getn(0.6,0.2,6,2,correction=T)
+getn(0.5,0.2,6,2,correction=T)
+getn(0.5,0.2,6,1.8,correction=T)
+getn(0.45,0.2,6,1.8,correction=T)
+getn(0.45,0.2,6,1.6,correction=T)
+getn(0.45,0.2,6,1.7,correction=T)
+getprior(25,0.2,3,6,model="logistic")
+getprior(.25,0.2,3,6,model="logistic")
+getprior(.1,0.2,3,6,model="logistic")
+getprior(.05,0.2,3,6,model="logistic")
+156+307
+156+307+208
+900-671
+229/2
+229/14
+q()
+55/295
+p <- 55/295
+240/2
+192.5/7
+15+5
+2+2+1
+2+2+1+1+
+1.5
+2+2+1.5+1+1
+c(120,120,27,28)
+cell <- c(120,120,27,28)
+sum(cell)
+sum(1/cell)
+sqrt(sum(1/cell))
+exp(-0.6)
+exp(.6)
+4/44
+sqrt(4/44)
+### Load functions#
+source("/Volumes/CRC-LCTU/Statistical Documents/3. Stats Tools/R functions/statsTools.R")#
+library(clinfun)
+### Recruitment Estimates#
+nSite <- 10#
+rpm <- 0.5#
+openRate <- 1#
+maxTime <- 18#
+rec.forcast(nSite,rpm,openRate,maxTime)
+### Recruitment Estimates#
+nSite <- 10#
+rpm <- 0.33#
+openRate <- 1#
+maxTime <- 18#
+rec.forcast(nSite,rpm,openRate,maxTime)
+### Recruitment Estimates#
+nSite <- 10#
+rpm <- 0.3#
+openRate <- 1#
+maxTime <- 18#
+rec.forcast(nSite,rpm,openRate,maxTime)
+0.31*12
+4/12
+### Recruitment Estimates#
+nSite <- 15#
+rpm <- 0.3#
+openRate <- 1#
+maxTime <- 15#
+rec.forcast(nSite,rpm,openRate,maxTime)
+### Recruitment Estimates#
+nSite <- 15#
+rpm <- 0.3#
+openRate <- 2#
+maxTime <- 15#
+rec.forcast(nSite,rpm,openRate,maxTime)
+### Recruitment Estimates#
+nSite <- 15#
+rpm <- 0.28#
+openRate <- 2#
+maxTime <- 15#
+rec.forcast(nSite,rpm,openRate,maxTime)
+rpm <- 3/12
+openRate <- 2
+maxTime <- 15
+rec.forcast(nSite,rpm,openRate,maxTime)
+3/12
+13/55
+library(clinfun)
+?gsdesign.binomial(c(1))
+gsdesign.binomial(c(1),20,25,sig.level=0.1,power=0.8)
+gsdesign.binomial(c(1),25,20,sig.level=0.1,power=0.8)
+gsdesign.binomial(c(1),.25,.20,sig.level=0.1,power=0.8)
+gsdesign.binomial(c(1),.20,.25,sig.level=0.1,power=0.8)
+gsdesign.binomial(c(1),.20,.30,sig.level=0.1,power=0.8)
+gsdesign.binomial(c(1),.20,.30,sig.level=0.1,power=0.8,alternative="one.sided")
+gsdesign.binomial(c(1),.02,.05,sig.level=0.1,power=0.8,alternative="one.sided")
+70+42+60+98
+40*(70+42+60+98)
+40*(70+42+60+98)/4
+40*(70+42+60+98)/8
+1350/4
+10*40
+library(clinfun)
+ph2single(0.5,0.7,0.15,0.2)
+42/8
+70+42+60+98
+(70+42+60+98)/16
+15*40
+16/4
+### Recruitment Estimates#
+nSite <- 4#
+rpm <- 4#
+openRate <- 1#
+maxTime <- 12#
+folUp <- 3#
+penal <- 0.5#
+rec.forcast(nSite,rpm,openRate,maxTime)
+### Load functions#
+source("/Volumes/CRC-LCTU/Statistical Documents/3. Stats Tools/R functions/statsTools.R")#
+library(clinfun)#
+#
+### Non-Inferiority Trial#
+gsdesign.binomial(c(1),.02,.05,sig.level=0.1,power=0.8,alternative="one.sided")#
+#
+### Recruitment Estimates#
+nSite <- 4#
+rpm <- 4#
+openRate <- 1#
+maxTime <- 12#
+folUp <- 3#
+penal <- 0.5#
+rec.forcast(nSite,rpm,openRate,maxTime)
+source("/Volumes/CRC-LCTU/Statistical Documents/3. Stats Tools/R functions/statsTools.R")#
+library(clinfun)#
+#
+### Non-Inferiority Trial#
+gsdesign.binomial(c(1),.02,.05,sig.level=0.1,power=0.8,alternative="one.sided")#
+#
+### Recruitment Estimates#
+nSite <- 4#
+rpm <- 8#
+openRate <- 1#
+maxTime <- 12#
+folUp <- 3#
+penal <- 0.5#
+rec.forcast(nSite,rpm,openRate,maxTime)
+rec
+week.est <- c(70,42,60,98)
+mnth.est <- week.est*4
+mnth.est
+mnth.est/16
+mean(mnth.est/16)
+mean(mnth.est/20)
+nSite <- 4#
+rpm <- 10#
+openRate <- 1#
+maxTime <- 12#
+folUp <- 3#
+penal <- 0.5#
+rec <- rec.forcast(nSite,rpm,openRate,maxTime);rec
+gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.8,alternative="one.sided")
+### Non-Inferiority Trial#
+gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.8,alternative="one.sided")
+gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.9,alternative="one.sided")
+gsdesign.binomial(c(1),.08,.012,sig.level=0.05,power=0.9,alternative="one.sided")
+gsdesign.binomial(c(1),.08,.012,sig.level=0.05,power=0.8,alternative="one.sided")
+gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.8,alternative="one.sided")
+?gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.8,alternative="one.sided")
+")
+install.packages("SampleSize4ClinicalTrials ")
+library(SampleSize4ClinicalTrials)
+install.packages("SampleSize4ClinicalTrials")
+library(SampleSize4ClinicalTrials)
+ssc(cat="m",design=3,ratio=1,alpha=0.05,power=0.9,sigma=1,theta=0,delta=0.5)
+ssc(cat="P",design=3,ratio=1,alpha=0.05,power=0.9,sigma=1,theta=0,delta=0.5)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08theta=0,delta=0.5)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,theta=0,delta=0.5)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,theta=0,delta=0.04)
+gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.8,alternative="one.sided")
+gsdesign.binomial(c(1),.08,.012,sig.level=0.05,power=0.9,alternative="one.sided")
+gsdesign.binomial(c(1),.08,.011,sig.level=0.05,power=0.9,alternative="one.sided")
+gsdesign.binomial(c(1),.08,.011,sig.level=0.05,power=0.9,alternative="two.sided")
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,theta=0,delta=0.04)
+summary(ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,theta=0,delta=0.04))
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,theta=0,delta=0.04)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,theta=0.04,delta=0)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.12,theta=0.04,delta=0)
+gsdesign.binomial(c(1),.08,.12,sig.level=0.05,power=0.9,alternative="two.sided")
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.12,theta=0.04,delta=0)
+gsdesign.binomial(c(1),.08,.12,sig.level=0.05,power=0.9,alternative="two.sided")
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.12,theta=0.04,delta=0)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.12,theta=0.04)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.08,theta=0.04)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,theta=0.04)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.012,theta=0.04)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.12,theta=0.04)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=0.04)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=1)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=0.1)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=0.04)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=0.035)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=0.036)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=0.037)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=0.038)
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=0.039)
+gsdesign.binomial(c(1),.08,.12,sig.level=0.05,power=0.9,alternative="two.sided")
+ssc(cat="p",design=1,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=0.04)
+gsdesign.binomial(c(1),.08,.12,sig.level=0.05,power=0.9,alternative="two.sided")
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,theta=0.04)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,delta=0.04)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.12,p2=0.08,delta=0.04,theta=0)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,delta=0.04,theta=0)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,delta=0.04,theta=0.01)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,delta=0.04,theta=0)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,delta=0.05,theta=0)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.8,p1=0.08,p2=0.08,delta=0.05,theta=0)
+ssc(cat="p",design=3,ratio=1,alpha=0.1,power=0.8,p1=0.08,p2=0.08,delta=0.05,theta=0)
+gsdesign.binomial(c(1),.08,.12,sig.level=0.1,power=0.8,alternative="two.sided")
+gsdesign.binomial(c(1),.08,.12,sig.level=0.1,power=0.8,alternative="one.sided")
+gsdesign.binomial(c(1),.08,.13,sig.level=0.1,power=0.8,alternative="one.sided")
+gsdesign.binomial(c(1),.08,.14,sig.level=0.1,power=0.8,alternative="one.sided")
+ssc(cat="p",design=3,ratio=1,alpha=0.1,power=0.8,p1=0.08,p2=0.08,delta=0.06,theta=0)
+gsdesign.binomial(c(1),.08,.14,sig.level=0.1,power=0.8,alternative="one.sided")
+ssc(cat="p",design=3,ratio=1,alpha=0.1,power=0.8,p1=0.08,p2=0.08,delta=0.06,theta=0)
+gsdesign.binomial(c(1),.08,.14,sig.level=0.1,power=0.8,alternative="one.sided")
+ssc(cat="p",design=3,ratio=1,alpha=0.1,power=0.8,p1=0.08,p2=0.08,delta=0.06,theta=0)
+gsdesign.binomial(c(1),.08,.15,sig.level=0.1,power=0.8,alternative="one.sided")
+ssc(cat="p",design=3,ratio=1,alpha=0.1,power=0.8,p1=0.08,p2=0.08,delta=0.06,theta=0)
+185*2
+370*1.05
+c(70,42,60,98)
+c(70,42,60,98)*4
+(c(70,42,60,98)*4)/10
+(c(70,42,60,98)*4)
+10/(c(70,42,60,98)*4)
+mean(10/(c(70,42,60,98)*4))
+nSite <- 4#
+rpm <- 10#
+openRate <- 1#
+maxTime <- 12#
+folUp <- 3#
+penal <- 0.5#
+rec <- rec.forcast(nSite,rpm,openRate,maxTime);rec
+abline(h=seq(0,400,50),v=c(0,12,3))
+rec <- rec.forcast(nSite,rpm,openRate,maxTime);rec
+abline(h=seq(0,400,50),v=c(0,12,3),col="gray",lty=2)
+abline(h=seq(0,400,50),v=seq(0,12,3),col="gray",lty=2)
+ssc(cat="p",design=3,ratio=1,alpha=0.1,power=0.8,p1=0.08,p2=0.08,delta=0.06,theta=0)
+ssc(cat="p",design=3,ratio=1,alpha=0.1,power=0.9,p1=0.08,p2=0.08,delta=0.06,theta=0)
+ssc(cat="p",design=3,ratio=1,alpha=0.05,power=0.9,p1=0.08,p2=0.08,delta=0.06,theta=0)
+1800/4
+950/30.44
+32*30.44
+31*30.44
+31*31
+31*7
+30*30
+q()
+#install.packages("shiny")#
+library(shiny)#
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  titlePanel("Recruitment Estiamtes"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500)#
+    ),#
+#
+    mainPanel(#
+      plotOutput("distPlot")#
+    )#
+  )#
+)#
+#############
+sidebarLayout(position = "right",#
+  sidebarPanel(#
+    # Inputs excluded for brevity#
+  ),#
+  mainPanel(#
+    # Outputs excluded for brevity #
+  )#
+)#
+#
+shinyApp(ui, server)
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  titlePanel("Recruitment Estiamtes"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500)#
+    ),#
+#
+    mainPanel(#
+      plotOutput("distPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+}#
+shinyApp(ui, server)
+#install.packages("shiny")#
+library(shiny)#
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  titlePanel("Recruitment Estiamtes"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500)#
+    ),#
+#
+    mainPanel(#
+      plotOutput("distPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+   observeEvent(input$close, {#
+    js$closeWindow()#
+    stopApp()#
+  })#
+#
+}#
+shinyApp(ui, server)
+#install.packages("shiny")#
+library(shiny)#
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  titlePanel("Recruitment Estiamtes"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+      buttonInput(#
+      id = 'close',#
+      type = "button",#
+      class = "btn action-button",#
+      onclick = "setTimeout(function(){window.close();},500);",  # close browser#
+      "Close window"#
+    )#
+    ),#
+#
+    mainPanel(#
+      plotOutput("distPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+   observe({#
+      if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+?SLIDERiNPUT
+?sliderInput
+#install.packages("shiny")#
+library(shiny)#
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  titlePanel("Recruitment Estiamtes"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+      actionButton(#
+      id = 'close',#
+      type = "button",#
+      onclick = "setTimeout(function(){window.close();},500);",  # close browser#
+      "Close window"#
+    )#
+    ),#
+#
+    mainPanel(#
+      plotOutput("distPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+   observe({#
+      if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+#install.packages("shiny")#
+library(shiny)#
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  titlePanel("Recruitment Estiamtes"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+      actionButton(id = "close")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("distPlot")#
+    )#
+  )#
+)
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  titlePanel("Recruitment Estiamtes"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+      actionButton("close")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("distPlot")#
+    )#
+  )#
+)
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+  titlePanel("Recruitment Estiamtes"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+#
+      sliderInput("obs", "Number of observations:",  #
+                  min = 1, max = 1000, value = 500),#
+      actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("distPlot")#
+    )#
+  )#
+)
+server <- function(input, output) {#
+   observe({#
+      if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+getwd()
+setwd("Dropbox/Jackson SAC/Projects/Rshiny/Recruitment")
+ls()
+ls
+dir()
+source("Dropbox/Jackson SAC/Projects/Rshiny/Recruitment/recForcast.R")
+source("Dropbox/Jackson SAC/Projects/Rshiny/Recruitment/recForcast.R")
+setwd("Dropbox/Jackson SAC/Projects/Rshiny/Recruitment")
+source("recForcast.R")
+source("Dropbox/Jackson SAC/Projects/Rshiny/Recruitmenr/recForcast.R")
+source("Dropbox/Jackson SAC/Projects/Rshiny/Recruitmenr/recForcast.R")
+setwd("Dropbox/Jackson SAC/Projects/Rshiny/Recruitment")
+setwd("Dropbox")
+getwd()
+setwd("Dropbox/Jackson SAC/Projects/Rshiny/Recruitment")
+setwd("Dropbox/Jackson SAC/Projects/Rshiny/Recruitment")
+setwd("Dropbox")
+q()
