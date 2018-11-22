@@ -12,7 +12,7 @@ if(max(open.site)!=N.site) open.site <- c(open.site,N.site)
 open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))
 ### Basic average rate per site approach
 month.rate<-open.site*rpm
- 
+
 ## penalisng monthly recruitment (recruits 1/2 as much in first month)
 penalty <- diff(c(0,month.rate))*penal
 month.rate <- month.rate-penalty
