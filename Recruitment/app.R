@@ -29,7 +29,8 @@ if(plot) {
 	npat <- max(rec[,2])
 	nmon <- nrow(rec)
 	pat.by <- 25*max(round(npat/125),1);pat.by
-	mon.by <- 3*max(round(nmon/18),1);mon.by	abline(h=seq(0,npat*2,by=pat.by),v=seq(0,nmon*2,by=mon.by),lty=2,col="lightgray",lwd=3)
+	mon.by <- 3*max(round(nmon/18),1);mon.by
+	abline(h=seq(0,npat*2,by=pat.by),v=seq(0,nmon*2,by=mon.by),lty=2,col="lightgray",lwd=3)
 }
 
 
