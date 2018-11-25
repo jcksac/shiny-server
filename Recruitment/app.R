@@ -38,7 +38,11 @@ return(rec)
 # Define UI for dataset viewer app ----
 ui <- fluidPage(
 
-  titlePanel("Recruitment Estiamtes"),
+	#includeCSS("bootstrap.css"),
+
+  	titlePanel("Recruitment Estimates"),
+  	
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),
 
   sidebarLayout(
 
