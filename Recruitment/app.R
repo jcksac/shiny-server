@@ -65,11 +65,11 @@ ui <- fluidPage(
                   min = 1, max = 5, value = 2),
 
       sliderInput("maxTime", "Length of Recruitment (months):",  
-                  min = 1, max = 120, value = 12),
+                  min = 1, max = 120, value = 12)
           
           
 		## Add a stop button for development	        
-      actionButton("close",label="stop")
+      	#actionButton("close",label="stop")
                   
                   
     ),
@@ -88,9 +88,9 @@ ui <- fluidPage(
 ############
 server <- function(input, output) {
 
-	rec <- eventReactive(input$go,{ 
-		rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)
-		})
+	#rec <- eventReactive(input$go,{ 
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)
+	#	})
 	
 	
 	## Plot
@@ -101,9 +101,9 @@ rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.
 
 
 	### Stopping App
-   observe({
-      if (input$close > 0) stopApp()                             # stop shiny
-    })
+    #observe({
+    #   if (input$close > 0) stopApp()                             # stop shiny
+    #})
 
 }
 
