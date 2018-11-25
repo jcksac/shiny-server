@@ -22,13 +22,21 @@ month.rate <- diff(c(0,cum.rec))
 
 rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)
 
-if(plot) plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)
+
+if(plot) {
+	
+	plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)
+	npat <- max(rec[,2])
+	nmon <- nrow(rec)
+	pat.by <- 25*max(round(npat/125),1);pat.by
+	mon.by <- 3*max(round(nmon/18),1);mon.by	
+	abline(h=seq(0,npat*2,by=pat.by),v=seq(0,nmon*@,by=mon.by),lty=2,col="lightgray",lwd=3)
+}
+
 
 return(rec)
 
 }
-
-
 
 #############################
 #############################
@@ -87,8 +95,8 @@ server <- function(input, output) {
 	
 	## Plot
 	output$recPlot <- renderPlot({	
-		rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)
-		abline(h=seq(0,1000,50),v=seq(0,120,6),lty=2,col="lightgray",lwd=3)
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)
+		
 		})
 
 
