@@ -1,34 +1,3 @@
-foo$mtd
-foo
-## Packages#
-install.packages("dfcrm")#
-library(dfcrm)#
-prior <- c(0.1, 0.015, 0.20, 0.30, 0.40, 0.50)#
-target <- 0.2#
-level <- c(3, 4, 4, 3, 3, 4, 3, 2, 2, 2,2,3)#
-y <- c(0, 0, 1, 0, 0, 1, 1, 0, 0, 0,1,0)#
-prior <- c(0.05,0.1,0.2,0.3,0.5,0.7)#
-target <- 0.2#
-n<-18#
-x0 <- 1#
-PI <- c(0.05,0.1,0.2,0.4,0.5,0.7)#
-obswin=4#
-rate=8#
-## The following code simulates #
-tc.sim <- titesim(PI,prior,target,n,x0,,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)tc.sim
-prior <- c(0.05,0.1,0.2,0.3,0.5,0.7)#
-target <- 0.2#
-n<-18#
-x0 <- 1#
-PI <- c(0.05,0.1,0.2,0.4,0.5,0.7)#
-obswin=4#
-rate=6#
-## The following code simulates #
-tc.sim <- titesim(PI,prior,target,n,x0,,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)tc.sim
-tc.sim <- titesim(PI,prior,target,n,x0,obswin,rate,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)tc.sim
-tc.sim <- titesim(PI,prior,target,n,x0,obswin=obswin,rate=rate,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)tc.sim
-tc.sim <- titesim(PI,prior,target,n,x0,obswin=obswin,rate=rate,nsim=100,accrual="poisson",model="logistic",restrict=FALSE)
-tc.sim
 2/0.2
 2/0.2 + 3*4
 2/0.25 + 3*4
@@ -1148,3 +1117,11 @@ server <- function(input, output) {#
 #
 }#
 shinyApp(ui, server)
+500/7
+71*30
+(71*30)/100
+100/7
+20*(100/7)
+(20*(100/7))/100
+(10*(300/7))/100
+(5*(500/7))/100
