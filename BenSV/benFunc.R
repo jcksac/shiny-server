@@ -4,17 +4,17 @@
 
 #########################
 #########################
-demSelect<-function(data){
-nm <- names(data)
-dat <- data[,which(substr(nm,1,2)=="d.")]
-names(data) <-substr(names(dat),3,nchar(names(dat)))
+demSelect<-function(dat){
+nm <- names(dat)
+dat <- dat[,which(substr(nm,1,2)=="d.")]
+names(dat) <-substr(names(dat),3,nchar(names(dat)))
 dat
 }
 
-outSelect<-function(data){
-	nm <- names(data)
-	dat <- data[,which(substr(nm,1,2)=="o.")]
-	names(data) <-substr(names(dat),3,nchar(names(dat)))
+outSelect<-function(dat){
+	nm <- names(dat)
+	dat <- dat[,which(substr(nm,1,2)=="o.")]
+	names(dat) <-substr(names(dat),3,nchar(names(dat)))
 	dat
 }
 
