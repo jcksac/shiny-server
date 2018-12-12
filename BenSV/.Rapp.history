@@ -1,2471 +1,0 @@
-gsdesign.survival(alpha=0.05,power=0.9,haz.ratio=0.74,ifrac=c(1))
-600*12
-7200-53*12
-6564*0.19
-6564-1247
-6564-1247-4000
-600*0.045
-600*0.0045
-600*0.1
-600*0.01
-600*0.005
-6000*0.005
-1.04*1.04
-1.03*1.03*1.03
-data <- read.csv("/Volumes/Dept02/CRC-LCTU/Statistical Documents/Trials/ESPAC-4/10. DMC meetings/Closed2/Lancet Manuscript/Data and analysis/Data lock 2016.03.02 and code/ESPACdata.csv")
-data[1:3,]
-table(data$Trial)
-data <- read.csv("/Volumes/Dept02/CRC-LCTU/Statistical Documents/Trials/ESPAC-4/10. DMC meetings/Closed2/Lancet Manuscript/Data and analysis/Data lock 2016.03.02 and code/robjonesdata.csv")
-data[1:3,]
-data <- read.csv("/Volumes/Dept02/CRC-LCTU/Statistical Documents/Trials/ESPAC-4/10. DMC meetings/Closed2/Lancet Manuscript/Data and analysis/Data lock 2016.03.02 and code/ESPAC_survival.csv")
-data[1:3,]
-data <- read.csv("/Volumes/Dept02/CRC-LCTU/Statistical Documents/Trials/ESPAC-4/10. DMC meetings/Closed2/Lancet Manuscript/Data and analysis/Data lock 2016.03.02 and code/ESPAC4_survival.csv")
-data[1:3,]
-nrow(data)
-10000*1.04
-100000*1.04
-1000000*1.04
-data$ob <- 1
-data$ob[500:730] <-0
-table(data$R_status)
-table(data$R_status,data$ob)
-which(data$ob==0)
-length(which(data$ob==0))
-nrow(data)
-length(which(data$ob==0))
-n.tot/81
-n.tot <- nrow(data)
-n.miss <- length(which(data$ob==0))
-n.tot/81
-data[1:3,]
-table(data$R_status)
-table(data$Site)
-table(data$Site,data$R_status)
-install.packages("joineR")
-install.packages("joineRML")
-install.packages("statmod")
-install.packages("lme4")
-install.packages("ggplot2")
-install.packages("statmod")
-install.packages("joineRML")
-library(joineR)
-library(joineRML)
-library(statmod)
-library(ggplot2)
-library(lme4)
-data(heart.valve)
-heart.valve[1:3,]
-heart.lvmi <- heart.valve[!(is.na(heart.valve)),]
-heart.lvmi[1:3.]
-heart.lvmi[1:3,]
-heart.long <- heart.lvmi[,c(1,4,10)]
-heart.surv <- UniqueVariables(heart.lvmi,var.col=c("furys","status"),id.col="num")
-heart.lvmi <- heart.valve[!(is.na(heart.valve)),]
-heart.long <- heart.lvmi[,c(1,4,10)]
-heart.surv <- UniqueVariables(heart.lvmi,var.col=c("furys","status"),id.col="num")
-?UniqueVariables(heart.lvmi,var.col=c("furys","status"),id.col="num")
-heart.lvmi
-heart.lvmi[1:3,]
-nrow(heart.valve)
-nrow(heart.lvmi)
-heart.lvmi <- heart.valve[!(is.na(heart.valve$log.lvmi)),]
-heart.long <- heart.lvmi[,c(1,4,10)]
-UniqueVariables(heart.lvmi,var.col=c("furys","status"),id.col="num")
-UniqueVariables(heart.lvmi,var.col=c("fuyrs","status"),id.col="num")
-heart.surv <- UniqueVariables(heart.lvmi,var.col=c("fuyrs","status"),id.col="num")
-heart.base <- UniqueVariables(heart.lvmi,var.col="hs",id.col="num")
-heart.jd <- jointdata(longitudinal = heart.long,#
-					survival = heart.surv,#
-					baseline = heart.base,#
-					id.col="num",time.col="time")
-summary(heart.jd)
-heart.jd$survival$num
-plot(heart.jd)
-jointplut(heart.jd)
-jointplot(heart.jd)
-jointplot(heart.jd,Y.col = "log.lvmi",Cens.col="status",lag=5)
-heart.valve[1:3,]
-heart.valve$log.lvmi
-q()
-3038+82
-1.04
-log(1.04)
-log(1.04)/12
-1.003^12
-350*1.25
-475/1.25
-350*1.25
-2364
-37.5*3
-37.5*3*4.33
-37.5*3*5
-37.5*3*4
-37.5*12
-37.5*13
-37.5*14
-507/13
-39*14
-39*12
-1364+507+507
-1364+507+507-400-500-1000
-3098-1100-900
-3098-1100-900-250
-30.44*30
-50+25+80
-50+25+80+40
-833-257
-225_257
-225+257
-985+550
-3,5*2.6
-3.5*2.6
-2.6*3.4
-18
-3.6+2.6
-7*600
-4.5
-600+800
-600+800+800
-600+800+800+1600
-600+800+800+2400
-600+900
-600+900+800
-2500-1200
-634*12
-634*12*5
-source("/Volumes/CRC-LCTU/Statistical Documents/3. Stats Tools/R functions/statsTools.R")#
-library(clinfun)#
-library(mvtnorm)
-sourc("/Users/richardjackson/Dropbox/Documents/R Utils/statsTools.R")
-source("/Users/richardjackson/Dropbox/Documents/R Utils/statsTools.R")
-library(clinfun)
-library(mvtnorm)
-### Phase III design#
-### Design Parameters#
-alpha <- 0.05#
-power <- 0.82#
-tails <- 2#
-HR <- 0.7#
-intFrac <- c(1)#
-intPow <- c(0,1)#
-### Recruitment#
-nSite <- 20#
-rpm <- 9/12#
-openRate <- 1#
-maxTime <- 72#
-penal <- 0.5#
-#
-rec1 <- rec.forcast(nSite,rpm,openRate,maxTime)#
-nSite <- 10#
-rpm <- 12/12#
-openRate <- 1#
-maxTime <- 60#
-penal <- 0.5#
-#
-rec2 <- rec.forcast(nSite,rpm,openRate,maxTime)#
-#
-### Design#
-folUp <- 36#
-t <- c(0.01:(maxTime+folUp))
-### RFS#
-n<- 127#
-t.est <- c(0,6,12,18,24,30,36,60)#
-s.num <- c(12,9,5,4,7,4,5)#
-nt <- c(n,n-cumsum(s.num));nt <- nt[-length(nt)]#
-lam <- s.num/(6*nt)#
-lam <- c(lam,lam[length(lam)])#
-### OS#
-lam <- s.num/(6*nt)#
-lam <- c(lam,lam[length(lam)])#
-#
-s_rec <- PWplot(lam,t.est,t)^0.6-0.1#
-s_rfs <- s_rec^11#
-lam <- -log(0.79)/100#
-s_os <- exp(-lam*t^1.15)^5.9#
-#
-plot(t,s_rec,typ="l",lwd=2)#
-points(36,0.5,pch=20,col=2)#
-s_pIIdes <- 1-(1-s_rec)*(1-s_rfs)#
-s_pIIIdes <- 1-(1-s_rec)*(1-s_os)#
-#
-plot(t, s_pIIIdes,typ="l",ylim=c(0,1))#
-lines(t,s_pIIdes)#
-cbind(s_rec,s_rfs,s_os)
-ls()
-PEM<-function(T,CEN,part,form){#
-	n<-length(T)#
-	n.part<-length(part)-1#
-	t.mat<-matrix(0,n,n.part)#
-	w.mat<-t.mat#
-	########
-	for(i in 1:n){#
-		tt<-T[i]-part;tt#
-		tt[which(tt<0)]<-0	#
-		t.mat[i,]<-tt[1:n.part]#
-		w.mat[i,max(which(tt>0))]<-1#
-	}#
-	for(i in 1:n.part){#
-	t.mat[which(t.mat[,i]>diff(part)[i]),i]<-diff(part)[i]}#
-	w.mat<-w.mat*CEN#
-	########
-	resp<-c(w.mat)#
-	time<-log(c(t.mat)+0.000001)#
-	int<-gl(n.part,n)#
-	########
-	if(form==~1) modmat<-matrix(1,n,1) else modmat<-model.matrix(form)#
-	n.co<-ncol(modmat)#
-	coef.mat<-matrix(NA,n*n.part,n.co)	#
-	for(i in 1:n.co){#
-	coef.mat[,i]<-rep(modmat[,i],n.part)#
-	}#
-	colnames(coef.mat)<-colnames(modmat)#
-	########
-	if(n.part==1) loglin<-glm(resp~coef.mat,family="poisson"(link=log),offset=time) else#
-	loglin<-glm(resp~-1+int+coef.mat,family="poisson"(link=log),offset=time) #
-	return(loglin)#
-}#
-PWprior<-function(prior.time,prior.surv,new.time,new.int){#
-library(survival)#
-library(mgcv)#
-#### function to maximise estimate for beta#
-pr.bet<-function(beta){#
-est1<-exp(-beta*pr.time)#
-est2<-sum(pr.surv-est1)^2#
-return(est2)}#
-### required structure - the number of events between each interval ####
-tt<-rep(NA,length(new.time))#
-for(i in 1:length(new.time)){#
-tt[i]<-max(which(new.int<(new.time[i]-0.000001)))#
-}#
-#############
-### Obtaining neccessary structures (surv estimates and times)#
-bh.est<-c(rep(1,15),sprob)#
-log.bh<--log(bh.est)#
-N2<-length(log.bh)#
-t2<-c(rep(0,15),ptime)#
-K<-6#
-## Getting new Survival Estimates using GAM model#
-gam.model<-gam(bh.est~s(t2,k=K))#
-### plot to check points and gam line#
-#plot(ptime,sprob,lwd=3,typ="l")#
-#points(t2,bh.est,col=2,pch=20,cex=1.5)#
-#lines(t2,predict(gam.model),col=3,lwd=3)#
-## Survival Estimates for trial times#
-prior.surv<-predict(gam.model,newdata=list(t2=new.time))#
-prior.surv[which(prior.surv>1)]<-1#
-prior.surv[which(prior.surv<0)]<-0#
-##################
-pr.est<-rep(NA,length(new.int)-1)#
-end.surv<-pr.est#
-### First Period#
-pr.time<-new.time[tt==1]#
-pr.surv<-prior.surv[tt==1]#
-pr.est[1]<-round(optimize(pr.bet,c(0,5))$minimum,3)#
-end.surv[1]<-min(pr.surv)#
-### All subsequent periods#
-if(length(pr.est)>1){#
-for(i in 2:(length(new.int)-1)){#
-        pr.time<-new.time[tt==i]-new.int[i]#
-        pr.surv<-prior.surv[tt==i]#
-        end.surv[i]<-min(pr.surv)#
-        pr.surv<-pr.surv/end.surv[i-1]#
-        pr.est[i]<-round(optimize(pr.bet,c(0,5))$minimum,3)#
-		}#
-	}#
-return(pr.est)#
-}#
-#######################################################
-#######################################################
-PWplot<-function(pr.est,exp.int,exp.time){#
-### required structure - the number of events between each interval ####
-tt<-rep(NA,length(exp.time))#
-for(i in 1:length(exp.time)){#
-tt[i]<-max(which(exp.int<(exp.time[i]-0.000001)))#
-}#
-i<-1#
-### #
-wt<-which(tt==i);wt#
-s.prob<-exp(-pr.est[i]*exp.time[wt])#
-end.prob<-exp(-pr.est[i]*exp.int[i+1])#
-SURVS<-s.prob;SURVS#
-if(length(pr.est)>1){#
-for(i in 2:(length(pr.est))){#
-        wt<-which(tt==i)#
-        s.time<-exp.time[wt]-exp.int[i]#
-        s.prob<-exp(-pr.est[i]*s.time)#
-        s.prob<-end.prob*s.prob#
-        end.prob<-exp(-pr.est[i]*(exp.int[i+1]-exp.int[i]))*end.prob#
-        SURVS<-c(SURVS,s.prob)#
-}#
-}#
-SURVS#
-}#
-pair_t<-function(t,cen,z,n=1){#
-	a1<-sort(t[which(cen==1&z==0)])#
-	a2<-sort(t[which(cen==1&z==1)])#
-	t.i<-max(a1[n],a2[n])#
-	a1<-a1[-which(a1<=t.i)]#
-	a2<-a2[-which(a2<=t.i)]#
-	while(length(a1)>n&length(a2)>n){#
-		t.i<-c(t.i,max(a1[n],a2[n]))	#
-		a1<-a1[-which(a1<=t.i[length(t.i)])]#
-		a2<-a1[-which(a2<=t.i[length(t.i)])]#
-	}#
-	t.i<-c(t.i,max(t)+1)#
-	t.i#
-}#
-#######################################################
-#######################################################
-PEMdatorg<-function(T,CEN,part,form){#
-	n<-length(T)#
-	n.part<-length(part)-1#
-	t.mat<-matrix(0,n,n.part)#
-	w.mat<-t.mat#
-	########
-	for(i in 1:n){#
-		tt<-T[i]-part;tt#
-		tt[which(tt<0)]<-0	#
-		t.mat[i,]<-tt[1:n.part]#
-		w.mat[i,max(which(tt>0))]<-1#
-	}#
-	for(i in 1:n.part){#
-	t.mat[which(t.mat[,i]>diff(part)[i]),i]<-diff(part)[i]}#
-	w.mat<-w.mat*CEN#
-	########
-	resp<-c(w.mat)#
-	time<-c(t.mat)#
-	int<-gl(n.part,n)#
-	########
-	if(form==~1) modmat<-matrix(1,n,1) else modmat<-model.matrix(form)#
-	n.co<-ncol(modmat)#
-	n.co<-ncol(modmat)#
-	coef.mat<-matrix(NA,n*n.part,n.co)	#
-	for(i in 1:n.co){#
-	coef.mat[,i]<-rep(modmat[,i],n.part)#
-	}#
-	colnames(coef.mat)<-colnames(modmat)#
-	ret<-data.frame(resp,int,coef.mat,time)#
-	ret#
-	}#
-### functions which create partitions#
-part.event<-function(time,cen,n.events){#
-un.time<-sort(time[cen==1])#
-n.lev<-round(length(un.time)/n.events)#
-id<-seq(0,length(un.time),length=n.lev+1)#
-id[1]<-1#
-part<-un.time[id]#
-part[1]<-0#
-part[length(part)]<-max(time)#
-part#
-}#
-part.int<-function(time,cen,n.int){#
-un.time<-sort(time[cen==1])#
-n.lev<-round(length(un.time)/n.int)#
-id<-seq(0,length(un.time),by=n.lev)#
-id[1]<-1#
-part<-un.time[id]#
-part[1]<-0#
-part[length(part)]<-max(time)#
-part#
-}#
-#### Splitting the time-grid base on reverese dendrogram technique#
-split.part.baye<-function(TIME,CEN,alpha_0=0.001,beta_0=0.001){#
-event.t<-unique(TIME[CEN==1&TIME!=0])#
-m<-length(event.t)#
-lf<-rep(NA,m)	  #
-U<-rep(0,m-1)#
-## Initial fit of Exp Model#
-part<-c(0,event.t[c(U,0)==1],max(TIME))#
-pem.org<-PEMdatorg(TIME,CEN,part,~1)#
-nu<-sum(pem.org$resp)#
-eta<-sum(pem.org$time)#
-logfat0<-pred.post(alpha_0,gamma_0,nu,eta)#
-logfat0#
-run<-seq(1,m-1)#
-stop<-0#
-while(stop==0){#
-	lf<-rep(NA,(m-1))	#
-	## Fitting each point and testing#
-	for(i in run){#
-	U[i]<-1#
-	idb<-cumsum(c(0,U))+1#
-	part<-c(0,event.t[c(U,0)==1],max(TIME))#
-	if(part[length(part)]==part[length(part)-1]) part<-part[-length(part)]#
-	pem.org<-PEMdatorg(TIME,CEN,part,~1)#
- 	logfat1<-0#
-	for(j in 1:(sum(U)+1)){#
-		nu<-sum(pem.org$resp[pem.org$int==j])#
-      	eta<-sum(pem.org$time[pem.org$int==j])#
-        	logfat1<-logfat1+pred.post(alpha_0,gamma_0,nu,eta)#
-        	}#
-	lf[i]<-logfat1#
-	U[i]<-0#
-	}#
-	plot(logfat0-lf)#
-	id<-which(lf==max(lf,na.rm=TRUE))#
-	if((logfat0-lf[id])<0) U[id]<-1 else stop<-1#
-	if((logfat0-lf[id])<0) run<-run[-which(run==id)] else stop<-1#
-	if((logfat0-lf[id])<0) logfat0<-lf[id] else stop<-1#
-}#
-U#
-}#
-### Defining Piecewise Exponential Likelihood#
-PWlik<-function(TIME,CEN,part,form,coef){#
-	#### Data org#
-	n<-length(TIME)#
-	n.part<-length(part)-1#
-	t.mat<-matrix(0,n,n.part)#
-	w.mat<-t.mat#
-	for(i in 1:n){#
-		tt<-TIME[i]-part;tt#
-		tt[which(tt<0)]<-0	#
-			for(j in 1:(length(part)-1)){#
-			if(tt[j]>part[j+1]) tt[j]<-part[j+1]	#
-			}#
-		t.mat[i,]<-tt[1:n.part]#
-		w.mat[i,max(which(tt>0))]<-1#
-		}#
-	##### Setting Parameters#
-	lambda<-exp(coef[1:length(part)-1]);lambda#
-	beta<-coef[length(part):length(coef)];beta#
-	options(warn=-1)#
-	mm<-model.matrix(form)#
-	options(warn=1)#
-	##### LIkelihood#
-	lambda<-exp(coef[1:length(part)-1]);lambda#
-	LAMBDA_T<-rowSums(t(t(t.mat)*lambda));LAMBDA_T#
-	LAM2<-rowSums(t(t(w.mat)*lambda))#
-	BETA<-rowSums(t(t(mm)*beta),na.rm=TRUE)#
-	phi<-exp(BETA)#
-	if(length(phi)==0) phi<-1#
-	S<-exp(-LAMBDA_T*phi)#
-	f<-LAM2*phi#
-	l<-sum(log(((LAM2*phi)^CEN)*S))#
-	l#
-}#
-PEMlines<-function(pem.mod,part,fac=FALSE){#
-	## collecting coefficients#
-	co<-coef(pem.mod)#
-	## deriving data characteristics#
-	n.int<-length(part)-1#
-	n.obs<-length(pem.mod$offset)/(length(part)-1)#
-	dum<-gl(n.int,n.obs)#
-	max.t<-sum(tapply(exp(pem.mod$offset),dum,max))#
-	T<-seq(1,max.t,length=500)-0.01#
-	## getting survival estimates#
-	S.pem.bl<-PWplot(exp(co[1:n.int]),part,T)#
-	lines(T,S.pem.bl,col=6,lwd=2)#
-	## adding second arm#
-	if(fac=="TRUE"){#
-	S.pem.ar<-S.pem.bl^(exp(co[length(co)]))#
-	lines(T,S.pem.ar,col=5,lwd=2)}#
-}#
-PWbaye_uni<-function(T,cen,z,pa,Burn,Runs,thin,#
-pr.mean=0.05,pr.tau=0.5,beta.mean=0,beta.sd=0.001){#
-	### organising data#
-	# writing data#
-	dat<-data.frame("T"=T,"cen"=cen,"z"=z)#
-	dat<-dat[order(dat$T),]#
-	t<-dat$T#
-	cen<-dat$cen#
-	z<-dat$z#
-	a<-pa#
-	N<-length(t)#
-	J<-length(a)-1#
-	if(length(pr.mean)==1) pr.mean<-rep(pr.mean,J)#
-	if(length(pr.tau)==1) pr.tau<-rep(pr.tau,J)#
-	dataT<-list("N"=N,"J"=J,"a"=a,"t"=t,"cen"=cen,#
-	"z"=z,"pr.mean"=pr.mean,"pr.tau"=pr.tau,#
-	"beta.mean"=beta.mean,"beta.sd"=beta.sd)#
-	# writing the data to the directory#
-	bugs.data(dataT,data.file="data.PW.txt")#
-	####
-	### MODELING #
-	# wrtiting init files#
-	inits1<-list("beta"=0.5,"lambda"=c(rep(0.2,J)));bugs.data(inits1,data.file="inits1.txt")#
-	inits2<-list("beta"=1,"lambda"=c(rep(0.5,J)));bugs.data(inits2,data.file="inits2.txt")#
-	# Initialising model #
-	modelCheck("PWise.odc")				# check model file#
-	modelData("data.PW.txt")		      # read data file#
-	modelCompile(numChains=2)            	# compile model with 2 chains#
-	modelInits("inits1.txt") 			# read init data file#
-	modelInits("inits2.txt") 			# read init data file#
-	# Setting samples#
-	samplesSet(c("beta","lambda"))#
-	# Burnin and Check#
-	modelUpdate(Burn)                    	# burn in#
-	# Running model for a further 30000#
-	modelUpdate(Runs)                    	# 20000 more iterations ....#
-	# Results#
-	res<-samplesStats("*",thin=thin,beg=Burn,end=(Burn+Runs))                   #
-	bet.samps<-samplesSample("beta")#
-	# sorting out the samples#
-	samp.id<-seq(1,Runs,by=thin)#
-	id1<-Burn+samp.id#
-	id2<-Runs+(2*Burn)+samp.id#
-	ret<-list("Results"=res,"Samples1"=bet.samps[id1],"Samples2"=bet.samps[id2])#
-	return(ret)#
-	}#
-####
-##  plotting results#
-plot.res<-function(ress){#
-	layout(matrix(c(1,2,3,3),2,2))#
-	par(mar=c(3,3,3,3))#
-	plot(-ress$Samples1,typ="l",main="Chain 1",xlab="",ylab="")#
-	plot(-ress$Samples2,typ="l",main="Chain 2",xlab="",ylab="")#
-	plot(seq(-0.5,0.5,length=100),#
-	dnorm(seq(-0.5,0.5,length=100),-0.02679,0.06979),#
-	col=2,typ="l",main="Posterior Density",xlab="",ylab="")#
-	lines(density(c(ress$Samples1,ress$Samples2)))#
-	abline(v=-PW_kalb$Results[1,1],lty=2)#
-}#
-## Demarqui Functions#
-updateU<-function(TIME,CEN,U){#
-	dat<-data.frame(TIME,CEN)#
-	dat<-dat[order(dat$TIME),]#
-	TIME<-dat$TIME#
-	CEN<-dat$CEN	#
-	event.t<-unique(TIME[CEN==1&TIME!=0])#
-	m<-length(event.t)#
-	for(i in 1:(m-1)){#
-	## U=0#
-	U[i]<-0#
-	idb<-cumsum(c(0,U))+1#
-	part<-c(0,event.t[c(U,0)==1],max(TIME))#
-	if(part[length(part)]==part[length(part)-1]) part<-part[-length(part)]#
-	pem.org<-PEMdatorg(TIME,CEN,part,~1)#
-	nu<-sum(pem.org$resp[pem.org$int==idb[i]])#
-	eta<-sum(pem.org$time[pem.org$int==idb[i]])#
-	logfat0<-pred.post(alpha_0,gamma_0,nu,eta)#
-	#U=1#
-	U[i]<-1#
-	idb<-cumsum(c(0,U))+1#
-	part<-c(0,event.t[c(U,0)==1],max(TIME))#
-	if(part[length(part)]==part[length(part)-1]) part<-part[-length(part)]#
-	pem.org<-PEMdatorg(TIME,CEN,part,~1)#
-	nu<-sum(pem.org$resp[pem.org$int==idb[i]])#
-	eta<-sum(pem.org$time[pem.org$int==idb[i]])#
-	nu2<-sum(pem.org$resp[pem.org$int==idb[i]+1])#
-	eta2<-sum(pem.org$time[pem.org$int==idb[i]+1])#
-	logfat1<-pred.post(alpha_0,gamma_0,nu,eta)#
-	logfat1<-logfat1+pred.post(alpha_0,gamma_0,nu2,eta2)#
-	####
-	R<-exp(logfat0-logfat1)#
-	u<-runif(1)#
-	if(R>((1-u)/u)) U[i]<-0 else U[i]<-1#
-	}#
-U#
-}#
-## Predictive Posterior Distribution for Demarqui analysis#
-pred.post<-function(alpha_0,gamma_0,nu,eta){#
-logfj<-alpha_0*log(gamma_0) - (alpha_0+nu)*log(gamma_0+eta) + lgamma(alpha_0+nu) - lgamma(alpha_0)#
-logfj#
-}#
-### Splitting the partition based on Likelihood methods#
-split.part.lik<-function(TIME,CEN,form){#
-event.t<-unique(TIME[CEN==1&TIME!=0])#
-if(min(TIME)==0) TIME<-TIME+0.0001#
-m<-length(event.t)#
-U<-rep(0,m-1)#
-## Initial fit of Exp Model#
-part<-c(0,event.t[c(U,0)==1],max(TIME)+1);part#
-pem.mod<-PEM(TIME,CEN,part,form)#
-coef<-coef(pem.mod)#
-logfat0<-PWlik(TIME,CEN,part,form,coef)#
-run<-seq(1,m-1)#
-stop<-0#
-while(stop==0){#
-	lf<-rep(NA,(m-1))	#
-	## Fitting each point and testing#
-	for(i in run){#
-	U[i]<-1	#
-	part<-c(0,event.t[c(U,0)==1],max(TIME))#
-	if(part[length(part)]==part[length(part)-1]) part<-part[-length(part)]#
-	p.mod<-PEM(TIME,CEN,part,form)#
-	cc<-coef(p.mod)	#
-	lf[i]<-PWlik(TIME,CEN,part,form,cc)#
-	U[i]<-0#
-	}#
-	#plot(event.t[-1],logfat0-lf);abline(h=0)#
-	id<-which(lf==max(lf,na.rm=TRUE))#
-	if((logfat0-lf[id])<0) U[id]<-1 else stop<-1#
-	if((logfat0-lf[id])<0) run<-run[-which(run==id)] else stop<-1#
-	if((logfat0-lf[id])<0) logfat0<-lf[id] else stop<-1#
-	}#
-	part<-c(0,event.t[c(U,0)==1],max(TIME))#
-	part#
-}#
-###################
-dem.func<-function(dat){#
-N.SIM<-100#
-event.t<-unique(dat$TIME[dat$CEN==1&dat$TIME!=0])#
-m<-length(event.t)#
-Umat<-matrix(NA,N.SIM,m-1)#
-logfatdata<-rep(NA,N.SIM)#
-U<-rep(0,m-1)#
-### set priors#
-alpha_0<-0.001#
-gamma_0<-0.001#
-for(i in 1:N.SIM){#
-	## Update U#
-	U<-updateU(dat$TIME,dat$CEN,U)#
-	Umat[i,]<-U#
-	b<-1+sum(U)#
-	part<-c(0,event.t[c(U,0)==1],max(dat$TIME))#
-	data.org<-PEMdatorg(dat$TIME,dat$CEN,part,~1)#
-	NU<-tapply(data.org$resp,data.org$int,sum)#
-	ETA<-tapply(data.org$time,data.org$int,sum)#
-	logFAT<-0#
-	for(j in 1:b){#
-		logFAT<-logFAT+pred.post(alpha_0,gamma_0,NU[j],ETA[j])#
-	}#
-	logfatdata[i]<-logFAT#
-	}#
-Ufin<-Umat[which(logfatdata==max(logfatdata))[1],]#
-part<-c(0,event.t[which(c(Ufin,0)==1)],max(dat$TIME))#
-part#
-}#
-#####################################
-EXPbaye_uni<-function(T,cen,z,Burn,Runs,thin,#
-pr.mean=0.05,pr.tau=0.5,beta.mean=0,beta.sd=0.001){#
-	### organising data#
-	# writing data#
-	dat<-data.frame("T"=T,"cen"=cen,"z"=z)#
-	dat<-dat[order(dat$T),]#
-	t<-dat$T#
-	cen<-dat$cen#
-	z<-dat$z#
-	N<-length(t)#
-	dataT<-list("N"=N,"t"=t,"cen"=cen,#
-	"z"=z,"pr.mean"=pr.mean,"pr.tau"=pr.tau,#
-	"beta.mean"=beta.mean,"beta.sd"=beta.sd)#
-	# writing the data to the directory#
-	bugs.data(dataT,data.file="data.PW.txt")#
-	####
-	### MODELING #
-	# wrtiting init files#
-	inits1<-list("beta"=0.5,"lambda"=0.2);bugs.data(inits1,data.file="inits1.txt")#
-	inits2<-list("beta"=1,"lambda"=0.5);bugs.data(inits2,data.file="inits2.txt")#
-	# Initialising model #
-	modelCheck("Exp.odc")				# check model file#
-	modelData("data.PW.txt")		      # read data file#
-	modelCompile(numChains=2)            	# compile model with 2 chains#
-	modelInits("inits1.txt") 			# read init data file#
-	modelInits("inits2.txt") 			# read init data file#
-	# Setting samples#
-	samplesSet(c("beta","lambda"))#
-	# Burnin and Check#
-	modelUpdate(Burn)                    	# burn in#
-	# Running model for a further 30000#
-	modelUpdate(Runs)                    	# 20000 more iterations ....#
-	# Results#
-	res<-samplesStats("*",thin=thin,beg=Burn,end=(Burn+Runs))                   #
-	bet.samps<-samplesSample("beta")#
-	# sorting out the samples#
-	samp.id<-seq(1,Runs,by=thin)#
-	id1<-Burn+samp.id#
-	id2<-Runs+(2*Burn)+samp.id#
-	ret<-list("Results"=res,"Samples1"=bet.samps[id1],"Samples2"=bet.samps[id2])#
-	return(ret)#
-	}#
-#######
-############################# #
-### Define the Likelihood ####
-##############################
-PEMlik<-function(THETA){#
-	theta<-as.matrix(THETA)#
-	n.the<-nrow(theta)#
-	### cant have a bh param = 0#
-	bh.haz<-theta[1:(n.the-1),]#
-	#if(min(bh.haz)<=(1e-7)) bh.haz[which(bh.haz<=1e-7)]<-1e-7#
-	###
-	lambda<-(bh.haz)#
-	beta<-theta[n.the,]#
-	phi<-exp(beta%*%t(z))#
-	S<-t(exp(lambda))%*%t((tt))*phi#
-	f<-t(t(t(exp(lambda))%*%t(d)*phi)^cen)#
-	L<-rowSums(log(f)-S)#
-	L#
-}#
-##################################
-########## Functions #############
-##################################
-t.int<-function(t,i1,i2){#
-	id1<-which(t>i1)#
-	id2<-which(t<i2)#
-	int<-intersect(id1,id2)#
-	y<-rep(0,length(t))#
-	if(length(int)>0) y[int]<-1#
-	y#
-}#
-thin<-function(x,thin=1){#
-len<-length(x)#
-id<-seq(1,length(x),by=thin)#
-x[id]}#
-## unif.lf#
-dunif.lf<-function(x,a,b,c,d,p=.8){#
-	if(length(a)==1) a<-rep(a,length(x))#
-	if(length(b)==1) b<-rep(b,length(x))#
-	if(length(c)==1) c<-rep(c,length(x))#
-	if(length(d)==1) d<-rep(d,length(x))#
-	y<-rep(0,length(x))#
-	denom1<-(b-a)+(d-c)#
-	id.1<-which(x<b|x>c) #
-	id.2<-which(x>=b&x<=c)#
-	id.3<-which(x<a|x>d)#
-	y[id.1]<-(1-p)*(1/denom1[id.1])#
-	y[id.2]<-p*(1/(c[id.2]-b[id.2]))#
-	y[id.3]<-0#
-	y#
-	}#
-## triag.lf#
-dtriag.lf<-function(x,a,b,c,d){#
-	if(length(a)==1) a<-rep(a,length(x))#
-	if(length(b)==1) b<-rep(b,length(x))#
-	if(length(c)==1) c<-rep(c,length(x))#
-	if(length(d)==1) d<-rep(d,length(x))#
-	y<-rep(0,length(x))#
-	#p<-(c-b)/(2+c-b)#
-	denom1<-(b-a)*(c-b)#
-	denom2<-(c-b)#
-	denom3<-(d-c)*(c-b)#
-	id.1<-which(x>a&x<b)#
-	id.2<-which(x>=b&x<=c)#
-	id.3<-which(x>c&x<d) #
-	id.4<-which(x<a|x>d)#
-	y[id.1]<-(x[id.1]-a[id.1])/denom1[id.1]#
-	y[id.2]<-1/denom2[id.2]#
-	y[id.3]<-(d[id.3]-x[id.3])/denom3[id.3]#
-	y[id.4]<-0#
-	y#
-	}#
-#### Functions for Proposal Densities#
-unif.prior<-function(x,pr.est,C){#
-		a<-qnorm(.005,pr.est,C)#
-		b<-qnorm(.1,pr.est,C)#
-		c<-qnorm(.9,pr.est,C)#
-		d<-qnorm(.995,pr.est,C)	#
-		dunif.lf(x,a=a,b=b,c=c,d=d,p=.8)+1e-7}#
-triag.prior<-function(x,pr.est,C){#
-		a<-qnorm(.005,pr.est,C)#
-		b<-qnorm(.1,pr.est,C)#
-		c<-qnorm(.9,pr.est,C)#
-		d<-qnorm(.995,pr.est,C)	#
-		dtriag.lf(x,a=a,b=b,c=c,d=d)+1e-7}
-source("/Volumes/CRC-LCTU/Statistical Documents/3. Stats Tools/R functions/statsTools.R")#
-source("/Users/richardjackson/Dropbox/Documents/R Utils/statsTools.R")#
-library(clinfun)#
-library(mvtnorm)#
-### Phase III design#
-### Design Parameters#
-alpha <- 0.05#
-power <- 0.82#
-tails <- 2#
-HR <- 0.7#
-intFrac <- c(1)#
-intPow <- c(0,1)#
-### Recruitment#
-nSite <- 20#
-rpm <- 9/12#
-openRate <- 1#
-maxTime <- 72#
-penal <- 0.5#
-#
-rec1 <- rec.forcast(nSite,rpm,openRate,maxTime)#
-nSite <- 10#
-rpm <- 12/12#
-openRate <- 1#
-maxTime <- 60#
-penal <- 0.5#
-#
-rec2 <- rec.forcast(nSite,rpm,openRate,maxTime)#
-#
-### Design#
-folUp <- 36#
-t <- c(0.01:(maxTime+folUp))#
-### RFS#
-n<- 127#
-t.est <- c(0,6,12,18,24,30,36,60)#
-s.num <- c(12,9,5,4,7,4,5)#
-nt <- c(n,n-cumsum(s.num));nt <- nt[-length(nt)]#
-lam <- s.num/(6*nt)#
-lam <- c(lam,lam[length(lam)])#
-### OS#
-lam <- s.num/(6*nt)#
-lam <- c(lam,lam[length(lam)])#
-#
-s_rec <- PWplot(lam,t.est,t)^0.6-0.1#
-s_rfs <- s_rec^11#
-lam <- -log(0.79)/100#
-s_os <- exp(-lam*t^1.15)^5.9#
-#
-plot(t,s_rec,typ="l",lwd=2)#
-points(36,0.5,pch=20,col=2)#
-s_pIIdes <- 1-(1-s_rec)*(1-s_rfs)#
-s_pIIIdes <- 1-(1-s_rec)*(1-s_os)#
-#
-plot(t, s_pIIIdes,typ="l",ylim=c(0,1))#
-lines(t,s_pIIdes)#
-cbind(s_rec,s_rfs,s_os)#
-#
-s1 <- survivalDesign(alpha,power,tails,1,intFrac,intPow,nSite,rpm,openRate,maxTime,penal,folUp,s_rec)#
-s2 <- survivalDesign(alpha,power,tails,HR,intFrac,intPow,nSite,rpm,openRate,maxTime,penal,folUp,s_pIIdes)#
-s3 <- survivalDesign(alpha,power,tails,HR,intFrac,intPow,nSite,rpm,openRate,maxTime,penal,folUp,s_pIIIdes)#
-gsdesign.survival(1,0.7,0.05,0.9,alternative="two.sided")
-### Recruitment#
-nSite <- 20#
-rpm <- 9/12#
-openRate <- 1#
-maxTime <- 72#
-penal <- 0.5#
-#
-rec1 <- rec.forcast(nSite,rpm,openRate,maxTime)
-### Design#
-folUp <- 36#
-t <- c(0.01:(maxTime+folUp))#
-### RFS#
-n<- 127#
-t.est <- c(0,6,12,18,24,30,36,60)#
-s.num <- c(12,9,5,4,7,4,5)#
-nt <- c(n,n-cumsum(s.num));nt <- nt[-length(nt)]#
-lam <- s.num/(6*nt)#
-lam <- c(lam,lam[length(lam)])#
-### OS#
-lam <- s.num/(6*nt)#
-lam <- c(lam,lam[length(lam)])#
-#
-s_rec <- PWplot(lam,t.est,t)^0.6-0.1#
-s_rfs <- s_rec^11#
-lam <- -log(0.79)/100#
-s_os <- exp(-lam*t^1.15)^5.9#
-#
-plot(t,s_rec,typ="l",lwd=2)#
-points(36,0.5,pch=20,col=2)#
-s_pIIdes <- 1-(1-s_rec)*(1-s_rfs)#
-s_pIIIdes <- 1-(1-s_rec)*(1-s_os)#
-#
-plot(t, s_pIIIdes,typ="l",ylim=c(0,1))#
-lines(t,s_pIIdes)#
-cbind(s_rec,s_rfs,s_os)#
-#
-s1 <- survivalDesign(alpha,power,tails,1,intFrac,intPow,nSite,rpm,openRate,maxTime,penal,folUp,s_rec)#
-s2 <- survivalDesign(alpha,power,tails,HR,intFrac,intPow,nSite,rpm,openRate,maxTime,penal,folUp,s_pIIdes)#
-s3 <- survivalDesign(alpha,power,tails,HR,intFrac,intPow,nSite,rpm,openRate,maxTime,penal,folUp,s_pIIIdes)#
-gsdesign.survival(1,0.7,0.05,0.9,alternative="two.sided")
-s3[[1]]
-rpm
-rpm <- 1
-maxTime
-maxTime <- 60
-s3 <- survivalDesign(alpha,power,tails,HR,intFrac,intPow,nSite,rpm,openRate,maxTime,penal,folUp,s_pIIIdes)
-s3[1]
-log(18)/log(12)
-log(12)/log(18)
-log(36)/log(30)
-log(.36)/log(.3)
-log(.24)/log(.3)
-log(.24)/log(.18)
-log(.24)/log(.12)
-log(.24)/log(.16)
-log(.24)/log(.6)
-log(.12)/log(.6)
-log(24)/log(39)
-log(24)/log(30)
-source("/Volumes/CRC-LCTU/Statistical Documents/3. Stats Tools/R functions/statsTools.R")#
-source("/Users/richardjackson/Dropbox/Documents/R Utils/statsTools.R")#
-library(clinfun)#
-library(mvtnorm)#
-### Phase III design#
-### Design Parameters#
-alpha <- 0.05#
-power <- 0.82#
-tails <- 2#
-HR <- 0.7#
-intFrac <- c(1)#
-intPow <- c(0,1)#
-### Recruitment#
-nSite <- 20#
-rpm <- 9/12#
-openRate <- 1#
-maxTime <- 72#
-penal <- 0.5#
-#
-rec1 <- rec.forcast(nSite,rpm,openRate,maxTime)#
-nSite <- 10#
-rpm <- 12/12#
-openRate <- 1#
-maxTime <- 60#
-penal <- 0.5#
-#
-rec2 <- rec.forcast(nSite,rpm,openRate,maxTime)#
-#
-### Design#
-folUp <- 36#
-t <- c(0.01:(maxTime+folUp))#
-### RFS#
-n<- 127#
-t.est <- c(0,6,12,18,24,30,36,60)#
-s.num <- c(12,9,5,4,7,4,5)#
-nt <- c(n,n-cumsum(s.num));nt <- nt[-length(nt)]#
-lam <- s.num/(6*nt)#
-lam <- c(lam,lam[length(lam)])#
-### OS#
-lam <- s.num/(6*nt)#
-lam <- c(lam,lam[length(lam)])#
-#
-s_rec <- PWplot(lam,t.est,t)^0.6-0.1#
-s_rfs <- s_rec^11#
-lam <- -log(0.79)/100#
-s_os <- exp(-lam*t^1.15)^5.9
-exp(-lam*t)
-s1 <- exp(-lam*t)
-s1
-plot(s1)
-lam <- -log(0.5)/24
-lam
-exp(-lam*t)
-sss1 <- exp(-lam*t)
-sss2 <- exp(-lam*0.7*t)
-plot(t,ss1)
-plot(t,sss1)
-plot(t,sss1,typ="l")
-plot(t,sss1,typ="l",col=1,lwd=4)
-lines(t,sss2,typ="l",col=1,lwd=4)
-lines(t,sss2,typ="l",col=2,lwd=4)
-seqments(0.5,24,0.5,30)
-segments(0.5,24,0.5,30)
-segments(24,0.5,30,0.5)
-segments(18,0.5,24,0.5)
-segments(18,0.5,24,0.65)
-segments(18,0.5,24,0.64)
-segments(18,0.5,24,0.63)
-segments(18,0.5,24,0.6)
-segments(18,0.5,24,0.61)
-segments(18,0.61,24,0.61)
-plot(t,sss1,typ="l",col=1,lwd=4)
-lines(t,sss2,typ="l",col=2,lwd=4)
-segments(18,0.61,24,0.61,lwd=4)
-segments(18,0.61,24,0.61,lwd=4,col=3)
-segments(18,0.5,24,0.5,lwd=4,col=3)
-segments(24,0.5,36,0.5,lwd=4,col=3)
-segments(24,0.5,32,0.5,lwd=4,col=3)
-plot(t,sss1,typ="l",col=1,lwd=4)
-lines(t,sss2,typ="l",col=2,lwd=4)
-segments(24,0.5,32,0.5,lwd=4,col=3)
-segments(24,0.5,33,0.5,lwd=4,col=3)
-segments(24.5,0.5,33.5,0.5,lwd=4,col=3)
-#install.packages("shiny")#
-library(shiny)#
-#source("recForcast.R")#
-rec.forcast<-function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ #
-#
-## Getting the number of open sites per month#
-open.site<-seq(1,N.site,by=open.rate)#
-if(max(open.site)!=N.site) open.site <- c(open.site,N.site)#
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))#
-### Basic average rate per site approach#
-month.rate<-open.site*rpm#
-#
-## penalisng monthly recruitment (recruits 1/2 as much in first month)#
-penalty <- diff(c(0,month.rate))*penal#
-month.rate <- month.rate-penalty#
-#
-cum.rec<-round(cumsum(month.rate))#
-month.rate <- diff(c(0,cum.rec))#
-#
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)#
-#
-if(plot) plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)#
-#
-return(rec)#
-#
-}#
-##############################
-##############################
-# Define UI for dataset viewer app ----#
-ui <- fluidPage(#
-#
-	#includeCSS("bootstrap.css"),#
-#
-  	titlePanel("Recruitment Estimates"),#
-  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
-#
-  sidebarLayout(#
-#
-    sidebarPanel(#
-      sliderInput("nSite", "Number of Sites:",  #
-                  min = 1, max = 150, value = 5),#
-#
-      sliderInput("rpm", "Average Monthly Recruitment",  #
-                  min = 0.1, max = 10, value = 1),#
-#
-      sliderInput("openRate", "Rate of Opening sites (per month):",  #
-                  min = 1, max = 5, value = 2),#
-#
-      sliderInput("maxTime", "Length of Recruitment (months):",  #
-                  min = 1, max = 120, value = 12),#
-		## Add a stop button for development	        #
-      actionButton("close",label="stop")#
-    ),#
-#
-    mainPanel(#
-      plotOutput("recPlot")#
-    )#
-  )#
-)#
-#############
-server <- function(input, output) {#
-#
-	rec <- eventReactive(input$go,{ #
-		rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
-		})#
-	## Plot#
-	output$recPlot <- renderPlot({	#
-		rec <- rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
-		## getting guidelines#
-		npat <- max(rec[,2])#
-		nmon <- nrow(rec)#
-		pat.by <- 25*round(npat/125)#
-		mon.by <- 3*round(nmon/18)#
-		abline(h=seq(0,npat,by=25*round(max(rec[,2])/125)),lty=2,col="lightgray",lwd=3)#
-		#v=seq(0,nmon,by=mon.by)#
-		})#
-	### Stopping App#
-   observe({#
-      if (input$close > 0) stopApp()                             # stop shiny#
-    })#
-#
-}#
-shinyApp(ui, server)
-#install.packages("shiny")#
-library(shiny)#
-#source("recForcast.R")#
-rec.forcast<-function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ #
-#
-## Getting the number of open sites per month#
-open.site<-seq(1,N.site,by=open.rate)#
-if(max(open.site)!=N.site) open.site <- c(open.site,N.site)#
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))#
-### Basic average rate per site approach#
-month.rate<-open.site*rpm#
-#
-## penalisng monthly recruitment (recruits 1/2 as much in first month)#
-penalty <- diff(c(0,month.rate))*penal#
-month.rate <- month.rate-penalty#
-#
-cum.rec<-round(cumsum(month.rate))#
-month.rate <- diff(c(0,cum.rec))#
-#
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)#
-if(plot) {#
-	plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)#
-	npat <- max(rec[,2])#
-	nmon <- nrow(rec)#
-	pat.by <- 25*round(npat/125)#
-	mon.by <- 3*round(nmon/18)#
-		abline(h=seq(0,npat,by=25*round(max(rec[,2])/125)),lty=2,col="lightgray",lwd=3)#
-}#
-return(rec)#
-#
-}#
-##############################
-##############################
-# Define UI for dataset viewer app ----#
-ui <- fluidPage(#
-#
-	#includeCSS("bootstrap.css"),#
-#
-  	titlePanel("Recruitment Estimates"),#
-  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
-#
-  sidebarLayout(#
-#
-    sidebarPanel(#
-      sliderInput("nSite", "Number of Sites:",  #
-                  min = 1, max = 150, value = 5),#
-#
-      sliderInput("rpm", "Average Monthly Recruitment",  #
-                  min = 0.1, max = 10, value = 1),#
-#
-      sliderInput("openRate", "Rate of Opening sites (per month):",  #
-                  min = 1, max = 5, value = 2),#
-#
-      sliderInput("maxTime", "Length of Recruitment (months):",  #
-                  min = 1, max = 120, value = 12),#
-		## Add a stop button for development	        #
-      actionButton("close",label="stop")#
-    ),#
-#
-    mainPanel(#
-      plotOutput("recPlot")#
-    )#
-  )#
-)#
-#############
-server <- function(input, output) {#
-#
-	rec <- eventReactive(input$go,{ #
-		rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
-		})#
-	## Plot#
-	output$recPlot <- renderPlot({	#
-rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
-		})#
-	### Stopping App#
-   observe({#
-      if (input$close > 0) stopApp()                             # stop shiny#
-    })#
-#
-}#
-shinyApp(ui, server)
-rec.forcast(20,1,1,24)
-rec.forcast<-function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ #
-#
-## Getting the number of open sites per month#
-open.site<-seq(1,N.site,by=open.rate)#
-if(max(open.site)!=N.site) open.site <- c(open.site,N.site)#
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))#
-### Basic average rate per site approach#
-month.rate<-open.site*rpm#
-#
-## penalisng monthly recruitment (recruits 1/2 as much in first month)#
-penalty <- diff(c(0,month.rate))*penal#
-month.rate <- month.rate-penalty#
-#
-cum.rec<-round(cumsum(month.rate))#
-month.rate <- diff(c(0,cum.rec))#
-#
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)#
-if(plot) {#
-	plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)#
-	npat <- max(rec[,2])#
-	nmon <- nrow(rec)#
-	pat.by <- 25*round(npat/125)#
-	mon.by <- 3*round(nmon/18)#
-	abline(h=seq(0,npat,by=25*round(max(rec[,2])/125)),lty=2,col="lightgray",lwd=3)#
-}#
-return(rec)#
-#
-}#
-rec.forcast(20,1,1,24)#
-##############################
-##############################
-# Define UI for dataset viewer app ----#
-ui <- fluidPage(#
-#
-	#includeCSS("bootstrap.css"),#
-#
-  	titlePanel("Recruitment Estimates"),#
-  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
-#
-  sidebarLayout(#
-#
-    sidebarPanel(#
-      sliderInput("nSite", "Number of Sites:",  #
-                  min = 1, max = 150, value = 5),#
-#
-      sliderInput("rpm", "Average Monthly Recruitment",  #
-                  min = 0.1, max = 10, value = 1),#
-#
-      sliderInput("openRate", "Rate of Opening sites (per month):",  #
-                  min = 1, max = 5, value = 2),#
-#
-      sliderInput("maxTime", "Length of Recruitment (months):",  #
-                  min = 1, max = 120, value = 12),#
-		## Add a stop button for development	        #
-      actionButton("close",label="stop")#
-    ),#
-#
-    mainPanel(#
-      plotOutput("recPlot")#
-    )#
-  )#
-)#
-#############
-server <- function(input, output) {#
-#
-	rec <- eventReactive(input$go,{ #
-		rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
-		})#
-	## Plot#
-	output$recPlot <- renderPlot({	#
-rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
-		})#
-	### Stopping App#
-   observe({#
-      if (input$close > 0) stopApp()                             # stop shiny#
-    })#
-#
-}
-shinyApp(ui, server)
-rec.forcast(5,1,2,24)
-rec.forcast(5,1,2,12)
-N.site <- 5#
-rpm <- 1#
-open.rate <- 2#
-Max.Time <- 12
-## Getting the number of open sites per month#
-open.site<-seq(1,N.site,by=open.rate)#
-if(max(open.site)!=N.site) open.site <- c(open.site,N.site)#
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))#
-### Basic average rate per site approach#
-month.rate<-open.site*rpm#
-#
-## penalisng monthly recruitment (recruits 1/2 as much in first month)#
-penalty <- diff(c(0,month.rate))*penal#
-month.rate <- month.rate-penalty#
-#
-cum.rec<-round(cumsum(month.rate))#
-month.rate <- diff(c(0,cum.rec))#
-#
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)
-rec
-npat <- max(rec[,2])
-nmon <- nrow(rec)
-npat
-25*round(npat/125)
-rec.forcast<-function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ #
-#
-## Getting the number of open sites per month#
-open.site<-seq(1,N.site,by=open.rate)#
-if(max(open.site)!=N.site) open.site <- c(open.site,N.site)#
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))#
-### Basic average rate per site approach#
-month.rate<-open.site*rpm#
-#
-## penalisng monthly recruitment (recruits 1/2 as much in first month)#
-penalty <- diff(c(0,month.rate))*penal#
-month.rate <- month.rate-penalty#
-#
-cum.rec<-round(cumsum(month.rate))#
-month.rate <- diff(c(0,cum.rec))#
-#
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)#
-if(plot) {#
-	plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)#
-	npat <- max(rec[,2])#
-	nmon <- nrow(rec)#
-	pat.by <- 25*max(round(npat/125),1)#
-	mon.by <- 3*max(round(nmon/18),1)#
-	abline(h=seq(0,npat,by=25*round(max(rec[,2])/125)),lty=2,col="lightgray",lwd=3)#
-}#
-return(rec)#
-#
-}
-rec.forcast(5,1,2,12)
-rec.forcast
-## Getting the number of open sites per month#
-open.site<-seq(1,N.site,by=open.rate)#
-if(max(open.site)!=N.site) open.site <- c(open.site,N.site)#
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))#
-### Basic average rate per site approach#
-month.rate<-open.site*rpm#
-#
-## penalisng monthly recruitment (recruits 1/2 as much in first month)#
-penalty <- diff(c(0,month.rate))*penal#
-month.rate <- month.rate-penalty#
-#
-cum.rec<-round(cumsum(month.rate))#
-month.rate <- diff(c(0,cum.rec))#
-#
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)
-npat <- max(rec[,2])
-nmon <- nrow(rec)
-pat.by <- 25*max(round(npat/125),1);pat.by
-mon.by <- 3*max(round(nmon/18),1);mon.by
-abline(h=seq(0,npat,by=25*round(max(rec[,2])/125)),lty=2,col="lightgray",lwd=3)
-rec.forcast<-function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ #
-#
-## Getting the number of open sites per month#
-open.site<-seq(1,N.site,by=open.rate)#
-if(max(open.site)!=N.site) open.site <- c(open.site,N.site)#
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))#
-### Basic average rate per site approach#
-month.rate<-open.site*rpm#
-#
-## penalisng monthly recruitment (recruits 1/2 as much in first month)#
-penalty <- diff(c(0,month.rate))*penal#
-month.rate <- month.rate-penalty#
-#
-cum.rec<-round(cumsum(month.rate))#
-month.rate <- diff(c(0,cum.rec))#
-#
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)#
-if(plot) {#
-	plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)#
-	npat <- max(rec[,2])#
-	nmon <- nrow(rec)#
-	pat.by <- 25*max(round(npat/125),1);pat.by#
-	mon.by <- 3*max(round(nmon/18),1);mon.by#
-	abline(h=seq(0,npat,by=pat.by),lty=2,col="lightgray",lwd=3)#
-}#
-return(rec)#
-#
-}
-rec.forcast(5,1,2,12)
-#install.packages("shiny")#
-library(shiny)#
-#source("recForcast.R")#
-rec.forcast<-function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ #
-#
-## Getting the number of open sites per month#
-open.site<-seq(1,N.site,by=open.rate)#
-if(max(open.site)!=N.site) open.site <- c(open.site,N.site)#
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))#
-### Basic average rate per site approach#
-month.rate<-open.site*rpm#
-#
-## penalisng monthly recruitment (recruits 1/2 as much in first month)#
-penalty <- diff(c(0,month.rate))*penal#
-month.rate <- month.rate-penalty#
-#
-cum.rec<-round(cumsum(month.rate))#
-month.rate <- diff(c(0,cum.rec))#
-#
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)#
-if(plot) {#
-	plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)#
-	npat <- max(rec[,2])#
-	nmon <- nrow(rec)#
-	pat.by <- 25*max(round(npat/125),1);pat.by#
-	mon.by <- 3*max(round(nmon/18),1);mon.by	#
-	abline(h=seq(0,npat,by=pat.by),v=c(0,nmon,by=mon.by),lty=2,col="lightgray",lwd=3)#
-}#
-return(rec)#
-#
-}#
-#
-##############################
-##############################
-# Define UI for dataset viewer app ----#
-ui <- fluidPage(#
-#
-	#includeCSS("bootstrap.css"),#
-#
-  	titlePanel("Recruitment Estimates"),#
-  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
-#
-  sidebarLayout(#
-#
-    sidebarPanel(#
-      sliderInput("nSite", "Number of Sites:",  #
-                  min = 1, max = 150, value = 5),#
-#
-      sliderInput("rpm", "Average Monthly Recruitment",  #
-                  min = 0.1, max = 10, value = 1),#
-#
-      sliderInput("openRate", "Rate of Opening sites (per month):",  #
-                  min = 1, max = 5, value = 2),#
-#
-      sliderInput("maxTime", "Length of Recruitment (months):",  #
-                  min = 1, max = 120, value = 12),#
-		## Add a stop button for development	        #
-      actionButton("close",label="stop")#
-    ),#
-#
-    mainPanel(#
-      plotOutput("recPlot")#
-    )#
-  )#
-)#
-#############
-server <- function(input, output) {#
-#
-	rec <- eventReactive(input$go,{ #
-		rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
-		})#
-	## Plot#
-	output$recPlot <- renderPlot({	#
-rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
-		})#
-	### Stopping App#
-   observe({#
-      if (input$close > 0) stopApp()                             # stop shiny#
-    })#
-#
-}#
-shinyApp(ui, server)
-#install.packages("shiny")#
-library(shiny)#
-#source("recForcast.R")#
-rec.forcast<-function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ #
-#
-## Getting the number of open sites per month#
-open.site<-seq(1,N.site,by=open.rate)#
-if(max(open.site)!=N.site) open.site <- c(open.site,N.site)#
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))#
-### Basic average rate per site approach#
-month.rate<-open.site*rpm#
-#
-## penalisng monthly recruitment (recruits 1/2 as much in first month)#
-penalty <- diff(c(0,month.rate))*penal#
-month.rate <- month.rate-penalty#
-#
-cum.rec<-round(cumsum(month.rate))#
-month.rate <- diff(c(0,cum.rec))#
-#
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)#
-if(plot) {#
-	plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)#
-	npat <- max(rec[,2])#
-	nmon <- nrow(rec)#
-	pat.by <- 25*max(round(npat/125),1);pat.by#
-	mon.by <- 3*max(round(nmon/18),1);mon.by	#
-	abline(h=seq(0,npat,by=pat.by),v=seq(0,nmon,by=mon.by),lty=2,col="lightgray",lwd=3)#
-}#
-return(rec)#
-#
-}#
-#
-##############################
-##############################
-# Define UI for dataset viewer app ----#
-ui <- fluidPage(#
-#
-	#includeCSS("bootstrap.css"),#
-#
-  	titlePanel("Recruitment Estimates"),#
-  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
-#
-  sidebarLayout(#
-#
-    sidebarPanel(#
-      sliderInput("nSite", "Number of Sites:",  #
-                  min = 1, max = 150, value = 5),#
-#
-      sliderInput("rpm", "Average Monthly Recruitment",  #
-                  min = 0.1, max = 10, value = 1),#
-#
-      sliderInput("openRate", "Rate of Opening sites (per month):",  #
-                  min = 1, max = 5, value = 2),#
-#
-      sliderInput("maxTime", "Length of Recruitment (months):",  #
-                  min = 1, max = 120, value = 12),#
-		## Add a stop button for development	        #
-      actionButton("close",label="stop")#
-    ),#
-#
-    mainPanel(#
-      plotOutput("recPlot")#
-    )#
-  )#
-)#
-#############
-server <- function(input, output) {#
-#
-	rec <- eventReactive(input$go,{ #
-		rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
-		})#
-	## Plot#
-	output$recPlot <- renderPlot({	#
-rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
-		})#
-	### Stopping App#
-   observe({#
-      if (input$close > 0) stopApp()                             # stop shiny#
-    })#
-#
-}#
-shinyApp(ui, server)
-#install.packages("shiny")#
-library(shiny)#
-library(knitr)#
-source("benFunc.R")#
-source("/Users/richardjackson/Dropbox/Documents/R Utils/statsTools.R")#
-data <- read.csv("data/CJdata.csv")#
-#
-demo  <- data[,2:6]#
-outcome <- data[,7:13]#
-namDem <- c("Gender","Age","Duration","Cohort","Cust. Face.")#
-namOut <- c("A","B","C","D","E","F","G")#
-#
-ct <- heatMapRJ(outcome,ident=F,plot=F,ret=T)#
-#
-##############################
-##############################
-# Define UI for dataset viewer app ----#
-ui <- fluidPage(#
-	## Loading CSS#
-	includeCSS("bootstrap.css"),#
-#
-	br(),#
-  # App title ----#
-  h1("Social Values - Clusters and Patterns"),#
-	h4("This website will let you see your data and the patterns they create!"),#
-#
-   				selectInput(inputId = "dataset",#
-	                  label = "Choose a dataset:",#
-	                  choices = c("SJdata","Other datasets...")),#
-	tabsetPanel(type = "tabs",       #
-		#### Panel 1#
-		tabPanel("Data",#
-		br(),#
-		h4("This section provides a first look at the data you have collected!"),#
-		br(),#
-			fluidRow(#
-				column(4,offset=1,#
-				selectInput("dataType", "Choose your data Type:",#
-                  choices = c("Demographics","Outcome"))#
-                  )#
-			),#
-      	br(),#
-      	fluidRow(#
-				column(4,offset=1,#
-					tableOutput(outputId="demTable")#
-					)#
-				)#
-    		),#
-    			#### Panel 2#
-    	tabPanel("Correlations (1)",#
-		br(),#
-		h4("Here we have a chance to look at an overview of all the correlations between the deomgraphic and outcome data you have collected!"),#
-		br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotAll")#
-					)#
-			)#
-    		),#
-    		#### Panel 2#
-			tabPanel("Correlations (2)",#
-		br(),#
-		h4("Here you can have a closer look at the connections between each demographice and outcome data, one variable at a time!"),#
-		br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotInd",height="600px")#
-				)#
-			),#
-			br(),#
-			fluidRow(#
-				column(4,offset=1,#
-					selectInput("demCov","Demographic Covariate",choices=c("Gender","Age","Duration","Cohort","Cust. Face."))#
-				),#
-				column(4,offset=1,#
-					selectInput("outCov","Outcome Covariate",choices=c("A","B","C","D","E","F","G"))#
-				)#
-			)#
-			),#
-    		#### Panel 3#
-			tabPanel("Cluster Analysis",#
-			br(),#
-			h4("Heirachical Cluster analysis is a way of grouping together your outcome data into naturally occuring clusters.  In the heat graph below, we order the subjects included in your data and the outcome to show you the groups that are formed"),#
-			br(),#
-#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="heatPlot",height="600px")#
-				)#
-			),#
-			br(),#
-			## Action Button#
-			actionButton(inputId="go", label="THE BUTTON!")#
-			),#
-    		#### Panel 4#
-			tabPanel("Cluster Comparisions",#
-		br(),#
-		h4("Now we have found our clusters, it's time to find out what makes are groups different from one another!"),#
-		br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotClust")#
-				)#
-			),#
-			br(),#
-			fluidRow(#
-				column(4,offset=1,#
-					selectInput("demClustCov","Demographic Covariate",choices=c("Gender","Age","Duration","Cohort","Cust. Face."))#
-				)#
-			)#
-			)#
-	)#
-)#
-#############
-server <- function(input, output) {#
-#
-	#ct <- eventReactive(input$go,{ #
-	#	heatMapRJ(outcome,ident=F,plot=F,ret=T)#
-	#	 })#
-	output$demTable <- renderTable(summaryTable(outcome,by=round(runif(nrow(outcome))))[,-c(3,4)])#
-	output$corTable <- renderTable(data.frame(corTable(demo,outcome,flex=F)))#
-	output$corPlotAll <- renderPlot(corTable(demo,outcome,results=F,flex=F,plot=T))#
-	output$corPlotInd <- renderPlot(corPlot(input$demCov,input$outCov,namDem,namOut,demo,outcome))#
-	output$heatPlot <- renderPlot(heatMapRJ(outcome,ident=T,plot=T,ret=F))#
-	output$corPlotClust <- renderPlot(corClust(input$demClustCov,ct,namDem,demo))#
-}#
-#
-shinyApp(ui, server)
-#install.packages("shiny")#
-library(shiny)#
-library(knitr)#
-source("benFunc.R")#
-source("/Users/richardjackson/Dropbox/Documents/R Utils/statsTools.R")#
-data <- read.csv("data/CJdata.csv")#
-#
-demo  <- data[,2:6]#
-outcome <- data[,7:13]#
-namDem <- c("Gender","Age","Duration","Cohort","Cust. Face.")#
-namOut <- c("A","B","C","D","E","F","G")#
-#
-ct <- heatMapRJ(outcome,ident=F,plot=F,ret=T)#
-#
-##############################
-##############################
-# Define UI for dataset viewer app ----#
-ui <- fluidPage(#
-	## Loading CSS#
-	#includeCSS("bootstrap.css"),#
-#
-	br(),#
-  # App title ----#
-  h1("Social Values - Clusters and Patterns"),#
-	h4("This website will let you see your data and the patterns they create!"),#
-#
-   				selectInput(inputId = "dataset",#
-	                  label = "Choose a dataset:",#
-	                  choices = c("SJdata","Other datasets...")),#
-	tabsetPanel(type = "tabs",       #
-		#### Panel 1#
-		tabPanel("Data",#
-		br(),#
-		h4("This section provides a first look at the data you have collected!"),#
-		br(),#
-			fluidRow(#
-				column(4,offset=1,#
-				selectInput("dataType", "Choose your data Type:",#
-                  choices = c("Demographics","Outcome"))#
-                  )#
-			),#
-      	br(),#
-      	fluidRow(#
-				column(4,offset=1,#
-					tableOutput(outputId="demTable")#
-					)#
-				)#
-    		),#
-    			#### Panel 2#
-    	tabPanel("Correlations (1)",#
-		br(),#
-		h4("Here we have a chance to look at an overview of all the correlations between the deomgraphic and outcome data you have collected!"),#
-		br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotAll")#
-					)#
-			)#
-    		),#
-    		#### Panel 2#
-			tabPanel("Correlations (2)",#
-		br(),#
-		h4("Here you can have a closer look at the connections between each demographice and outcome data, one variable at a time!"),#
-		br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotInd",height="600px")#
-				)#
-			),#
-			br(),#
-			fluidRow(#
-				column(4,offset=1,#
-					selectInput("demCov","Demographic Covariate",choices=c("Gender","Age","Duration","Cohort","Cust. Face."))#
-				),#
-				column(4,offset=1,#
-					selectInput("outCov","Outcome Covariate",choices=c("A","B","C","D","E","F","G"))#
-				)#
-			)#
-			),#
-    		#### Panel 3#
-			tabPanel("Cluster Analysis",#
-			br(),#
-			h4("Heirachical Cluster analysis is a way of grouping together your outcome data into naturally occuring clusters.  In the heat graph below, we order the subjects included in your data and the outcome to show you the groups that are formed"),#
-			br(),#
-#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="heatPlot",height="600px")#
-				)#
-			),#
-			br(),#
-			## Action Button#
-			actionButton(inputId="go", label="THE BUTTON!")#
-			),#
-    		#### Panel 4#
-			tabPanel("Cluster Comparisions",#
-		br(),#
-		h4("Now we have found our clusters, it's time to find out what makes are groups different from one another!"),#
-		br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotClust")#
-				)#
-			),#
-			br(),#
-			fluidRow(#
-				column(4,offset=1,#
-					selectInput("demClustCov","Demographic Covariate",choices=c("Gender","Age","Duration","Cohort","Cust. Face."))#
-				)#
-			)#
-			)#
-	)#
-)#
-#############
-server <- function(input, output) {#
-#
-	#ct <- eventReactive(input$go,{ #
-	#	heatMapRJ(outcome,ident=F,plot=F,ret=T)#
-	#	 })#
-	output$demTable <- renderTable(summaryTable(outcome,by=round(runif(nrow(outcome))))[,-c(3,4)])#
-	output$corTable <- renderTable(data.frame(corTable(demo,outcome,flex=F)))#
-	output$corPlotAll <- renderPlot(corTable(demo,outcome,results=F,flex=F,plot=T))#
-	output$corPlotInd <- renderPlot(corPlot(input$demCov,input$outCov,namDem,namOut,demo,outcome))#
-	output$heatPlot <- renderPlot(heatMapRJ(outcome,ident=T,plot=T,ret=F))#
-	output$corPlotClust <- renderPlot(corClust(input$demClustCov,ct,namDem,demo))#
-}#
-#
-shinyApp(ui, server)
-setwd("/Users/richardjackson/Dropbox/Jackson SAC/Projects/Rshiny/BenSV")#
-#install.packages("shiny")#
-library(shiny)#
-library(knitr)#
-source("benFunc.R")#
-source("/Users/richardjackson/Dropbox/Documents/R Utils/statsTools.R")#
-#data <- read.csv("data/CJdata.csv")#
-#
-#ct <- heatMapRJ(outcome,ident=F,plot=F,ret=T)
-# Define UI for dataset viewer app ----#
-ui <- fluidPage(#
-	## Loading CSS#
-	includeCSS("bootstrap.css"),#
-#
-	br(),#
-  # App title ----#
-  h1("Social Values - Clusters and Patterns"),#
-	h4("This website will let you see your data and the patterns they create!"),#
-#
-   				selectInput(inputId = "dataset",#
-	                  label = "Choose a dataset:",#
-	                  choices = dir("data")),#
-	             actionButton("close",label="stop"),#
-	tabsetPanel(type = "tabs",       #
-		#### Panel 1#
-		tabPanel("Data",#
-		br(),#
-		h4("This section provides a first look at the data you have collected!"),#
-		br(),#
-			#fluidRow(#
-			#	column(4,offset=1,#
-			#	selectInput("dataType", "Choose your data Type:",#
-            #      choices = c("Demographics","Outcome"))#
-            #      ),#
-			#),#
-      	fluidRow(#
-				column(4,offset=1,tableOutput(outputId="demTable")),#
-				column(4,offset=1,tableOutput(outputId="outTable"))#
-				)#
-    		),#
-    			#### Panel 2#
-    	tabPanel("Correlations (1)",#
-		br(),#
-		h4("Here we have a chance to look at an overview of all the correlations between the deomgraphic and outcome data you have collected!"),#
-		br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotAll")#
-					)#
-			)#
-    		),#
-    		#### Panel 3#
-			tabPanel("Correlations (2)",#
-		br(),#
-		h4("Here you can have a closer look at the connections between each demographice and outcome data, one variable at a time!"),#
-		br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotInd",height="600px")#
-				)#
-			),#
-			br(),#
-			fluidRow(#
-				column(4,offset=1,#
-					selectInput("demCov","Demographic Covariate",choices=c("Gender","Age","Duration","Cohort","Cust. Face."))#
-				),#
-				column(4,offset=1,#
-					selectInput("outCov","Outcome Covariate",choices=c("A","B","C","D","E","F","G"))#
-				)#
-			)#
-			),#
-    		#### Panel 3#
-			tabPanel("Cluster Analysis",#
-			br(),#
-			h4("Heirachical Cluster analysis is a way of grouping together your outcome data into naturally occuring clusters.  In the heat graph below, we order the subjects included in your data and the outcome to show you the groups that are formed"),#
-			br(),#
-#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="heatPlot",height="600px")#
-				)#
-			),#
-			br(),#
-			## Action Button#
-			actionButton(inputId="go", label="THE BUTTON!")#
-			),#
-    		#### Panel 4#
-			tabPanel("Cluster Comparisions",#
-		br(),#
-		h4("Now we have found our clusters, it's time to find out what makes are groups different from one another!"),#
-		br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotClust")#
-				)#
-			),#
-			br(),#
-			fluidRow(#
-				column(4,offset=1,#
-					selectInput("demClustCov","Demographic Covariate",choices=c("Gender","Age","Duration","Cohort","Cust. Face."))#
-				)#
-			)#
-			)#
-	)#
-)#
-#############
-server <- function(input, output) {#
-	dat <- reactive({#
-		file <- paste("data/",input$dataset,sep="")#
-		dat <- read.csv(file)#
-		demo <- demSelect(dat)#
-		outcome <- outSelect(dat)#
-		ret <- list(dat,demo,outcome)#
-		})#
-	#ct <- eventReactive(input$go,{ #
-	#	heatMapRJ(outcome,ident=F,plot=F,ret=T)#
-	#	 })#
-	### Tab 1 - summary of data	#
-	output$demTable <- renderTable(#
-		summaryTable(dat()[[2]],by=round(runif(nrow(dat()[[2]]))))[,-c(3,4)])#
-	output$outTable <- renderTable(#
-		summaryTable(dat()[[3]],by=round(runif(nrow(dat()[[3]]))))[,-c(3,4)])	#
-	### Tab 2 - #
-	output$corTable <- renderTable(data.frame(corTable(dat()[[3]],outcome,flex=F)))#
-	output$corPlotAll <- renderPlot(corTable(dat()[[2]],dat()[[3]],results=F,flex=F,plot=T))#
-	output$corPlotInd <- renderPlot(corPlot(input$demCov,input$outCov,namDem,namOut,demo,outcome))#
-	output$heatPlot <- renderPlot(heatMapRJ(outcome,ident=T,plot=T,ret=F))#
-	output$corPlotClust <- renderPlot(corClust(input$demClustCov,ct,namDem,demo))#
-	observe({#
-	 	if(input$close > 0) stopApp()  # stop shiny#
-	})#
-}#
-#
-shinyApp(ui, server)
-# Define UI for dataset viewer app ----#
-ui <- fluidPage(#
-	## Loading CSS#
-	includeCSS("bootstrap.css"),#
-#
-	br(),#
-  # App title ----#
-  h1("Social Values - Clusters and Patterns"),#
-	h4("This website will let you see your data and the patterns they create!"),#
-#
-   				selectInput(inputId = "dataset",#
-	                  label = "Choose a dataset:",#
-	                  choices = dir("data")),#
-	             actionButton("close",label="stop"),#
-	tabsetPanel(type = "tabs",       #
-		#### Panel 1#
-		tabPanel("Data",#
-		br(),#
-		h4("This section provides a first look at the data you have collected!"),#
-		br(),#
-			#fluidRow(#
-			#	column(4,offset=1,#
-			#	selectInput("dataType", "Choose your data Type:",#
-            #      choices = c("Demographics","Outcome"))#
-            #      ),#
-			#),#
-      	fluidRow(#
-				column(4,offset=1,tableOutput(outputId="demTable")),#
-				column(4,offset=1,tableOutput(outputId="outTable"))#
-				)#
-    		),#
-    		########################
-    		#### Panel 2#
-    		tabPanel("Correlations (1)",#
-			br(),#
-			h4("Here we have a chance to look at an overview of all the correlations between the deomgraphic and outcome data you have collected!"),#
-			br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotAll")#
-					)#
-			)#
-    		),#
-    		########################
-    		#### Panel 3#
-			tabPanel("Correlations (2)",#
-			br(),#
-			h4("Here you can have a closer look at the connections between each demographice and outcome data, one variable at a time!"),#
-			br(),#
-			fluidRow(#
-				column(10,offset=1,plotOutput(outputId="corPlotInd",height="600px"))	#
-			),#
-			br(),#
-			fluidRow(#
-				column(4,offset=1,uiOutput("selectDemo")),#
-				column(4,offset=1,uiOutput("selectOutput"))#
-				)#
-			),#
-    		########################
-    		#### Panel 4#
-			tabPanel("Cluster Analysis",#
-			br(),#
-			h4("Heirachical Cluster analysis is a way of grouping together your outcome data into naturally occuring clusters.  In the heat graph below, we order the subjects included in your data and the outcome to show you the groups that are formed"),#
-			br(),#
-#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="heatPlot",height="600px")#
-				)#
-			),#
-			br(),#
-			## Action Button#
-			actionButton(inputId="go", label="THE BUTTON!")#
-			),#
-    		#### Panel 4#
-			tabPanel("Cluster Comparisions",#
-		br(),#
-		h4("Now we have found our clusters, it's time to find out what makes are groups different from one another!"),#
-		br(),#
-			fluidRow(#
-				column(10,offset=1,#
-					plotOutput(outputId="corPlotClust")#
-				)#
-			),#
-			br(),#
-			fluidRow(#
-				column(4,offset=1,#
-					selectInput("demClustCov","Demographic Covariate",choices=c("Gender","Age","Duration","Cohort","Cust. Face."))#
-				)#
-			)#
-			)#
-	)#
-)
-#############
-server <- function(input, output) {#
-	dat <- reactive({#
-		file <- paste("data/",input$dataset,sep="")#
-		dat <- read.csv(file)#
-		demo <- demSelect(dat)#
-		outcome <- outSelect(dat)#
-		ret <- list(dat,demo,outcome)#
-		})#
-	#ct <- eventReactive(input$go,{ #
-	#	heatMapRJ(outcome,ident=F,plot=F,ret=T)#
-	#	 })#
-	### Tab 1 - summary of data	#
-	output$demTable <- renderTable(#
-		summaryTable(dat()[[2]],by=round(runif(nrow(dat()[[2]]))))[,-c(3,4)])#
-	output$outTable <- renderTable(#
-		summaryTable(dat()[[3]],by=round(runif(nrow(dat()[[3]]))))[,-c(3,4)])	#
-	### Tab 2 - #
-	output$corTable <- renderTable(data.frame(corTable(dat()[[3]],outcome,flex=F)))#
-	### Tab 3	#
-	output$selectDemo <- renderUI({#
-		selectInput(inputId = "demoCor2",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]])),#
-	})#
-	output$corPlotAll <- renderPlot(corTable(dat()[[2]],dat()[[3]],results=F,flex=F,plot=T))#
-	output$corPlotInd <- renderPlot(corPlot(input$demCov,input$outCov,namDem,namOut,demo,outcome))#
-	output$heatPlot <- renderPlot(heatMapRJ(outcome,ident=T,plot=T,ret=F))#
-	output$corPlotClust <- renderPlot(corClust(input$demClustCov,ct,namDem,demo))#
-	observe({#
-	 	if(input$close > 0) stopApp()  # stop shiny#
-	})#
-}
-#############
-server <- function(input, output) {#
-	dat <- reactive({#
-		file <- paste("data/",input$dataset,sep="")#
-		dat <- read.csv(file)#
-		demo <- demSelect(dat)#
-		outcome <- outSelect(dat)#
-		ret <- list(dat,demo,outcome)#
-		})#
-	#ct <- eventReactive(input$go,{ #
-	#	heatMapRJ(outcome,ident=F,plot=F,ret=T)#
-	#	 })#
-	### Tab 1 - summary of data	#
-	output$demTable <- renderTable(#
-		summaryTable(dat()[[2]],by=round(runif(nrow(dat()[[2]]))))[,-c(3,4)])#
-	output$outTable <- renderTable(#
-		summaryTable(dat()[[3]],by=round(runif(nrow(dat()[[3]]))))[,-c(3,4)])	#
-	### Tab 2 - #
-	output$corTable <- renderTable(data.frame(corTable(dat()[[3]],outcome,flex=F)))#
-	### Tab 3	#
-	output$selectDemo <- renderUI({#
-		selectInput(inputId = "demoCor2",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-	output$corPlotAll <- renderPlot(corTable(dat()[[2]],dat()[[3]],results=F,flex=F,plot=T))#
-	output$corPlotInd <- renderPlot(corPlot(input$demCov,input$outCov,namDem,namOut,demo,outcome))#
-	output$heatPlot <- renderPlot(heatMapRJ(outcome,ident=T,plot=T,ret=F))#
-	output$corPlotClust <- renderPlot(corClust(input$demClustCov,ct,namDem,demo))#
-	observe({#
-	 	if(input$close > 0) stopApp()  # stop shiny#
-	})#
-}
-shinyApp(ui, server)
-corPlotInd
-corPlot
-#############
-server <- function(input, output) {#
-	dat <- reactive({#
-		file <- paste("data/",input$dataset,sep="")#
-		dat <- read.csv(file)#
-		demo <- demSelect(dat)#
-		outcome <- outSelect(dat)#
-		ret <- list(dat,demo,outcome)#
-		})#
-	#ct <- eventReactive(input$go,{ #
-	#	heatMapRJ(outcome,ident=F,plot=F,ret=T)#
-	#	 })#
-	###########
-	### Tab 1 - summary of data	#
-	output$demTable <- renderTable(#
-		summaryTable(dat()[[2]],by=round(runif(nrow(dat()[[2]]))))[,-c(3,4)])#
-	output$outTable <- renderTable(#
-		summaryTable(dat()[[3]],by=round(runif(nrow(dat()[[3]]))))[,-c(3,4)])	#
-	###########
-	### Tab 2 - #
-	output$corTable <- renderTable(data.frame(corTable(dat()[[3]],outcome,flex=F)))#
-	###########
-	### Tab 3	#
-	output$selectDemo <- renderUI({#
-		selectInput(inputId = "demoCor2",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-	output$selectOutput <- renderUI({#
-		selectInput(inputId = "outCor2",#
-	    label = "Outcomes",#
-	    choices = names(dat()[[3]]))#
-	})#
-#
-		output$corPlotInd <- renderPlot(corPlot(input$demoCor2,input$outCor2,names(dat()[[2]]),names(dat()[[3]]),dat()[[2]],dat()[[3]]))#
-	########
-	output$corPlotAll <- renderPlot(corTable(dat()[[2]],dat()[[3]],results=F,flex=F,plot=T))#
-	output$heatPlot <- renderPlot(heatMapRJ(outcome,ident=T,plot=T,ret=F))#
-	output$corPlotClust <- renderPlot(corClust(input$demClustCov,ct,namDem,demo))#
-	observe({#
-	 	if(input$close > 0) stopApp()  # stop shiny#
-	})#
-}
-shinyApp(ui, server)
-#############
-server <- function(input, output) {#
-	dat <- reactive({#
-		file <- paste("data/",input$dataset,sep="")#
-		dat <- read.csv(file)#
-		demo <- demSelect(dat)#
-		outcome <- outSelect(dat)#
-		ret <- list(dat,demo,outcome)#
-		})#
-	#ct <- eventReactive(input$go,{ #
-	#	heatMapRJ(outcome,ident=F,plot=F,ret=T)#
-	#	 })#
-	###########
-	### Tab 1 - summary of data	#
-	output$demTable <- renderTable(#
-		summaryTable(dat()[[2]],by=round(runif(nrow(dat()[[2]]))))[,-c(3,4)])#
-	output$outTable <- renderTable(#
-		summaryTable(dat()[[3]],by=round(runif(nrow(dat()[[3]]))))[,-c(3,4)])	#
-	###########
-	### Tab 2 - #
-	output$corTable <- renderTable(data.frame(corTable(dat()[[3]],outcome,flex=F)))#
-	###########
-	### Tab 3	#
-	output$selectDemo <- renderUI({#
-		selectInput(inputId = "demoCor2",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-	output$selectOutput <- renderUI({#
-		selectInput(inputId = "outCor2",#
-	    label = "Outcomes",#
-	    choices = names(dat()[[3]]))#
-	})#
-#
-		output$corPlotInd <- renderPlot(corPlot(input$demoCor2,input$outCor2,names(dat()[[2]]),names(dat()[[3]]),dat()[[2]],dat()[[3]]))#
-	########
-	output$corPlotAll <- renderPlot(corTable(dat()[[2]],dat()[[3]],results=F,flex=F,plot=T))#
-	output$heatPlot <- renderPlot(heatMapRJ(dat()[[3]],ident=T,plot=T,ret=F))#
-	output$corPlotClust <- renderPlot(corClust(input$demClustCov,ct,namDem,demo))#
-	observe({#
-	 	if(input$close > 0) stopApp()  # stop shiny#
-	})#
-}#
-#
-shinyApp(ui, server)
-# Define UI for dataset viewer app ----#
-ui <- fluidPage(#
-	## Loading CSS#
-	includeCSS("bootstrap.css"),#
-#
-	br(),#
-  # App title ----#
-  h1("Social Values - Clusters and Patterns"),#
-	h4("This website will let you see your data and the patterns they create!"),#
-#
-   				selectInput(inputId = "dataset",#
-	                  label = "Choose a dataset:",#
-	                  choices = dir("data")),#
-	             actionButton("close",label="stop"),#
-	tabsetPanel(type = "tabs",       #
-    		########################
-			#### Panel 1#
-			tabPanel("Data",#
-			br(),#
-			h4("This section provides a first look at the data you have collected!"),#
-			br(),#
-				#fluidRow(#
-				#	column(4,offset=1,#
-				#	selectInput("dataType", "Choose your data Type:",#
-	            #      choices = c("Demographics","Outcome"))#
-	            #      ),#
-				#),#
-	      	fluidRow(#
-				column(4,offset=1,tableOutput(outputId="demTable")),#
-				column(4,offset=1,tableOutput(outputId="outTable"))#
-				)#
-    		),#
-    		########################
-    		#### Panel 2#
-    		tabPanel("Correlations (1)",#
-			br(),#
-			h4("Here we have a chance to look at an overview of all the correlations between the deomgraphic and outcome data you have collected!"),#
-			br(),#
-			fluidRow(#
-				column(10,offset=1,plotOutput(outputId="corPlotAll"))#
-			)#
-    		),#
-    		########################
-    		#### Panel 3#
-			tabPanel("Correlations (2)",#
-			br(),#
-			h4("Here you can have a closer look at the connections between each demographice and outcome data, one variable at a time!"),#
-			br(),#
-			fluidRow(#
-				column(10,offset=1,plotOutput(outputId="corPlotInd",height="600px"))	#
-			),#
-			br(),#
-			fluidRow(#
-				column(4,offset=1,uiOutput("selectDemo")),#
-				column(4,offset=1,uiOutput("selectOutput"))#
-				)#
-			),#
-    		########################
-    		#### Panel 4#
-			tabPanel("Cluster Analysis",#
-			br(),#
-			h4("Heirachical Cluster analysis is a way of grouping together your outcome data into naturally occuring clusters.  In the heat graph below, we order the subjects included in your data and the outcome to show you the groups that are formed"),#
-			br(),#
-#
-			fluidRow(#
-				column(10,offset=1,plotOutput(outputId="heatPlot",height="600px"))		#
-			)#
-			),#
-    		########################
-    		#### Panel 5#
-			tabPanel("Cluster Comparisions",#
-			br(),#
-			h4("Now we have found our clusters, it's time to find out what makes are groups different from one another!"),#
-			br(),#
-			fluidRow(#
-				column(10,offset=1,plotOutput(outputId="corPlotClust"))#
-			),#
-			br(),#
-			fluidRow(#
-				column(4,offset=1,uiOutput("selectDemCor"))#
-			)#
-			)#
-	)#
-)
-#############
-server <- function(input, output) {#
-	dat <- reactive({#
-		file <- paste("data/",input$dataset,sep="")#
-		dat <- read.csv(file)#
-		demo <- demSelect(dat)#
-		outcome <- outSelect(dat)#
-		ret <- list(dat,demo,outcome)#
-		})#
-	ct <- reactive({#
-		heatMapRJ(dat()[[3]],ident=F,plot=F,ret=T)#
-		})#
-	###########
-	### Tab 1 - summary of data	#
-	output$demTable <- renderTable(#
-		summaryTable(dat()[[2]],by=round(runif(nrow(dat()[[2]]))))[,-c(3,4)])#
-	output$outTable <- renderTable(#
-		summaryTable(dat()[[3]],by=round(runif(nrow(dat()[[3]]))))[,-c(3,4)])	#
-	###########
-	### Tab 2 - #
-	output$corTable <- renderTable(data.frame(corTable(dat()[[3]],outcome,flex=F)))#
-	###########
-	### Tab 3	#
-	output$selectDemo <- renderUI({#
-		selectInput(inputId = "demoCor2",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-	output$selectOutput <- renderUI({#
-		selectInput(inputId = "outCor2",#
-	    label = "Outcomes",#
-	    choices = names(dat()[[3]]))#
-	})#
-#
-	output$corPlotInd <- renderPlot(corPlot(input$demoCor2,input$outCor2,names(dat()[[2]]),names(dat()[[3]]),dat()[[2]],dat()[[3]]))#
-	########
-	output$corPlotAll <- renderPlot(corTable(dat()[[2]],dat()[[3]],results=F,flex=F,plot=T))#
-	###########
-	### Tab 4#
-	output$heatPlot <- renderPlot(heatMapRJ(dat()[[3]],ident=T,plot=T,ret=f))#
-	###########
-	### Tab 5	#
-	output$selectDemCor <- renderUI({#
-		selectInput(inputId = "demoHeatPlot",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-#
-	output$corPlotClust <- renderPlot(corClust(input$demoHeatPlot,ct,namDem,demo))#
-	observe({#
-	 	if(input$close > 0) stopApp()  # stop shiny#
-	})#
-}
-shinyApp(ui, server)
-#############
-server <- function(input, output) {#
-	dat <- reactive({#
-		file <- paste("data/",input$dataset,sep="")#
-		dat <- read.csv(file)#
-		demo <- demSelect(dat)#
-		outcome <- outSelect(dat)#
-		ret <- list(dat,demo,outcome)#
-		})#
-	ct <- reactive({#
-		heatMapRJ(dat()[[3]],ident=F,plot=F,ret=T)#
-		})#
-	###########
-	### Tab 1 - summary of data	#
-	output$demTable <- renderTable(#
-		summaryTable(dat()[[2]],by=round(runif(nrow(dat()[[2]]))))[,-c(3,4)])#
-	output$outTable <- renderTable(#
-		summaryTable(dat()[[3]],by=round(runif(nrow(dat()[[3]]))))[,-c(3,4)])	#
-	###########
-	### Tab 2 - #
-	output$corTable <- renderTable(data.frame(corTable(dat()[[3]],outcome,flex=F)))#
-	###########
-	### Tab 3	#
-	output$selectDemo <- renderUI({#
-		selectInput(inputId = "demoCor2",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-	output$selectOutput <- renderUI({#
-		selectInput(inputId = "outCor2",#
-	    label = "Outcomes",#
-	    choices = names(dat()[[3]]))#
-	})#
-#
-	output$corPlotInd <- renderPlot(corPlot(input$demoCor2,input$outCor2,names(dat()[[2]]),names(dat()[[3]]),dat()[[2]],dat()[[3]]))#
-	########
-	output$corPlotAll <- renderPlot(corTable(dat()[[2]],dat()[[3]],results=F,flex=F,plot=T))#
-	###########
-	### Tab 4#
-	output$heatPlot <- renderPlot(heatMapRJ(dat()[[3]],ident=T,plot=T,ret=F))#
-	###########
-	### Tab 5	#
-	output$selectDemCor <- renderUI({#
-		selectInput(inputId = "demoHeatPlot",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-#
-	output$corPlotClust <- renderPlot(corClust(input$demoHeatPlot,ct,names(dat()[[2]]),dat()[[2]]))#
-	observe({#
-	 	if(input$close > 0) stopApp()  # stop shiny#
-	})#
-}#
-#
-shinyApp(ui, server)
-corClust
-#############
-server <- function(input, output) {#
-	dat <- reactive({#
-		file <- paste("data/",input$dataset,sep="")#
-		dat <- read.csv(file)#
-		demo <- demSelect(dat)#
-		outcome <- outSelect(dat)#
-		ret <- list(dat,demo,outcome)#
-		})#
-	ct <- reactive({#
-		heatMapRJ(dat()[[3]],ident=F,plot=F,ret=T)#
-		})#
-	###########
-	### Tab 1 - summary of data	#
-	output$demTable <- renderTable(#
-		summaryTable(dat()[[2]],by=round(runif(nrow(dat()[[2]]))))[,-c(3,4)])#
-	output$outTable <- renderTable(#
-		summaryTable(dat()[[3]],by=round(runif(nrow(dat()[[3]]))))[,-c(3,4)])	#
-	###########
-	### Tab 2 - #
-	output$corTable <- renderTable(data.frame(corTable(dat()[[3]],outcome,flex=F)))#
-	###########
-	### Tab 3	#
-	output$selectDemo <- renderUI({#
-		selectInput(inputId = "demoCor2",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-	output$selectOutput <- renderUI({#
-		selectInput(inputId = "outCor2",#
-	    label = "Outcomes",#
-	    choices = names(dat()[[3]]))#
-	})#
-#
-	output$corPlotInd <- renderPlot(corPlot(input$demoCor2,input$outCor2,names(dat()[[2]]),names(dat()[[3]]),dat()[[2]],dat()[[3]]))#
-	########
-	output$corPlotAll <- renderPlot(corTable(dat()[[2]],dat()[[3]],results=F,flex=F,plot=T))#
-	###########
-	### Tab 4#
-	output$heatPlot <- renderPlot(heatMapRJ(dat()[[3]],ident=T,plot=T,ret=F))#
-	###########
-	### Tab 5	#
-	output$selectDemCor <- renderUI({#
-		selectInput(inputId = "demoHeatPlot",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-#
-	#output$corPlotClust <- renderPlot(corClust(input$demoHeatPlot,ct,names(dat()[[2]]),dat()[[2]]))#
-	output$corPlotClust <- renderTable(ct)#
-	observe({#
-	 	if(input$close > 0) stopApp()  # stop shiny#
-	})#
-}
-shinyApp(ui, server)
-#############
-server <- function(input, output) {#
-	dat <- reactive({#
-		file <- paste("data/",input$dataset,sep="")#
-		dat <- read.csv(file)#
-		demo <- demSelect(dat)#
-		outcome <- outSelect(dat)#
-		ret <- list(dat,demo,outcome)#
-		})#
-	ct <- reactive({#
-		heatMapRJ(dat()[[3]],ident=F,plot=F,ret=T)#
-		})#
-	###########
-	### Tab 1 - summary of data	#
-	output$demTable <- renderTable(#
-		summaryTable(dat()[[2]],by=round(runif(nrow(dat()[[2]]))))[,-c(3,4)])#
-	output$outTable <- renderTable(#
-		summaryTable(dat()[[3]],by=round(runif(nrow(dat()[[3]]))))[,-c(3,4)])	#
-	###########
-	### Tab 2 - #
-	output$corTable <- renderTable(data.frame(corTable(dat()[[3]],outcome,flex=F)))#
-	###########
-	### Tab 3	#
-	output$selectDemo <- renderUI({#
-		selectInput(inputId = "demoCor2",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-	output$selectOutput <- renderUI({#
-		selectInput(inputId = "outCor2",#
-	    label = "Outcomes",#
-	    choices = names(dat()[[3]]))#
-	})#
-#
-	output$corPlotInd <- renderPlot(corPlot(input$demoCor2,input$outCor2,names(dat()[[2]]),names(dat()[[3]]),dat()[[2]],dat()[[3]]))#
-	########
-	output$corPlotAll <- renderPlot(corTable(dat()[[2]],dat()[[3]],results=F,flex=F,plot=T))#
-	###########
-	### Tab 4#
-	output$heatPlot <- renderPlot(heatMapRJ(dat()[[3]],ident=T,plot=T,ret=F))#
-	###########
-	### Tab 5	#
-	output$selectDemCor <- renderUI({#
-		selectInput(inputId = "demoHeatPlot",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-#
-	#output$corPlotClust <- renderPlot(corClust(input$demoHeatPlot,ct,names(dat()[[2]]),dat()[[2]]))#
-	output$corPlotClust <- renderTable(ct())#
-	observe({#
-	 	if(input$close > 0) stopApp()  # stop shiny#
-	})#
-}#
-#
-shinyApp(ui, server)
-#############
-server <- function(input, output) {#
-	dat <- reactive({#
-		file <- paste("data/",input$dataset,sep="")#
-		dat <- read.csv(file)#
-		demo <- demSelect(dat)#
-		outcome <- outSelect(dat)#
-		ret <- list(dat,demo,outcome)#
-		})#
-	ct <- reactive({#
-		heatMapRJ(dat()[[3]],ident=F,plot=F,ret=T)#
-		})#
-	###########
-	### Tab 1 - summary of data	#
-	output$demTable <- renderTable(#
-		summaryTable(dat()[[2]],by=round(runif(nrow(dat()[[2]]))))[,-c(3,4)])#
-	output$outTable <- renderTable(#
-		summaryTable(dat()[[3]],by=round(runif(nrow(dat()[[3]]))))[,-c(3,4)])	#
-	###########
-	### Tab 2 - #
-	output$corTable <- renderTable(data.frame(corTable(dat()[[3]],outcome,flex=F)))#
-	###########
-	### Tab 3	#
-	output$selectDemo <- renderUI({#
-		selectInput(inputId = "demoCor2",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-	output$selectOutput <- renderUI({#
-		selectInput(inputId = "outCor2",#
-	    label = "Outcomes",#
-	    choices = names(dat()[[3]]))#
-	})#
-#
-	output$corPlotInd <- renderPlot(corPlot(input$demoCor2,input$outCor2,names(dat()[[2]]),names(dat()[[3]]),dat()[[2]],dat()[[3]]))#
-	########
-	output$corPlotAll <- renderPlot(corTable(dat()[[2]],dat()[[3]],results=F,flex=F,plot=T))#
-	###########
-	### Tab 4#
-	output$heatPlot <- renderPlot(heatMapRJ(dat()[[3]],ident=T,plot=T,ret=F))#
-	###########
-	### Tab 5	#
-	output$selectDemCor <- renderUI({#
-		selectInput(inputId = "demoHeatPlot",#
-	    label = "Demographic Factors",#
-	    choices = names(dat()[[2]]))#
-	})#
-#
-	output$corPlotClust <- renderPlot(corClust(input$demoHeatPlot,ct(),names(dat()[[2]]),dat()[[2]]))#
-#
-	observe({#
-	 	if(input$close > 0) stopApp()  # stop shiny#
-	})#
-}#
-#
-shinyApp(ui, server)
