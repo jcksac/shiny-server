@@ -1,9 +1,9 @@
-setwd("/Users/richardjackson/Dropbox/Jackson SAC/Projects/Rshiny/BenSV")
+#setwd("/Users/richardjackson/Dropbox/Jackson SAC/Projects/Rshiny/BenSV")
 #install.packages("shiny")
 library(shiny)
-library(knitr)
+#library(knitr)
 source("benFunc.R")
-source("/Users/richardjackson/Dropbox/Documents/R Utils/statsTools.R")
+#source("/Users/richardjackson/Dropbox/Documents/R Utils/statsTools.R")
 #data <- read.csv("data/CJdata.csv")
 
 #ct <- heatMapRJ(outcome,ident=F,plot=F,ret=T)
