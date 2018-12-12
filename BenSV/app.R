@@ -4,7 +4,7 @@ library(shiny)
 #library(knitr)
 #source("benFunc.R")
 #source("/Users/richardjackson/Dropbox/Documents/R Utils/statsTools.R")
-#data <- read.csv("data/CJdata.csv")
+data <- read.csv("data/CJdata.csv")
 
 #ct <- heatMapRJ(outcome,ident=F,plot=F,ret=T)
 
