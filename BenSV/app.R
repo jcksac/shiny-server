@@ -17,18 +17,18 @@ library(shiny)
 
 #########################
 #########################
-demSelect<-function(data){
-nm <- names(data)
-dat <- data[,which(substr(nm,1,2)=="d.")]
-names(data) <-substr(names(dat),3,nchar(names(dat)))
-dat
+demSelect<-function(dat){
+nm <- names(dat)
+dt <- dat[,which(substr(nm,1,2)=="d.")]
+names(dt) <-substr(names(dt),3,nchar(names(dt)))
+dt
 }
 
-outSelect<-function(data){
-	nm <- names(data)
-	dat <- data[,which(substr(nm,1,2)=="o.")]
-	names(data) <-substr(names(dat),3,nchar(names(dat)))
-	dat
+outSelect<-function(dat){
+	nm <- names(dat)
+	dt <- dat[,which(substr(nm,1,2)=="o.")]
+	names(dt) <-substr(names(dt),3,nchar(names(dt)))
+	dt
 }
 
 corTable <- function(demo,out,flex=T,plot=F, results =T){
