@@ -4,15 +4,6 @@
 
 #########################
 #########################
-
-demSelect<-function(data){
-	nm <- names(data)
-	dat <- data[,which(substr(nm,1,2)=="d.")]
-	names(data) <-substr(names(dat),3,nchar(names(dat)))
-	dat
-}
-
-
 outSelect<-function(data){
 	nm <- names(data)
 	dat <- data[,which(substr(nm,1,2)=="o.")]
