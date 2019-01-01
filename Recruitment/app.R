@@ -4,39 +4,76 @@ library(shiny)
 #source("recForcast.R")
 
 
-rec.forcast<-function(N.site,rpm,open.rate,Max.Time,penal=0.5,plot=TRUE,...){ 
+#####################################################
+############# Function 
 
-## Getting the number of open sites per month
-open.site<-seq(1,N.site,by=open.rate)
-if(max(open.site)!=N.site) open.site <- c(open.site,N.site)
-open.site<-c(open.site,rep(N.site,Max.Time-length(open.site)))
-### Basic average rate per site approach
-month.rate<-open.site*rpm
+#nSite <- 20
+#rpm <- 1
+#openRate <- 2
+#maxTime <- 24
+#penal <- 0.5
+#plot <- TRUE
+#detail <- TRUE
+#rec.forcast(nSite,rpm,openRate,maxTime)
 
-## penalisng monthly recruitment (recruits 1/2 as much in first month)
-penalty <- diff(c(0,month.rate))*penal
-month.rate <- month.rate-penalty
-
-cum.rec<-round(cumsum(month.rate))
-month.rate <- diff(c(0,cum.rec))
-
-rec<-data.frame("Monthly Rec"=month.rate,"Cumualtive Rec."=cum.rec)
-
-
-if(plot) {
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ 
 	
-	plot(cum.rec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,...)
-	npat <- max(rec[,2])
-	nmon <- nrow(rec)
-	pat.by <- 25*max(round(npat/125),1);pat.by
-	mon.by <- 3*max(round(nmon/18),1);mon.by
-	abline(h=seq(0,npat*2,by=pat.by),v=seq(0,nmon*2,by=mon.by),lty=2,col="lightgray",lwd=3)
-}
+	## Getting the number of open sites per month
+	openSite <-seq(1, nSite,by= openRate)
+	
+	if(max(openSite)!= nSite) openSite <- c(openSite, nSite)
+	
+	if(length(openSite)<maxTime){
+		openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) 
+	} else {
+		openSite <- openSite[1:maxTime]
+		#warning("Not enough time to open all sites!")
+	}
+	 
+	### Basic average rate per site approach
+	monthRate<-openSite*rpm
+	 
+	## penalisng monthly recruitment (recruits 1/2 as much in first month)
+	penalty <- diff(c(0, monthRate))*penal
+	monthRate <- monthRate-penalty
+	
+	cumRec<-round(cumsum(monthRate)) 
+	monthRate <- diff(c(0, cumRec))
+	
+	rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) 
+	
+	
+	if(plot) {
+		ymax <- max(rec[,2])*1.1
+		par(mar=c(5,5,1,1))
+		plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) 
+		
+		hline <- seq(0,ymax,by=500)
+		if(ymax<2001) hline <- seq(0,ymax,by=250)
+		if(ymax<1001) hline <- seq(0,ymax,by=100)
+		if(ymax<501) hline <- seq(0,ymax,by=50)
+		if(ymax<201) hline <- seq(0,ymax,by=25)
+		if(ymax<51) hline <- seq(0,ymax,by=10)
+	
+		
+		vline <- seq(0,maxTime,by=24)
+		if(maxTime < 73) vline <- seq(0,maxTime,by=12)
+		if(maxTime < 37) vline <- seq(0,maxTime,by=6)
+		if(maxTime < 12) vline <- seq(0,maxTime,by=3)
+		
+		abline(h=hline,v=vline,lty=2,col="gray")
+		
+		if(detail){
+			det.id <- round(seq(0,nrow(rec),length=11)[-1])
+			if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)
+			text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)
+		}
+	}
+	
+	return(rec) 
 
+} 
 
-return(rec)
-
-}
 
 #############################
 #############################
@@ -55,27 +92,27 @@ ui <- fluidPage(
   sidebarLayout(
 
     sidebarPanel(
-      sliderInput("nSite", "Number of Sites:",  
-                  min = 1, max = 150, value = 5),
+		sliderInput("nSite", "Number of Sites:",  
+		                  min = 1, max = 150, value = 5),
+		
+		sliderInput("rpm", "Average Monthly Recruitment",  
+		                  min = 0.1, max = 10, value = 1,step=0.1),
+		
+		sliderInput("openRate", "Rate of Opening sites (per month):",  
+		                  min = 1, max = 5, value = 2,step=0.5),
+		
+		sliderInput("maxTime", "Length of Recruitment (months):",  
+		                  min = 1, max = 120, value = 12),
 
-      sliderInput("rpm", "Average Monthly Recruitment",  
-                  min = 0.1, max = 10, value = 1),
-
-      sliderInput("openRate", "Rate of Opening sites (per month):",  
-                  min = 1, max = 5, value = 2),
-
-      sliderInput("maxTime", "Length of Recruitment (months):",  
-                  min = 1, max = 120, value = 12)
-          
-          
-		## Add a stop button for development	        
+		# Add a stop button for development	        
       	#actionButton("close",label="stop")
                   
                   
     ),
 
     mainPanel(
-      plotOutput("recPlot")
+      plotOutput("recPlot"),
+      textOutput("protLang")
     )
     
     
@@ -93,17 +130,28 @@ server <- function(input, output) {
 	#	})
 	
 	
+	## Total
+	output$totalOutput <- renderText({
+		max(rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)[,2])
+	})
+	
 	## Plot
 	output$recPlot <- renderPlot({	
 rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)
-		
 		})
 
 
+	### Protocol Language
+	output$protLang <- renderText({	
+		rec <- rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)
+		paste("With recruitment taking place over",input$nSite,"sites recruiting at an average monthly rate of",input$rpm,"patients/site/month, then a total of",max(rec[,2]),"patients are anticipated over a period of",input$maxTime,"months with sites themselves being opened at a rate of",input$openRate,"sites per month")
+	})
+	
+	
 	### Stopping App
-    #observe({
-    #   if (input$close > 0) stopApp()                             # stop shiny
-    #})
+    # observe({
+    #    if (input$close > 0) stopApp()                             # stop shiny
+    # })
 
 }
 

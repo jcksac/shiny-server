@@ -1,98 +1,3 @@
-2/0.2
-2/0.2 + 3*4
-2/0.25 + 3*4
-2/0.3 + 3*4
-2/0.2 + 3*4
-summary(tx.sim)
-summary(tc.sim)
-tc.sum$MTD
-tc.sim$MTD
-tc.sim$level
-sum(tc.sim$level)
-sum(tc.sim$tox)
-?skeleton
-??skeleton
-getn(0.4,0.2,6)
-getn(0.4,0.2,6,2,correction=T)
-getn(0.6,0.2,6,2,correction=T)
-getn(0.5,0.2,6,2,correction=T)
-getn(0.5,0.2,6,1.8,correction=T)
-getn(0.45,0.2,6,1.8,correction=T)
-getn(0.45,0.2,6,1.6,correction=T)
-getn(0.45,0.2,6,1.7,correction=T)
-getprior(25,0.2,3,6,model="logistic")
-getprior(.25,0.2,3,6,model="logistic")
-getprior(.1,0.2,3,6,model="logistic")
-getprior(.05,0.2,3,6,model="logistic")
-156+307
-156+307+208
-900-671
-229/2
-229/14
-q()
-55/295
-p <- 55/295
-240/2
-192.5/7
-15+5
-2+2+1
-2+2+1+1+
-1.5
-2+2+1.5+1+1
-c(120,120,27,28)
-cell <- c(120,120,27,28)
-sum(cell)
-sum(1/cell)
-sqrt(sum(1/cell))
-exp(-0.6)
-exp(.6)
-4/44
-sqrt(4/44)
-### Load functions#
-source("/Volumes/CRC-LCTU/Statistical Documents/3. Stats Tools/R functions/statsTools.R")#
-library(clinfun)
-### Recruitment Estimates#
-nSite <- 10#
-rpm <- 0.5#
-openRate <- 1#
-maxTime <- 18#
-rec.forcast(nSite,rpm,openRate,maxTime)
-### Recruitment Estimates#
-nSite <- 10#
-rpm <- 0.33#
-openRate <- 1#
-maxTime <- 18#
-rec.forcast(nSite,rpm,openRate,maxTime)
-### Recruitment Estimates#
-nSite <- 10#
-rpm <- 0.3#
-openRate <- 1#
-maxTime <- 18#
-rec.forcast(nSite,rpm,openRate,maxTime)
-0.31*12
-4/12
-### Recruitment Estimates#
-nSite <- 15#
-rpm <- 0.3#
-openRate <- 1#
-maxTime <- 15#
-rec.forcast(nSite,rpm,openRate,maxTime)
-### Recruitment Estimates#
-nSite <- 15#
-rpm <- 0.3#
-openRate <- 2#
-maxTime <- 15#
-rec.forcast(nSite,rpm,openRate,maxTime)
-### Recruitment Estimates#
-nSite <- 15#
-rpm <- 0.28#
-openRate <- 2#
-maxTime <- 15#
-rec.forcast(nSite,rpm,openRate,maxTime)
-rpm <- 3/12
-openRate <- 2
-maxTime <- 15
-rec.forcast(nSite,rpm,openRate,maxTime)
 3/12
 13/55
 library(clinfun)
@@ -1125,3 +1030,1428 @@ shinyApp(ui, server)
 (20*(100/7))/100
 (10*(300/7))/100
 (5*(500/7))/100
+nSite <- 20#
+rmp <- 1#
+openRate <- 2#
+maxTime <- 24#
+penal <- 0.5#
+plot <- TRUE#
+detail <- TRUE
+er of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,Max.Time-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec)
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm
+nSite <- 20#
+rpm <- 1#
+openRate <- 2#
+maxTime <- 24#
+penal <- 0.5#
+plot <- TRUE#
+detail <- TRUE
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec)
+rec
+plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3)
+seq(0,nrow(rec),length=11)
+round(seq(0,nrow(rec),length=11)[-1])
+det.id <- round(seq(0,nrow(rec),length=11)[-1])
+det.id <- round(seq(0,nrow(rec),length=10)[-1])
+det.id
+if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)
+det.id
+rec
+text(det.id,rec[det.id,2]+2,rec[det.id,2])
+rec[,2]
+max(rec[,2])*1.1
+plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax),...)
+plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax))
+ymax <- max(rec[,2])*1.1
+plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax))
+ymax
+text(det.id,rec[det.id,2]+ymax/50,rec[det.id,2])
+text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2])
+text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=red,font=2)
+text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)
+hline <- seq(0,ymax,by=50)
+hline
+ymax <- max(rec[,2])*1.1#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")
+det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)
+par(mar=c(5,5,1,1))
+plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax))
+nSite <- 20#
+rpm <- 1#
+openRate <- 2#
+maxTime <- 24#
+penal <- 0.5#
+plot <- TRUE#
+detail <- TRUE#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+}
+rec.forcast(nSite,rpm,openRate,maxTime)
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")#
+######################################################
+############# Function #
+#
+#nSite <- 20#
+#rpm <- 1#
+#openRate <- 2#
+#maxTime <- 24#
+#penal <- 0.5#
+#plot <- TRUE#
+#detail <- TRUE#
+#rec.forcast(nSite,rpm,openRate,maxTime)#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+} #
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("nSite", "Number of Sites:",  #
+                  min = 1, max = 150, value = 5),#
+#
+      sliderInput("rpm", "Average Monthly Recruitment",  #
+                  min = 0.1, max = 10, value = 1),#
+#
+      sliderInput("openRate", "Rate of Opening sites (per month):",  #
+                  min = 1, max = 5, value = 2),#
+#
+      sliderInput("maxTime", "Length of Recruitment (months):",  #
+                  min = 1, max = 120, value = 12)#
+		## Add a stop button for development	        #
+      	#actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Stopping App#
+    #observe({#
+    #   if (input$close > 0) stopApp()                             # stop shiny#
+    #})#
+#
+}#
+shinyApp(ui, server)
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")#
+######################################################
+############# Function #
+#
+#nSite <- 20#
+#rpm <- 1#
+#openRate <- 2#
+#maxTime <- 24#
+#penal <- 0.5#
+#plot <- TRUE#
+#detail <- TRUE#
+#rec.forcast(nSite,rpm,openRate,maxTime)#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=500)#
+	if(ymax<2001) hline <- seq(0,ymax,by=250)#
+	if(ymax<1001) hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+} #
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("nSite", "Number of Sites:",  #
+                  min = 1, max = 150, value = 5),#
+#
+      sliderInput("rpm", "Average Monthly Recruitment",  #
+                  min = 0.1, max = 10, value = 1),#
+#
+      sliderInput("openRate", "Rate of Opening sites (per month):",  #
+                  min = 1, max = 5, value = 2),#
+#
+      sliderInput("maxTime", "Length of Recruitment (months):",  #
+                  min = 1, max = 120, value = 12)#
+		## Add a stop button for development	        #
+      	#actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Stopping App#
+    #observe({#
+    #   if (input$close > 0) stopApp()                             # stop shiny#
+    #})#
+#
+}#
+shinyApp(ui, server)
+?plotOutput
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")
+?plotOutput
+?textOutput
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")#
+######################################################
+############# Function #
+#
+#nSite <- 20#
+#rpm <- 1#
+#openRate <- 2#
+#maxTime <- 24#
+#penal <- 0.5#
+#plot <- TRUE#
+#detail <- TRUE#
+#rec.forcast(nSite,rpm,openRate,maxTime)#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=500)#
+	if(ymax<2001) hline <- seq(0,ymax,by=250)#
+	if(ymax<1001) hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+} #
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("nSite", "Number of Sites:",  #
+                  min = 1, max = 150, value = 5),#
+#
+      sliderInput("rpm", "Average Monthly Recruitment",  #
+                  min = 0.1, max = 10, value = 1),#
+#
+      sliderInput("openRate", "Rate of Opening sites (per month):",  #
+                  min = 1, max = 5, value = 2),#
+#
+      sliderInput("maxTime", "Length of Recruitment (months):",  #
+                  min = 1, max = 120, value = 12),#
+      textOutput("totalOutput")#
+		# Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Total#
+	output$totalOutput <- renderText({#
+		max(rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)[,2])#
+	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Stopping App#
+    observe({#
+       if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("nSite", "Number of Sites:",  #
+                  min = 1, max = 150, value = 5),#
+#
+      sliderInput("rpm", "Average Monthly Recruitment",  #
+                  min = 0.1, max = 10, value = 1),#
+#
+      sliderInput("openRate", "Rate of Opening sites (per month):",  #
+                  min = 1, max = 5, value = 2),#
+#
+      sliderInput("maxTime", "Length of Recruitment (months):",  #
+                  min = 1, max = 120, value = 12),#
+      textOutput("totalOutput")#
+		# Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+    )#
+  )#
+)
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+      sliderInput("nSite", "Number of Sites:",  #
+                  min = 1, max = 150, value = 5),#
+#
+      sliderInput("rpm", "Average Monthly Recruitment",  #
+                  min = 0.1, max = 10, value = 1),#
+#
+      sliderInput("openRate", "Rate of Opening sites (per month):",  #
+                  min = 1, max = 5, value = 2),#
+#
+      sliderInput("maxTime", "Length of Recruitment (months):",  #
+                  min = 1, max = 120, value = 12),#
+      textOutput("totalOutput"),#
+		# Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Total#
+	output$totalOutput <- renderText({#
+		max(rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)[,2])#
+	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Stopping App#
+    observe({#
+       if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+?sliderInput
+?textOutpu
+?textOutput
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")#
+######################################################
+############# Function #
+#
+#nSite <- 20#
+#rpm <- 1#
+#openRate <- 2#
+#maxTime <- 24#
+#penal <- 0.5#
+#plot <- TRUE#
+#detail <- TRUE#
+#rec.forcast(nSite,rpm,openRate,maxTime)#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=500)#
+	if(ymax<2001) hline <- seq(0,ymax,by=250)#
+	if(ymax<1001) hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+} #
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		sliderInput("nSite", "Number of Sites:",  #
+		                  min = 1, max = 150, value = 5),#
+		sliderInput("rpm", "Average Monthly Recruitment",  #
+		                  min = 0.1, max = 10, value = 1,step=0.1),#
+		sliderInput("openRate", "Rate of Opening sites (per month):",  #
+		                  min = 1, max = 5, value = 2,step=0.5),#
+		sliderInput("maxTime", "Length of Recruitment (months):",  #
+		                  min = 1, max = 120, value = 12),#
+		br(),     #
+		h3("Total Recruitment"),#
+		textOutput("totalOutput"),#
+		br(), #
+# Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Total#
+	output$totalOutput <- renderText({#
+		max(rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)[,2])#
+	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Stopping App#
+    observe({#
+       if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")#
+######################################################
+############# Function #
+#
+#nSite <- 20#
+#rpm <- 1#
+#openRate <- 2#
+#maxTime <- 24#
+#penal <- 0.5#
+#plot <- TRUE#
+#detail <- TRUE#
+#rec.forcast(nSite,rpm,openRate,maxTime)#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=500)#
+	if(ymax<2001) hline <- seq(0,ymax,by=250)#
+	if(ymax<1001) hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+} #
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h3("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		sliderInput("nSite", "Number of Sites:",  #
+		                  min = 1, max = 150, value = 5),#
+		sliderInput("rpm", "Average Monthly Recruitment",  #
+		                  min = 0.1, max = 10, value = 1,step=0.1),#
+		sliderInput("openRate", "Rate of Opening sites (per month):",  #
+		                  min = 1, max = 5, value = 2,step=0.5),#
+		sliderInput("maxTime", "Length of Recruitment (months):",  #
+		                  min = 1, max = 120, value = 12),#
+		br(),     #
+		h5("Total Recruitment"),#
+		textOutput("totalOutput"),#
+		br(), #
+# Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Total#
+	output$totalOutput <- renderText({#
+		max(rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)[,2])#
+	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Stopping App#
+    observe({#
+       if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")#
+######################################################
+############# Function #
+#
+#nSite <- 20#
+#rpm <- 1#
+#openRate <- 2#
+#maxTime <- 24#
+#penal <- 0.5#
+#plot <- TRUE#
+#detail <- TRUE#
+#rec.forcast(nSite,rpm,openRate,maxTime)#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=500)#
+	if(ymax<2001) hline <- seq(0,ymax,by=250)#
+	if(ymax<1001) hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+} #
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h3("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		sliderInput("nSite", "Number of Sites:",  #
+		                  min = 1, max = 150, value = 5),#
+		sliderInput("rpm", "Average Monthly Recruitment",  #
+		                  min = 0.1, max = 10, value = 1,step=0.1),#
+		sliderInput("openRate", "Rate of Opening sites (per month):",  #
+		                  min = 1, max = 5, value = 2,step=0.5),#
+		sliderInput("maxTime", "Length of Recruitment (months):",  #
+		                  min = 1, max = 120, value = 12),#
+		br(),     #
+		h5("Total Recruitment"),#
+		textOutput("totalOutput",inline=T),#
+		br(), #
+# Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Total#
+	output$totalOutput <- renderText({#
+		max(rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)[,2])#
+	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Stopping App#
+    observe({#
+       if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+renderOutput
+?renderText
+?printOutput
+??printOutput
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")#
+######################################################
+############# Function #
+#
+#nSite <- 20#
+#rpm <- 1#
+#openRate <- 2#
+#maxTime <- 24#
+#penal <- 0.5#
+#plot <- TRUE#
+#detail <- TRUE#
+#rec.forcast(nSite,rpm,openRate,maxTime)#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=500)#
+	if(ymax<2001) hline <- seq(0,ymax,by=250)#
+	if(ymax<1001) hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+} #
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		sliderInput("nSite", "Number of Sites:",  #
+		                  min = 1, max = 150, value = 5),#
+		sliderInput("rpm", "Average Monthly Recruitment",  #
+		                  min = 0.1, max = 10, value = 1,step=0.1),#
+		sliderInput("openRate", "Rate of Opening sites (per month):",  #
+		                  min = 1, max = 5, value = 2,step=0.5),#
+		sliderInput("maxTime", "Length of Recruitment (months):",  #
+		                  min = 1, max = 120, value = 12),#
+#
+		# Add a stop button for development	        #
+      	# actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Total#
+	output$totalOutput <- renderText({#
+		max(rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)[,2])#
+	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Stopping App#
+    # observe({#
+    #    if (input$close > 0) stopApp()                             # stop shiny#
+    # })#
+#
+}#
+shinyApp(ui, server)
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")#
+######################################################
+############# Function #
+#
+#nSite <- 20#
+#rpm <- 1#
+#openRate <- 2#
+#maxTime <- 24#
+#penal <- 0.5#
+#plot <- TRUE#
+#detail <- TRUE#
+#rec.forcast(nSite,rpm,openRate,maxTime)#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=500)#
+	if(ymax<2001) hline <- seq(0,ymax,by=250)#
+	if(ymax<1001) hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+}
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		sliderInput("nSite", "Number of Sites:",  #
+		                  min = 1, max = 150, value = 5),#
+		sliderInput("rpm", "Average Monthly Recruitment",  #
+		                  min = 0.1, max = 10, value = 1,step=0.1),#
+		sliderInput("openRate", "Rate of Opening sites (per month):",  #
+		                  min = 1, max = 5, value = 2,step=0.5),#
+		sliderInput("maxTime", "Length of Recruitment (months):",  #
+		                  min = 1, max = 120, value = 12)#
+#
+		# Add a stop button for development	        #
+      	# actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+    )#
+  )#
+)
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Total#
+	output$totalOutput <- renderText({#
+		max(rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)[,2])#
+	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Stopping App#
+    # observe({#
+    #    if (input$close > 0) stopApp()                             # stop shiny#
+    # })#
+#
+}#
+shinyApp(ui, server)
+library(shiny)
+?textOutput
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")#
+######################################################
+############# Function #
+#
+#nSite <- 20#
+#rpm <- 1#
+#openRate <- 2#
+#maxTime <- 24#
+#penal <- 0.5#
+#plot <- TRUE#
+#detail <- TRUE#
+#rec.forcast(nSite,rpm,openRate,maxTime)#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=500)#
+	if(ymax<2001) hline <- seq(0,ymax,by=250)#
+	if(ymax<1001) hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+} #
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		sliderInput("nSite", "Number of Sites:",  #
+		                  min = 1, max = 150, value = 5),#
+		sliderInput("rpm", "Average Monthly Recruitment",  #
+		                  min = 0.1, max = 10, value = 1,step=0.1),#
+		sliderInput("openRate", "Rate of Opening sites (per month):",  #
+		                  min = 1, max = 5, value = 2,step=0.5),#
+		sliderInput("maxTime", "Length of Recruitment (months):",  #
+		                  min = 1, max = 120, value = 12)#
+#
+		# Add a stop button for development	        #
+      	# actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot")#
+      textOutput("protLang")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Total#
+	output$totalOutput <- renderText({#
+		max(rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)[,2])#
+	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Protocol Language#
+	output$protLang <- renderText("Protocol Language")#
+#
+	### Stopping App#
+     observe({#
+        if (input$close > 0) stopApp()                             # stop shiny#
+     })#
+#
+}#
+shinyApp(ui, server)
+#install.packages("shiny")#
+library(shiny)#
+#source("recForcast.R")#
+######################################################
+############# Function #
+#
+#nSite <- 20#
+#rpm <- 1#
+#openRate <- 2#
+#maxTime <- 24#
+#penal <- 0.5#
+#plot <- TRUE#
+#detail <- TRUE#
+#rec.forcast(nSite,rpm,openRate,maxTime)#
+#
+rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TRUE,...){ #
+#
+## Getting the number of open sites per month#
+openSite <-seq(1, nSite,by= openRate)#
+#
+if(max(openSite)!= nSite) openSite <- c(openSite, nSite)#
+#
+if(length(openSite)<maxTime){#
+openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) #
+} else {#
+openSite <- openSite[1:maxTime]#
+warning("Not enough time to open all sites!")#
+}#
+### Basic average rate per site approach#
+monthRate<-openSite*rpm#
+## penalisng monthly recruitment (recruits 1/2 as much in first month)#
+penalty <- diff(c(0, monthRate))*penal#
+monthRate <- monthRate-penalty#
+#
+cumRec<-round(cumsum(monthRate)) #
+monthRate <- diff(c(0, cumRec))#
+#
+rec<-data.frame("Monthly Rec"=monthRate,"Cumualtive Rec."= cumRec) #
+if(plot) {#
+	ymax <- max(rec[,2])*1.1#
+	par(mar=c(5,5,1,1))#
+	plot(cumRec,typ="l",xlab="Time (Months)",ylab="Cumulative Recruitment",font.lab=3,ylim=c(0,ymax)) #
+	hline <- seq(0,ymax,by=500)#
+	if(ymax<2001) hline <- seq(0,ymax,by=250)#
+	if(ymax<1001) hline <- seq(0,ymax,by=100)#
+	if(ymax<501) hline <- seq(0,ymax,by=50)#
+	if(ymax<201) hline <- seq(0,ymax,by=25)#
+	if(ymax<51) hline <- seq(0,ymax,by=10)#
+	vline <- seq(0,maxTime,by=24)#
+	if(maxTime < 73) vline <- seq(0,maxTime,by=12)#
+	if(maxTime < 37) vline <- seq(0,maxTime,by=6)#
+	if(maxTime < 12) vline <- seq(0,maxTime,by=3)#
+	abline(h=hline,v=vline,lty=2,col="gray")#
+	if(detail){#
+		det.id <- round(seq(0,nrow(rec),length=11)[-1])#
+		if(det.id[length(det.id)]!=nrow(rec)) det.id[length(det.id)] <- nrow(rec)#
+		text(det.id,rec[det.id,2]+ymax/25,rec[det.id,2],col=2,font=2)#
+	}#
+}#
+#
+return(rec) #
+#
+} #
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Recruitment Estimates"),#
+  	h4("This page gives a basic funtion for estimating recruitment forecasts for clinical trials.  Inputs required are: The number of sites available, average rate of recruitment, the rate of opening sites to recruitment and the length of time available"),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		sliderInput("nSite", "Number of Sites:",  #
+		                  min = 1, max = 150, value = 5),#
+		sliderInput("rpm", "Average Monthly Recruitment",  #
+		                  min = 0.1, max = 10, value = 1,step=0.1),#
+		sliderInput("openRate", "Rate of Opening sites (per month):",  #
+		                  min = 1, max = 5, value = 2,step=0.5),#
+		sliderInput("maxTime", "Length of Recruitment (months):",  #
+		                  min = 1, max = 120, value = 12)#
+#
+		# Add a stop button for development	        #
+      	# actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("recPlot"),#
+      textOutput("protLang")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+#
+	#rec <- eventReactive(input$go,{ #
+	#	rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime)#
+	#	})#
+	## Total#
+	output$totalOutput <- renderText({#
+		max(rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,plot=F)[,2])#
+	})#
+	## Plot#
+	output$recPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	### Protocol Language#
+	output$protLang <- renderText("Protocol Language")#
+#
+	### Stopping App#
+     observe({#
+        if (input$close > 0) stopApp()                             # stop shiny#
+     })#
+#
+}#
+shinyApp(ui, server)
