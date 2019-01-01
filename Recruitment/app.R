@@ -102,7 +102,7 @@ ui <- fluidPage(
 		                  min = 1, max = 5, value = 2,step=0.5),
 		
 		sliderInput("maxTime", "Length of Recruitment (months):",  
-		                  min = 1, max = 120, value = 12),
+		                  min = 1, max = 120, value = 12)
 
 		# Add a stop button for development	        
       	#actionButton("close",label="stop")
