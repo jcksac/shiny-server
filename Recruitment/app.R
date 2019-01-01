@@ -25,10 +25,7 @@ rec.forcast <- function(nSite,rpm,openRate,maxTime,penal=0.5,plot=TRUE,detail=TR
 	
 	if(length(openSite)<maxTime){
 		openSite <-c(openSite,rep(nSite,maxTime-length(openSite))) 
-	} else {
-		openSite <- openSite[1:maxTime]
-		#warning("Not enough time to open all sites!")
-	}
+	} else { openSite <- openSite[1:maxTime] }
 	 
 	### Basic average rate per site approach
 	monthRate<-openSite*rpm
