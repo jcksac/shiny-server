@@ -389,7 +389,7 @@ warning(paste(nam[i],"converted to factor"))
 if(class(x[,i])=="factor"){
 x[,i]<-as.factor(as.character(x[,i]))
 tab<- summ.fac(x[,i],by=by,row=row,perc=perc)
-tab <- cbind(rep(nam[i],nrow(tab)),c(levels(x[,i]),"Missing"),tab)  
+tab <- cbind(rep(nam[i],nrow(tab)),c(levels(x[,i]),"Missing"),tab)
 if(!missing) tab <- tab[-nrow(tab),]
 TAB<-rbind(TAB,tab)
 }
@@ -405,19 +405,19 @@ tab<-c(nam[i],"mean (se)",tab,NA, summ.med(x[,i]))
 }
 if(missing){
 na.tab<-table((is.na(x[,i])|x[,i]=="-Inf"|x[,i]=="Inf"),by)
-na.id<-which(row.names(na.tab)=="TRUE")		
+na.id<-which(row.names(na.tab)=="TRUE")
 ### only add missing column if any observed
 if(length(na.id)>0)	{
 na.tab<-na.tab[na.id,]
 na.tab<-c(na.tab,0,sum(na.tab))
 na.tab <- c(nam[i],"Missing",na.tab)
-tab<-rbind(tab,na.tab)	
-}            		
+tab<-rbind(tab,na.tab)
+}
 }
 TAB<-rbind(TAB,tab)
 }
 ## Neither Factor or Continuous
-if(class(x[,i])!="integer"&class(x[,i])!="numeric"&class(x[,i])!="factor"&class(x[,i])!="character"){ 
+if(class(x[,i])!="integer"&class(x[,i])!="numeric"&class(x[,i])!="factor"&class(x[,i])!="character"){
 warning(paste(nam[i],"not included due to uncompatible class"))
 }
 }
@@ -429,7 +429,7 @@ if(!missing|!missing.by) TAB <- TAB[,-which(colnames(TAB)=="Missing")]
 ret <- TAB
 ### Formatted flex table (if required)
 if(flex){
-flexTAB <- FlexTable(TAB,...)	
+flexTAB <- FlexTable(TAB,...)
 ### merging column for factors
 nam.tab <-which(table(TAB[,1])>1)	
 for(m in names(nam.tab)){
