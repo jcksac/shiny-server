@@ -442,6 +442,27 @@ ret
 }
 
 
+summ.fac <- function(x,by,perc=TRUE,row=TRUE){
+n<-table(x,by,useNA="always")
+rs <- rowSums(n)
+tab<-cbind(n,rs)
+if(perc){
+if(row){
+p <- round(100*(n/rs),0)
+tab <- matrix(paste(n," (",p,"%)",sep=""),dim(n))
+tab <- cbind(tab,rs)
+}
+if(!row){
+p <- round( 100*(t(t(tab)/colSums(tab))) ,0)
+tab<-matrix(paste(tab," (",p,"%)",sep=""),dim(n))
+}
+}
+tab
+}
 
+summ.med <- function(x){
+quant<-round(quantile(x,p=c(.5,.25,.75),na.rm=TRUE),3)
+paste(quant[1]," (",quant[2],", ",quant[3],")",sep="")
+}
 
 
