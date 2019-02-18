@@ -57,6 +57,14 @@ ui <- fluidPage(
 				#),
 	      
 	      
+	      	      
+	      	fluidRow(
+				column(4,offset=1,h3("Demographic Data")),
+				column(4,offset=1,h3("Outcome Data"))
+				),
+	      
+	      	br(),
+	      	
 	      	fluidRow(
 				column(4,offset=1,tableOutput(outputId="demTable")),
 				column(4,offset=1,tableOutput(outputId="outTable"))

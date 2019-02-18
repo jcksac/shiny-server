@@ -1,84 +1,3 @@
-3/12
-13/55
-library(clinfun)
-?gsdesign.binomial(c(1))
-gsdesign.binomial(c(1),20,25,sig.level=0.1,power=0.8)
-gsdesign.binomial(c(1),25,20,sig.level=0.1,power=0.8)
-gsdesign.binomial(c(1),.25,.20,sig.level=0.1,power=0.8)
-gsdesign.binomial(c(1),.20,.25,sig.level=0.1,power=0.8)
-gsdesign.binomial(c(1),.20,.30,sig.level=0.1,power=0.8)
-gsdesign.binomial(c(1),.20,.30,sig.level=0.1,power=0.8,alternative="one.sided")
-gsdesign.binomial(c(1),.02,.05,sig.level=0.1,power=0.8,alternative="one.sided")
-70+42+60+98
-40*(70+42+60+98)
-40*(70+42+60+98)/4
-40*(70+42+60+98)/8
-1350/4
-10*40
-library(clinfun)
-ph2single(0.5,0.7,0.15,0.2)
-42/8
-70+42+60+98
-(70+42+60+98)/16
-15*40
-16/4
-### Recruitment Estimates#
-nSite <- 4#
-rpm <- 4#
-openRate <- 1#
-maxTime <- 12#
-folUp <- 3#
-penal <- 0.5#
-rec.forcast(nSite,rpm,openRate,maxTime)
-### Load functions#
-source("/Volumes/CRC-LCTU/Statistical Documents/3. Stats Tools/R functions/statsTools.R")#
-library(clinfun)#
-#
-### Non-Inferiority Trial#
-gsdesign.binomial(c(1),.02,.05,sig.level=0.1,power=0.8,alternative="one.sided")#
-#
-### Recruitment Estimates#
-nSite <- 4#
-rpm <- 4#
-openRate <- 1#
-maxTime <- 12#
-folUp <- 3#
-penal <- 0.5#
-rec.forcast(nSite,rpm,openRate,maxTime)
-source("/Volumes/CRC-LCTU/Statistical Documents/3. Stats Tools/R functions/statsTools.R")#
-library(clinfun)#
-#
-### Non-Inferiority Trial#
-gsdesign.binomial(c(1),.02,.05,sig.level=0.1,power=0.8,alternative="one.sided")#
-#
-### Recruitment Estimates#
-nSite <- 4#
-rpm <- 8#
-openRate <- 1#
-maxTime <- 12#
-folUp <- 3#
-penal <- 0.5#
-rec.forcast(nSite,rpm,openRate,maxTime)
-rec
-week.est <- c(70,42,60,98)
-mnth.est <- week.est*4
-mnth.est
-mnth.est/16
-mean(mnth.est/16)
-mean(mnth.est/20)
-nSite <- 4#
-rpm <- 10#
-openRate <- 1#
-maxTime <- 12#
-folUp <- 3#
-penal <- 0.5#
-rec <- rec.forcast(nSite,rpm,openRate,maxTime);rec
-gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.8,alternative="one.sided")
-### Non-Inferiority Trial#
-gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.8,alternative="one.sided")
-gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.9,alternative="one.sided")
-gsdesign.binomial(c(1),.08,.012,sig.level=0.05,power=0.9,alternative="one.sided")
-gsdesign.binomial(c(1),.08,.012,sig.level=0.05,power=0.8,alternative="one.sided")
 gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.8,alternative="one.sided")
 ?gsdesign.binomial(c(1),.08,.012,sig.level=0.1,power=0.8,alternative="one.sided")
 ")
@@ -2452,6 +2371,444 @@ rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.
      observe({#
         if (input$close > 0) stopApp()                             # stop shiny#
      })#
+#
+}#
+shinyApp(ui, server)
+ibrary()
+library(shiny)
+?slectionInput
+?selectionInput
+?sliderInput
+#install.packages("shiny")#
+library(shiny)#
+######################################################
+############# Function #
+#
+######################################################
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Survival Functions"),#
+  	h4("This page shows the shape and behaviour of basic survival functions."),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		selectInput("suvFunc", "Distribution:",  #
+		                  c("Exponential","Weibull","Loglogistic","Lognormal","Peicewise Exponential")),#
+		## Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("survPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+	## Plot#
+	output$survPlot <- renderPlot({	#
+rec.forcast(input$nSite,input$rpm,input$openRate,input$maxTime,cex.axis=1.2,cex.lab=1.3,col="lightblue",lwd=6)#
+		})#
+	## Stopping App#
+    observe({#
+    		if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+#install.packages("shiny")#
+library(shiny)#
+######################################################
+############# Function #
+#
+######################################################
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Survival Functions"),#
+  	h4("This page shows the shape and behaviour of basic survival functions."),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		selectInput("suvFunc", "Distribution:",  #
+		                  c("Exponential","Weibull","Loglogistic","Lognormal","Peicewise Exponential")),#
+		## Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("survPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+	## Plot#
+	output$survPlot <- renderPlot({	#
+		hist(rnorm(100))#
+	})#
+	## Stopping App#
+    observe({#
+    		if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+#install.packages("shiny")#
+library(shiny)#
+######################################################
+############# Function #
+#
+######################################################
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Survival Functions"),#
+  	h4("This page shows the shape and behaviour of basic survival functions."),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		selectInput("suvFunc", "Distribution:",  #
+		                  c("Exponential","Weibull","Loglogistic","Lognormal","Peicewise Exponential")),#
+		uiOutput("selectDemo"),#
+#
+		## Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("survPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+	output$selectDemo <- renderUI({#
+		selectInput(inputId = "demoCor2",#
+	    label = "Demographic Factors",#
+	    choices = names(dat()[[2]]))#
+	})#
+#
+	## Plot#
+	output$survPlot <- renderPlot({	#
+		hist(rnorm(100))#
+	})#
+	## Stopping App#
+    observe({#
+    		if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+?sliderInput
+#install.packages("shiny")#
+library(shiny)#
+######################################################
+############# Function #
+#
+######################################################
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Survival Functions"),#
+  	h4("This page shows the shape and behaviour of basic survival functions."),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		selectInput("suvFunc", "Distribution:",  #
+		                  c("Exponential","Weibull","Loglogistic","Lognormal","Peicewise Exponential")),#
+		uiOutput("selectDemo"),#
+#
+		## Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("survPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+	output$selectDemo <- renderUI({#
+		sliderInput(inputId = "hazRate1",label = "Hazard Rate",0,0.5,step=0.01,value=0.05)#
+	})#
+#
+	## Plot#
+	output$survPlot <- renderPlot({	#
+		hist(rnorm(100))#
+	})#
+	## Stopping App#
+    observe({#
+    		if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+survFunction <- function(time,parm,dist="Exponential"){#
+	if(dist="Exponential"){#
+		S <- exp(time*parm[1])#
+	}#
+	S#
+}
+survFunction <- function(time,parm,dist="exponential"){#
+	if(dist=="exponential"){#
+		S <- exp(time*parm[1])#
+	}#
+	S#
+}
+#install.packages("shiny")#
+library(shiny)#
+######################################################
+############# Function #
+#
+survFunction <- function(time,parm,dist="exponential"){#
+	if(dist=="exponential"){#
+		S <- exp(time*parm[1])#
+	}#
+	S#
+}#
+#
+######################################################
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Survival Functions"),#
+  	h4("This page shows the shape and behaviour of basic survival functions."),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		selectInput("suvFunc", "Distribution:",  #
+		                  c("Exponential","Weibull","Loglogistic","Lognormal","Peicewise Exponential")),#
+		uiOutput("selectDemo"),#
+#
+		## Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("survPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+	output$selectDemo <- renderUI({#
+		sliderInput(inputId = "hazRate1",label = "Hazard Rate",0,0.5,step=0.01,value=0.05)#
+	})#
+#
+	## Plot#
+	output$survPlot <- renderPlot({	#
+		time <- c(0,24,by=0.25)#
+		surv <- survFunction(time,input$hazRate1,dist="Exponential")#
+		plot(time,surv)#
+	})#
+	## Stopping App#
+    observe({#
+    		if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+surv <- survFunction(time,input$hazRate1,dist="Exponential")
+surv <- survFunction(time,0.05,dist="Exponential")
+survFunction <- function(time,parm,dist="exponential"){#
+	if(dist=="exponential"){#
+		S <- exp(time*parm[1])#
+	}#
+	S#
+}
+surv <- survFunction(time,0.05,dist="Exponential")
+survFunction <- function(time,parm,dist="exponential"){#
+	if(dist=="exponential"){#
+		S <- exp(time*parm[1])#
+	}#
+	S #
+}
+surv <- survFunction(time,0.05,dist="Exponential")
+survFunction <- function(time,parm,dist="exponential"){#
+	if(dist=="exponential"){#
+		S <- exp(time*parm[1])#
+	}#
+	exp(time*parm[1])#
+}
+surv <- survFunction(time,0.05,dist="Exponential")
+time
+time <- c(0,24,by=0.25)
+time
+time <- seq(0,24,by=0.25)
+surv <- survFunction(time,0.05,dist="Exponential")
+surv
+survFunction <- function(time,parm,dist="exponential"){#
+	if(dist=="exponential"){#
+		S <- exp(time*parm[1])#
+	}#
+	S#
+}
+#install.packages("shiny")#
+library(shiny)#
+######################################################
+############# Function #
+#
+survFunction <- function(time,parm,dist="exponential"){#
+	if(dist=="exponential"){#
+		S <- exp(time*parm[1])#
+	}#
+	S#
+}#
+#
+######################################################
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Survival Functions"),#
+  	h4("This page shows the shape and behaviour of basic survival functions."),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		selectInput("suvFunc", "Distribution:",  #
+		                  c("Exponential","Weibull","Loglogistic","Lognormal","Peicewise Exponential")),#
+		uiOutput("selectDemo"),#
+#
+		## Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("survPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+	output$selectDemo <- renderUI({#
+		sliderInput(inputId = "hazRate1",label = "Hazard Rate",0,0.5,step=0.01,value=0.05)#
+	})#
+#
+	## Plot#
+	output$survPlot <- renderPlot({	#
+		time <- seq(0,24,by=0.25)#
+		surv <- survFunction(time,input$hazRate1,dist="Exponential")#
+		plot(time,surv)#
+	})#
+	## Stopping App#
+    observe({#
+    		if (input$close > 0) stopApp()                             # stop shiny#
+    })#
+#
+}#
+shinyApp(ui, server)
+survFunction <- function(time,parm,dist="exponential"){#
+	if(dist=="exponential"){#
+		S <- exp(time*parm[1])#
+	}#
+	S#
+}
+surv <- survFunction(time,0.05,dist="Exponential")
+time
+exp(time*0.05)
+S <- exp(-time*parm[1])
+survFunction <- function(time,parm,dist="exponential"){#
+	if(dist=="exponential"){#
+		S <- exp(-time*parm)#
+	}#
+	S#
+}
+surv <- survFunction(time,0.05,dist="Exponential")
+surv <- survFunction(time,0.05,dist="exponential")
+surv
+survFunction <- function(time,parm,dist="Exponential"){#
+	if(dist=="Exponential"){#
+		S <- exp(-time*parm)#
+	}#
+	S#
+}
+#install.packages("shiny")#
+library(shiny)#
+######################################################
+############# Function #
+#
+survFunction <- function(time,parm,dist="Exponential"){#
+	if(dist=="Exponential"){#
+		S <- exp(-time*parm)#
+	}#
+	S#
+}#
+#
+######################################################
+##############################
+##############################
+# Define UI for dataset viewer app ----#
+ui <- fluidPage(#
+#
+	#includeCSS("bootstrap.css"),#
+#
+  	titlePanel("Survival Functions"),#
+  	h4("This page shows the shape and behaviour of basic survival functions."),#
+#
+  sidebarLayout(#
+#
+    sidebarPanel(#
+		selectInput("suvFunc", "Distribution:",  #
+		                  c("Exponential","Weibull","Loglogistic","Lognormal","Peicewise Exponential")),#
+		uiOutput("selectDemo"),#
+#
+		## Add a stop button for development	        #
+      	actionButton("close",label="stop")#
+    ),#
+#
+    mainPanel(#
+      plotOutput("survPlot")#
+    )#
+  )#
+)#
+#############
+server <- function(input, output) {#
+	output$selectDemo <- renderUI({#
+		sliderInput(inputId = "hazRate1",label = "Hazard Rate",0,0.5,step=0.01,value=0.05)#
+	})#
+#
+	## Plot#
+	output$survPlot <- renderPlot({	#
+		time <- seq(0,24,by=0.25)#
+		surv <- survFunction(time,input$hazRate1,dist="Exponential")#
+		plot(time,surv)#
+	})#
+	## Stopping App#
+    observe({#
+    		if (input$close > 0) stopApp()                             # stop shiny#
+    })#
 #
 }#
 shinyApp(ui, server)
