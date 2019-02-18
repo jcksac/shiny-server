@@ -363,8 +363,8 @@ corClust <- function(x,ct,namDem,demo){
 
 
 
-summaryTable <- function(x,by="none",cont.sum="med",se=TRUE,perc=TRUE,missing=TRUE,row=TRUE,flex=FALSE,nam=colnames(x),...){
-    if(by[1]=="none") stop("No 'by'. I will do this bit later - Rich")
+summaryTable <- function(x,by="none",cont.sum="med",se=TRUE,perc=TRUE,missing=TRUE,row=TRUE,flex=FALSE,nam=colnames(x)){
+if(by[1]=="none") stop("No 'by'. I will do this bit later - Rich")
     if(class(by)!="factor") by <- as.factor(by)
     if(class(x)=="matrix") x <- as.data.frame(x)
 	missing.by <- length(which(is.na(by)))>0
